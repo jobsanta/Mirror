@@ -18,12 +18,11 @@ Shader "VertexInputSimple" {
                 v2f o;
 
                 o.pos = UnityObjectToClipPos(v.vertex);
-                float l =  length(mul(unity_ObjectToWorld, v.vertex));
-                o.color.xyz = float3(l,l,l);
-
+               	float4 posw =  mul(unity_ObjectToWorld, v.vertex);
+                o.color.xyz = float3(1.0,1.0,1.0);
                 o.color.w = 1.0;
 
-                o.pos = o.pos*l/o.pos.w;
+                o.pos = o.pos*(10.0*length(posw.xyz-_WorldSpaceCameraPos)/length(_WorldSpaceCameraPos))/o.pos.w;
 
                 return o;
             }

@@ -12,9 +12,10 @@ public class TextController : MonoBehaviour {
         cb = Camera.main;
         conText = GetComponent<Text>();
 	}
-	
-	// Update is called once per frame
-    public void updateSliderText (float value) {
-        conText.text = "Convergence " + value;	
-	}
+
+    void Update()
+    {
+        conText.text = "Convergence " + cb.stereoConvergence + " " +cb.stereoSeparation; 
+    }
+
 }
