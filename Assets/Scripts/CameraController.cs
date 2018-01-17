@@ -149,8 +149,6 @@ public class CameraController : MonoBehaviour {
 
 		cam.worldToCameraMatrix = eyeTranslateM.transpose;
        // cam.stereoConvergence = Mathf.Sqrt( trackerPosition.x*trackerPosition.x + ((trackerPosition.y-0.17f)*(trackerPosition.y-0.17f))+ trackerPosition.z*trackerPosition.z);
-        Debug.Log("Convergence "+cam.stereoConvergence);
-        Debug.Log("Seperation "+cam.stereoSeparation);
 	//	Debug.Log (cam.worldToCameraMatrix);
 
 	}
