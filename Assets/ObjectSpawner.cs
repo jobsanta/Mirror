@@ -32,8 +32,16 @@ public class ObjectSpawner : NetworkBehaviour {
                 Random.Range(0,180), 
                 0.0f);
 
-            var o = (GameObject)Instantiate(objectPrefab, spawnPosition, spawnRotation);
-            NetworkServer.Spawn(o);
+
+            GameObject o = (GameObject)Instantiate(objectPrefab, spawnPosition, spawnRotation);
+
+            if (isLocalPlayer)
+            {
+                o.GetComponent<Renderer>().material.color = Color.red;
+            }
+                
+
+            NetworkServer.SpawnWithClientAuthority(o, gameObject);
         }
     }
 }

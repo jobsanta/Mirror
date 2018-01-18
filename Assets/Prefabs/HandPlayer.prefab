@@ -629,7 +629,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4000013934739746}
   - component: {fileID: 114000012883968422}
-  - component: {fileID: 114000011673433084}
   m_Layer: 0
   m_Name: LoPoly_Rigged_Hand_Right
   m_TagString: Untagged
@@ -877,7 +876,6 @@ GameObject:
   - component: {fileID: 4000012788164994}
   - component: {fileID: 95000012963798936}
   - component: {fileID: 114000013511113252}
-  - component: {fileID: 114000010791805914}
   m_Layer: 0
   m_Name: LoPoly_Rigged_Hand_Left
   m_TagString: Untagged
@@ -3754,17 +3752,6 @@ MonoBehaviour:
   deformPosition: 0
   modelFingerPointing: {x: -1, y: 0, z: 0}
   modelPalmFacing: {x: 0, y: 1, z: 0}
---- !u!114 &114000010791805914
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013995283890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bcd03e00992e084c8be61565d44b8bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000010830666574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4051,17 +4038,6 @@ MonoBehaviour:
   m_MovementThreshold: 0.001
   m_InterpolateRotation: 0.5
   m_InterpolateMovement: 0.5
---- !u!114 &114000011673433084
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013305168970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bcd03e00992e084c8be61565d44b8bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000011737251260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4583,11 +4559,12 @@ MonoBehaviour:
   removeComponentIfNonLocal:
   - {fileID: 95000012963798936}
   - {fileID: 114000013511113252}
-  - {fileID: 114000010791805914}
+  - {fileID: 0}
   - {fileID: 114000012883968422}
-  - {fileID: 114000011673433084}
+  - {fileID: 0}
   removeGameObjectsIfNonLocal:
   - {fileID: 1000012708398010}
+  - {fileID: 1607900195151264}
   enableGameObjectsIfLocal:
   - {fileID: 1000012708398010}
 --- !u!114 &114000013379111624

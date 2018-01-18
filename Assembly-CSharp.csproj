@@ -250,6 +250,7 @@
      <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\KabschSolver.cs" />
      <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\PhysicsCallbacks.cs" />
      <Compile Include="Assets\LeapSpawner.cs" />
+     <Compile Include="Assets\NetworkInteraction.cs" />
      <Compile Include="Assets\ObjectSpawner.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\EnableEventRelay.cs" />
