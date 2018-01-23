@@ -249,9 +249,6 @@
      <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\InteractionControllerSwitcher.cs" />
      <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\KabschSolver.cs" />
      <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\PhysicsCallbacks.cs" />
-     <Compile Include="Assets\LeapSpawner.cs" />
-     <Compile Include="Assets\NetworkInteraction.cs" />
-     <Compile Include="Assets\ObjectSpawner.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\EnableEventRelay.cs" />
      <Compile Include="Assets\Scripts\FaceToCam.cs" />
@@ -268,11 +265,14 @@
      <Compile Include="Assets\Scripts\Kinect\InfraredSourceView.cs" />
      <Compile Include="Assets\Scripts\Kinect\KalmanFilterSimple1D.cs" />
      <Compile Include="Assets\Scripts\Kinect\MultiSourceManager.cs" />
+     <Compile Include="Assets\Scripts\LeapSpawner.cs" />
      <Compile Include="Assets\Scripts\NetHandEnableDisable.cs" />
      <Compile Include="Assets\Scripts\NetHandVisibility.cs" />
+     <Compile Include="Assets\Scripts\NetworkInteraction.cs" />
      <Compile Include="Assets\Scripts\NetworkSkeleton.cs" />
-     <Compile Include="Assets\SliderController.cs" />
-     <Compile Include="Assets\TextController.cs" />
+     <Compile Include="Assets\Scripts\ObjectSpawner.cs" />
+     <Compile Include="Assets\Scripts\SliderController.cs" />
+     <Compile Include="Assets\Scripts\TextController.cs" />
      <None Include="Assets\LeapMotion\Core\Resources\LeapCG.cginc" />
      <None Include="Assets\LeapMotion\Core\README_BEFORE_UPDATING.txt" />
      <None Include="Assets\Shaders\visionShaders.shader" />

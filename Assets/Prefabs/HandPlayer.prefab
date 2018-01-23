@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 114000012023731302}
   - component: {fileID: 114813206682745306}
   - component: {fileID: 114624742121974180}
+  - component: {fileID: 114894743648234428}
   - component: {fileID: 114000011633675166}
   - component: {fileID: 114000011891052432}
   - component: {fileID: 114000013849350932}
@@ -140,7 +141,6 @@ GameObject:
   - component: {fileID: 114000013485366300}
   - component: {fileID: 114000013969349706}
   - component: {fileID: 114000014075642240}
-  - component: {fileID: 114820833964676280}
   m_Layer: 0
   m_Name: HandPlayer
   m_TagString: Untagged
@@ -5374,7 +5374,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114820833964676280
+--- !u!114 &114894743648234428
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -5387,7 +5387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 1004158614911906, guid: 2cd4993de242e33428964b4dba330074,
     type: 2}
-  numberOfObjects: 3
+  numberOfObjects: 1
 --- !u!114 &114930528348543466
 MonoBehaviour:
   m_ObjectHideFlags: 1

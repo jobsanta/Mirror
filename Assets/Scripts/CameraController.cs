@@ -84,6 +84,8 @@ public class CameraController : MonoBehaviour {
 
 		//Get the distance;; from the eye to the screen plane
 		eyedistance = (Vector3.Dot(va, vn));
+        Debug.Log("eye" + eyedistance);
+
 
 		//Get the varaibles for the off center projection
 		left = (Vector3.Dot(vr, va)*near)/eyedistance;
@@ -108,9 +110,17 @@ public class CameraController : MonoBehaviour {
 		//calculate projection
 
 		Vector3 trackerPosition = cam.transform.position;
-		Vector3 BottomLeftCorner = new Vector3(-0.30f,0.0f,0.0f);
-		Vector3 BottomRightCorner = new Vector3(0.30f,0.0f,0.0f);
-		Vector3 TopLeftCorner = new Vector3 (-0.30f, 0.33f, 0.0f);
+        Vector3 BottomLeftCorner = new Vector3(-0.30f,0.0f,0.0f);
+        Vector3 BottomRightCorner = new Vector3(0.30f,0.0f,0.0f);
+        Vector3 TopLeftCorner = new Vector3 (-0.30f, 0.33f, 0.0f);
+        if (trackerPosition.z > 0)
+        {
+             BottomLeftCorner = new Vector3(0.30f,0.0f,0.0f);
+             BottomRightCorner = new Vector3(-0.30f,0.0f,0.0f);
+             TopLeftCorner = new Vector3 (0.30f, 0.33f, 0.0f);
+        }
+
+
 
 		//TopLeftCorner = TopLeftCorner - trackerPosition;
 
@@ -145,6 +155,34 @@ public class CameraController : MonoBehaviour {
 		eyeTranslateM[3, 1] = -trackerPosition.y;
 		eyeTranslateM[3, 2] = trackerPosition.z;
 		eyeTranslateM[3, 3] = 1;
+
+        if (trackerPosition.z > 0)
+        {
+            eyeTranslateM[0, 0] = -1;
+            eyeTranslateM[0, 1] = 0;
+            eyeTranslateM[0, 2] = 0;
+            eyeTranslateM[0, 3] = 0;
+
+            eyeTranslateM[1, 0] = 0;
+            eyeTranslateM[1, 1] = 1;
+            eyeTranslateM[1, 2] = 0;
+            eyeTranslateM[1, 3] = 0;
+
+            eyeTranslateM[2, 0] = 0;
+            eyeTranslateM[2, 1] = 0;
+            eyeTranslateM[2, 2] = 1;
+            eyeTranslateM[2, 3] = 0;
+
+            eyeTranslateM[3, 0] = trackerPosition.x;
+            eyeTranslateM[3, 1] = -trackerPosition.y;
+            eyeTranslateM[3, 2] = -trackerPosition.z;
+            eyeTranslateM[3, 3] = 1;
+
+            eyeTranslateM[2, 0] = 0;
+            eyeTranslateM[2, 1] = 0;
+            eyeTranslateM[2, 2] = 1;
+            eyeTranslateM[2, 3] = 0;
+        }
 
 
 		cam.worldToCameraMatrix = eyeTranslateM.transpose;

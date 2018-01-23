@@ -68,6 +68,13 @@ public class HandPlayer : NetworkBehaviour
             rightHandEnabler.Disabled.AddListener(CmdRightHandDisable);
 
             for (int i = 0; i < enableGameObjectsIfLocal.Length; i++) enableGameObjectsIfLocal[i].SetActive(true);
+
+         
+        }
+
+        if (!isServer)
+        {
+            FaceToCam.setClientPos();
         }
 
 

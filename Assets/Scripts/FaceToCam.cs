@@ -19,6 +19,8 @@ public class FaceToCam : MonoBehaviour
 	//this is our game camera
 	public GameObject camera;
 
+    private static bool isClientPos = false;
+
     private Transform tf;
 
 //	StreamWriter sx;
@@ -55,6 +57,12 @@ public class FaceToCam : MonoBehaviour
 
     float cos_deg;
     float sin_deg;
+
+    public static void setClientPos()
+    {
+        isClientPos = true;
+    }
+
 
 	void Start()
 	{
@@ -118,6 +126,8 @@ public class FaceToCam : MonoBehaviour
 			faceFrameReaders[i] = faceFrameSources[i].OpenReader();
 		}
 	}
+
+    public 
 
 	void LateUpdate()
 	{
@@ -230,9 +240,18 @@ public class FaceToCam : MonoBehaviour
 
                             //Debug.Log("Y " + kalman_Y.State + " Z " + kalman_Z.State);
 
+                            if (!isClientPos)
+                            {
+                                camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(x, y, -z), Time.deltaTime * headSmooth * mod_x + 0.3f);
+                            }
+                            else
+                            {
+                                camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(x, y, z), Time.deltaTime * headSmooth * mod_x + 0.3f);
+                            }
+                              
 
 							//face.transform.localRotation = Quaternion.Lerp(face.transform.localRotation, new Quaternion((float)kalman_X.State, (float)kalman_Y.State, face.transform.localRotation.z, face.transform.localRotation.w), Time.deltaTime * headSmooth * mod_x + 0.3f);
-                            camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(x,y,-z), Time.deltaTime * headSmooth * mod_x + 0.3f);
+
                            // camera.transform.position =  new Vector3(x,y,-z);
 //							kx.WriteLine(kalman_X.State.ToString("0.000000"), true);
 //							kx.Flush();

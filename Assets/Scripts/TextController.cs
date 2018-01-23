@@ -1,0 +1,21 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class TextController : MonoBehaviour {
+
+    Camera cb;
+    Text conText;
+	// Use this for initialization
+	void Start () {
+        cb = Camera.main;
+        conText = GetComponent<Text>();
+	}
+
+    void Update()
+    {
+        conText.text = "Convergence " + cb.stereoConvergence + " " +cb.stereoSeparation; 
+    }
+
+}
