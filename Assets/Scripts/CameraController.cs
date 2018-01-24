@@ -84,9 +84,6 @@ public class CameraController : MonoBehaviour {
 
 		//Get the distance;; from the eye to the screen plane
 		eyedistance = (Vector3.Dot(va, vn));
-        Debug.Log("eye" + eyedistance);
-
-
 		//Get the varaibles for the off center projection
 		left = (Vector3.Dot(vr, va)*near)/eyedistance;
 		right  = (Vector3.Dot(vr, vb)*near)/eyedistance;

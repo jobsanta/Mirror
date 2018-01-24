@@ -119,6 +119,18 @@ namespace Leap.Unity.Interaction {
     private InteractionController _lockedInteractingController = null;
 
     protected override void Start() {
+          
+        if (manager == null) {
+            manager = InteractionManager.instance;
+
+            if (manager == null) {
+                Debug.LogError("Interaction Behaviours require an Interaction Manager. Please "
+                    + "ensure you have an InteractionManager in your scene.");
+                this.enabled = false;
+            }
+        }
+
+
       if(transform == transform.root) {
         Debug.LogError("This button has no parent!  Please ensure that it is parented to something!", this);
         enabled = false;

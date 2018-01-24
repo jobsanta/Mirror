@@ -30,10 +30,7 @@ public class NetworkInteraction : NetworkBehaviour {
 
         Debug.Log("isClient " + isClient + " isServer " + isServer + " islocalplayer" + isLocalPlayer);
         Debug.Log(" localPlayerAuthroity " + localPlayerAuthority + " hasAuthority " + hasAuthority);
-
-        if (!isClient)
-            return;
-
+        Debug.Log("Object Layer" + _intObj.interactionLayer);
         Debug.Log("sending command");
         CmdGraspedMovement(solvedPos, solvedRot);
     }

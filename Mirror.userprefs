@@ -1,14 +1,22 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\NetworkInteraction.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\LeapMotion\Modules\InteractionEngine\Scripts\InteractionBehaviour.cs">
     <Files>
-      <File FileName="Assets\SliderController.cs" Line="1" Column="1" />
-      <File FileName="Assets\TextController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FaceToCam.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CameraController.cs" Line="1" Column="1" />
-      <File FileName="Assets\NetworkInteraction.cs" Line="14" Column="50" />
-      <File FileName="Assets\ObjectSpawner.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ObjectSpawner.cs" Line="68" Column="32" NotebookId="1" />
+      <File FileName="Assets\Scripts\FaceToCam.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets\Scripts\CameraController.cs" Line="86" Column="39" NotebookId="1" />
+      <File FileName="Assets\Scripts\NetworkInteraction.cs" Line="35" Column="1" NotebookId="1" />
+      <File FileName="Assets\Scripts\EnableEventRelay.cs" Line="12" Column="1" NotebookId="1" />
+      <File FileName="Assets\LeapMotion\Modules\InteractionEngine\Scripts\InteractionBehaviour.cs" Line="761" Column="31" NotebookId="1" />
+      <File FileName="Assets\LeapMotion\Modules\InteractionEngine\Examples\3. Interaction Callbacks\Scripts\TransformTool.cs" Line="24" Column="5" NotebookId="1" />
     </Files>
+    <FloatingWindows>
+      <FloatingWindow WindowId="1" X="1912" Y="-8" Width="1920" Height="1017">
+        <Files>
+          <File FileName="Assets\LeapMotion\Modules\InteractionEngine\Scripts\UI\InteractionButton.cs" Line="331" Column="65" />
+        </Files>
+      </FloatingWindow>
+    </FloatingWindows>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
