@@ -13,9 +13,13 @@ public class TextController : MonoBehaviour {
         conText = GetComponent<Text>();
 	}
 
-    void Update()
+    public void setFreeMode()
     {
-        conText.text = "Convergence " + cb.stereoConvergence + " " +cb.stereoSeparation; 
+        conText.text = "Free Mode";
     }
 
+    public void setFixMode()
+    {
+        conText.text = "Fix Mode";
+    }
 }

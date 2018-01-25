@@ -7,7 +7,7 @@ public class ObjectSpawner : NetworkBehaviour {
 
     public GameObject objectPrefab;
     public int numberOfObjects;
-    public GameObject componentPrefab;
+    public GameObject[] componentPrefab;
 
    
 
@@ -26,6 +26,11 @@ public class ObjectSpawner : NetworkBehaviour {
             spawnPosition = new Vector3(0.0f, 0.2f, -0.10f);
 
         CmdCreateBox(spawnPosition, Color.red);
+
+        if (p.position.z > 0.0f)
+            spawnPosition = new Vector3(0.0f, 0.2f, 0.20f);
+        else
+            spawnPosition = new Vector3(0.0f, 0.2f, -0.20f);
         CmdCreateComponent(spawnPosition, Color.red);
 
     }
@@ -33,8 +38,7 @@ public class ObjectSpawner : NetworkBehaviour {
     [Command]
     void CmdCreateBox(Vector3 spawnPosition, Color c)
     {
-        for (int i=0; i < numberOfObjects; i++)
-        {
+
             var spawnRotation = Quaternion.Euler( 
                 0.0f, 
                0.0f, 
@@ -44,7 +48,7 @@ public class ObjectSpawner : NetworkBehaviour {
             GameObject o = (GameObject)Instantiate(objectPrefab, spawnPosition, spawnRotation);
 
             NetworkServer.SpawnWithClientAuthority(o, gameObject);
-        }
+  
     }
         
 
@@ -60,7 +64,7 @@ public class ObjectSpawner : NetworkBehaviour {
                 0.0f);
 
 
-            GameObject o = (GameObject)Instantiate(componentPrefab, spawnPosition, spawnRotation);
+            GameObject o = (GameObject)Instantiate(componentPrefab[i%componentPrefab.Length], spawnPosition, spawnRotation);
 
 
             NetworkServer.SpawnWithClientAuthority(o, gameObject);

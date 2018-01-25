@@ -349,7 +349,7 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
 6daf822fbfefbf0e5841375a5f907196 Assembly-CSharp.dll:Leap.Unity.KeyEnableBehaviors
 acc710d1ed38fc66b8f862a96232ef16 Assembly-CSharp.dll:Leap.Unity.Interaction.AnchorableBehaviour
-ada303e179495840d13ed03f86ba2fc8 Assembly-CSharp.dll:.ObjectSpawner
+d63f4b0d554485f3972cc58bc96400ef Assembly-CSharp.dll:.ObjectSpawner
 d8b86f4fb9fa4c153334062c4f5a4a1d Assembly-CSharp.dll:Leap.Unity.StationaryTestLeapProvider
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SliderController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DepthSourceManager
@@ -388,3 +388,5 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 3d1b89310e77c34bc0c8d7132231345c Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 05524b8f659e7bfe5756d1335fec24ba Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LayoutController
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CollisionController
