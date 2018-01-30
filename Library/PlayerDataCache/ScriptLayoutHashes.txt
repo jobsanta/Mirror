@@ -233,6 +233,7 @@ d60795789e6f0b89266e69f672546749 Assembly-CSharp.dll:Leap.Unity.Interaction.Anch
 5ed935b5a777826f463ab9976bc1a5d7 Assembly-CSharp.dll:Leap.Unity.EnableDepthBuffer
 1e9c3079a441c0c7ae003aa4b709d040 Assembly-CSharp.dll:Leap.Unity.RiggedFinger
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Leap.Unity.Examples.IgnoreCollisionsInChildren
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CollisionController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Leap.Unity.HandDrop
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CameraController
 343be47940603400482779ebf7519bbe Assembly-CSharp.dll:Leap.Unity.RigidHand
@@ -255,6 +256,7 @@ dc291c5c42cc11cf68d48cd30a18a9ab Assembly-CSharp.dll:Leap.Unity.HandPool
 df3e70c85d1064a2d40688b78c36a15d Assembly-CSharp.dll:Leap.Unity.Examples.SimpleInteractionEmission
 1c9dbf6588c2a86d918d6a6e3eb4ef45 Assembly-CSharp.dll:Leap.Unity.Examples.TransformRotationHandle
 31c42b3592971844b4cdd3dcef7dd226 Assembly-CSharp.dll:.SimpleInteractionGlow
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LayoutController
 1bd6d90fb4d8b0ed26aa2ba8d8c82fbb Assembly-CSharp.dll:.VRHeightOffset
 d58e2c87c3d8d644a4c90cc26ef6498e Assembly-CSharp.dll:Leap.Unity.Examples.AutopilotSystem
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Leap.Unity.LeapHandController
@@ -388,5 +390,3 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 3d1b89310e77c34bc0c8d7132231345c Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 05524b8f659e7bfe5756d1335fec24ba Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LayoutController
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CollisionController

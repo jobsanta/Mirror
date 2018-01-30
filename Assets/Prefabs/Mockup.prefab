@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 23819021667083222}
   m_Layer: 9
   m_Name: Exterior
-  m_TagString: Untagged
+  m_TagString: Exterior
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 4566199179218864}
   m_Layer: 9
   m_Name: WireCube Mesh
-  m_TagString: Untagged
+  m_TagString: Interior
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
