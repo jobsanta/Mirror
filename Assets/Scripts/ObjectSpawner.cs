@@ -34,8 +34,7 @@ public class ObjectSpawner : NetworkBehaviour {
         CmdCreateComponent(spawnPosition, Color.red);
 
     }
-
-    [Command]
+    [Command]    
     void CmdCreateBox(Vector3 spawnPosition, Color c)
     {
 
@@ -46,12 +45,10 @@ public class ObjectSpawner : NetworkBehaviour {
 
 
             GameObject o = (GameObject)Instantiate(objectPrefab, spawnPosition, spawnRotation);
-
             NetworkServer.SpawnWithClientAuthority(o, gameObject);
   
     }
         
-
 
     [Command]
     void CmdCreateComponent(Vector3 spawnPosition, Color c)
@@ -66,12 +63,12 @@ public class ObjectSpawner : NetworkBehaviour {
 
             GameObject o = (GameObject)Instantiate(componentPrefab[i%componentPrefab.Length], spawnPosition, spawnRotation);
 
-
             NetworkServer.SpawnWithClientAuthority(o, gameObject);
 
-            Debug.Log(o.layer);
         }
     }
+
+
 
 
 }

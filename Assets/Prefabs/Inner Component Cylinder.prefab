@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114928764362759852}
   - component: {fileID: 114939776344551438}
   - component: {fileID: 114041477063927838}
+  - component: {fileID: 114237899016821998}
   m_Layer: 8
   m_Name: Inner Component Cylinder
   m_TagString: Components
@@ -187,6 +188,25 @@ MonoBehaviour:
     layerIndex: 8
   _eventTable:
     _entries: []
+--- !u!114 &114237899016821998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1369122640442158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 4282419295252984}
+  m_ChildIndex: 0
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
 --- !u!114 &114810362575638258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,7 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 3
-  m_SendInterval: 0.09090909
+  m_SendInterval: 0.033333335
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0

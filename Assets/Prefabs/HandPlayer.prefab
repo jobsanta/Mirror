@@ -7118,8 +7118,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: setFixMode
+      - m_Target: {fileID: 114845388807811480}
+        m_MethodName: RpcFrontView
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7226,6 +7226,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 114845388807811480}
         m_MethodName: CallCmdFreeFall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114845388807811480}
+        m_MethodName: RpcFreeFall
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7810,7 +7821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 1074629180401056, guid: cedad7243df521648adb727d9781877e,
     type: 2}
-  numberOfObjects: 5
+  numberOfObjects: 1
   componentPrefab:
   - {fileID: 1216678141426808, guid: 4316ab8620c77234abe74bd48f8716ee, type: 2}
   - {fileID: 1515384863940076, guid: 6eb71df277d7f5843aafb7c4433c18ff, type: 2}

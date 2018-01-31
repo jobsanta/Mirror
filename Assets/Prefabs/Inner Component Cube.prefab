@@ -22,12 +22,11 @@ GameObject:
   - component: {fileID: 65602187102936896}
   - component: {fileID: 54436647129086636}
   - component: {fileID: 114375283569188440}
-  - component: {fileID: 114399163523235342}
   - component: {fileID: 114697978253388224}
   - component: {fileID: 114565394219051948}
-  - component: {fileID: 114514967634374514}
   - component: {fileID: 114010245108201654}
-  m_Layer: 8
+  - component: {fileID: 114210171374585884}
+  m_Layer: 0
   m_Name: Inner Component Cube
   m_TagString: Components
   m_Icon: {fileID: 0}
@@ -44,7 +43,7 @@ GameObject:
   - component: {fileID: 4798183339117314}
   - component: {fileID: 33280509739895010}
   - component: {fileID: 23865358844445614}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,6 +156,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b70cd4959dc874f9647da2f8887182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114210171374585884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1216678141426808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.09090909
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 1
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114375283569188440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,38 +207,6 @@ MonoBehaviour:
     layerIndex: 8
   _eventTable:
     _entries: []
---- !u!114 &114399163523235342
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1216678141426808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac2b6b6f8fdac34aa0ab2e773b8b6bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114514967634374514
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1216678141426808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: 0.09090909
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &114565394219051948
 MonoBehaviour:
   m_ObjectHideFlags: 1

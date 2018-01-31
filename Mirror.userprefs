@@ -2,17 +2,12 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LayoutController.cs">
     <Files>
-      <File FileName="Assets\Scripts\LayoutController.cs" Line="49" Column="63" />
-      <File FileName="Assets\Scripts\CollisionController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ObjectSpawner.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FaceToCam.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CameraController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\NetworkInteraction.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EnableEventRelay.cs" Line="1" Column="1" />
-      <File FileName="Assets\LeapMotion\Modules\InteractionEngine\Scripts\InteractionBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\LeapMotion\Modules\InteractionEngine\Examples\3. Interaction Callbacks\Scripts\TransformTool.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\HandPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TextController.cs" Line="26" Column="1" />
+      <File FileName="Assets\Scripts\CollisionController.cs" Line="26" Column="1" />
+      <File FileName="Assets\Scripts\LayoutController.cs" Line="126" Column="20" />
+      <File FileName="Assets\Scripts\AttachObjectManager.cs" Line="5" Column="1" />
+      <File FileName="Assets\Scripts\NetworkInteraction.cs" Line="30" Column="1" />
+      <File FileName="Assets\Scripts\ObjectSpawner.cs" Line="71" Column="5" />
+      <File FileName="Assets\Scripts\NetHandEnableDisable.cs" Line="19" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

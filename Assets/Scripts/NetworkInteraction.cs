@@ -4,17 +4,43 @@ using Leap.Unity.Interaction;
 using UnityEngine;
 using UnityEngine.Networking;
 
+
 [RequireComponent(typeof(InteractionBehaviour))]
 public class NetworkInteraction : NetworkBehaviour {
 
     private InteractionBehaviour _intObj;
+    private AnchorableBehaviour _anchObj;
+    private Rigidbody rb;
+    private BoxCollider bc;
+
 
     void Start() {
         _intObj = GetComponent<InteractionBehaviour>();
         _intObj.OnGraspedMovement += onGraspedMovement;
 
+        _anchObj = GetComponent<AnchorableBehaviour>();
+        _anchObj.WhileAttachedToAnchor += whileAttachedToAnchor;
 
-        Debug.Log("get interaction behavior");
+        _anchObj.OnAttachedToAnchor += onAttachedToAnchor;
+
+
+        bc = GetComponent < BoxCollider>();
+
+        rb = GetComponent<Rigidbody>();
+       
+    }
+
+    void onAttachedToAnchor(AnchorableBehaviour anbobj, Anchor anchor)
+    {
+        AttachObjectManager attachObjectList =  anchor.GetComponentInParent<AttachObjectManager>();
+        if (attachObjectList == null)
+        {
+            Debug.Log("no attach list");
+        }
+        else
+        {
+            attachObjectList.addObject(gameObject);
+        }
     }
 
    
@@ -28,18 +54,31 @@ public class NetworkInteraction : NetworkBehaviour {
         // Move the object back to its position before the grasp solve this frame,
         // then add just its movement along the world X axis.
 
-        Debug.Log("isClient " + isClient + " isServer " + isServer + " islocalplayer" + isLocalPlayer);
-        Debug.Log(" localPlayerAuthroity " + localPlayerAuthority + " hasAuthority " + hasAuthority);
-        Debug.Log("Object Layer" + _intObj.interactionLayer);
-        Debug.Log("sending command");
         CmdGraspedMovement(solvedPos, solvedRot);
+    }
+
+
+    private void whileAttachedToAnchor(AnchorableBehaviour anbobj, Anchor anchor)
+    {
+
+        Debug.Log("Transform object");
+        Transform t = anchor.transform;
+
+        CmdAnchorMovement(t.position, t.rotation);
+    }
+
+    [Command]
+    void CmdAnchorMovement(Vector3 pos, Quaternion rot)
+    {
+        rb.position = pos;
+        rb.rotation = rot;
     }
 
     [Command]
     void CmdGraspedMovement(Vector3 solvedPos, Quaternion solvedRot)
     {
-        _intObj.rigidbody.position = solvedPos;
-        _intObj.rigidbody.rotation = solvedRot;
+        _intObj.transform.position = solvedPos;
+        _intObj.transform.rotation = solvedRot;
     }
 
 }
