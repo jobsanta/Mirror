@@ -92,6 +92,7 @@ f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 3226707575a390bc6fb8702114fef5b3 Assembly-CSharp.dll:Leap.Unity.RiggedHand
 1524c2414b106ad2d80af18cd7c277ab Assembly-CSharp.dll:Leap.Unity.RuntimeGizmos.RuntimeGizmoManager
+16816bb96a013ee43ed2f11668c5c69c Assembly-CSharp.dll:.AttachObjectManager
 7435024e2eba1739b74aebd6a4d5c8c3 Assembly-CSharp.dll:Leap.Unity.Examples.RenderWireSphere
 0f0e8b49d171e61a5fe50bee83f0c573 Assembly-CSharp.dll:Leap.Unity.Space.LeapSphericalSpace
 72906becd7749f9e3414a42c73b48bd5 Assembly-CSharp.dll:Leap.Unity.Interaction.InteractionVRController
@@ -351,7 +352,7 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
 6daf822fbfefbf0e5841375a5f907196 Assembly-CSharp.dll:Leap.Unity.KeyEnableBehaviors
 acc710d1ed38fc66b8f862a96232ef16 Assembly-CSharp.dll:Leap.Unity.Interaction.AnchorableBehaviour
-d63f4b0d554485f3972cc58bc96400ef Assembly-CSharp.dll:.ObjectSpawner
+0c19df7afc7bebee33d84ae454bebf2d Assembly-CSharp.dll:.ObjectSpawner
 d8b86f4fb9fa4c153334062c4f5a4a1d Assembly-CSharp.dll:Leap.Unity.StationaryTestLeapProvider
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SliderController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DepthSourceManager
@@ -390,4 +391,5 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 3d1b89310e77c34bc0c8d7132231345c Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 05524b8f659e7bfe5756d1335fec24ba Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
-16816bb96a013ee43ed2f11668c5c69c Assembly-CSharp.dll:.AttachObjectManager
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RigidBodyController
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ControlPanelController

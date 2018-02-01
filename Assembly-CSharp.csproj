@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ControlPanelController.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\Algorithms\SlidingMax.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\Algorithms\SmoothedFloat.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\Algorithms\SmoothedQuaternion.cs" />
@@ -274,6 +275,7 @@
      <Compile Include="Assets\Scripts\NetworkInteraction.cs" />
      <Compile Include="Assets\Scripts\NetworkSkeleton.cs" />
      <Compile Include="Assets\Scripts\ObjectSpawner.cs" />
+     <Compile Include="Assets\Scripts\RigidBodyController.cs" />
      <Compile Include="Assets\Scripts\SliderController.cs" />
      <Compile Include="Assets\Scripts\TextController.cs" />
      <None Include="Assets\LeapMotion\Core\Resources\LeapCG.cginc" />

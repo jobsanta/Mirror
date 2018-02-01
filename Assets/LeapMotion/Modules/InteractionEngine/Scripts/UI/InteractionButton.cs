@@ -187,6 +187,18 @@ namespace Leap.Unity.Interaction {
 
     protected virtual void Update() {
       //Reset our convenience state variables...
+
+            if (manager == null) {
+                manager = InteractionManager.instance;
+
+                if (manager == null) {
+                    Debug.LogError("Interaction Behaviours require an Interaction Manager. Please "
+                        + "ensure you have an InteractionManager in your scene.");
+                    this.enabled = false;
+                }
+            }
+
+
       depressedThisFrame = false;
       unDepressedThisFrame = false;
 

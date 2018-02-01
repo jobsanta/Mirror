@@ -8,15 +8,19 @@ public class ObjectSpawner : NetworkBehaviour {
     public GameObject objectPrefab;
     public int numberOfObjects;
     public GameObject[] componentPrefab;
+    public GameObject panelPrefab;
 
    
 
     public override void OnStartLocalPlayer()
     {
+
         if (!isLocalPlayer)
         {
             return;
         }
+
+
 
         Transform p = GetComponent<Transform>();
         Vector3 spawnPosition;
@@ -33,7 +37,21 @@ public class ObjectSpawner : NetworkBehaviour {
             spawnPosition = new Vector3(0.0f, 0.2f, -0.20f);
         CmdCreateComponent(spawnPosition, Color.red);
 
+        CreatePanel(Camera.main.transform.position);
+
     }
+
+
+    void CreatePanel(Vector3 spawnPosition)
+    {
+        var spawnRotation = Quaternion.Euler( 
+            0.0f, 
+            0.0f, 
+            0.0f);
+        GameObject o = (GameObject)Instantiate(panelPrefab, spawnPosition, spawnRotation);
+    }
+
+
     [Command]    
     void CmdCreateBox(Vector3 spawnPosition, Color c)
     {
