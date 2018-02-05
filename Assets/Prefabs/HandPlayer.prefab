@@ -4562,7 +4562,7 @@ MonoBehaviour:
   - {fileID: 114000013511113252}
   - {fileID: 0}
   - {fileID: 114000012883968422}
-  - {fileID: 0}
+  - {fileID: 114845388807811480}
   removeGameObjectsIfNonLocal:
   - {fileID: 1000012708398010}
   - {fileID: 1431704871547442}

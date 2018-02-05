@@ -283,6 +283,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 a3c59ab0a4370ee52046603a838699bb Assembly-CSharp.dll:Leap.Unity.Interaction.InteractionButton
 39e87458d5150cecb9dbf5fce2560fc2 Assembly-CSharp.dll:Leap.Unity.TemporalWarpingStatus
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Leap.Unity.Animation.Internal.TweenRunner
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ControlPanelController
 7dc7a7b22a294cb032075f0082477a9a Assembly-CSharp.dll:Leap.Unity.Interaction.ContactBoneParent
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 96d0fbde9fd209878a0a291f82c9bcdd UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
@@ -299,6 +300,7 @@ d9098e3f0d679385f3d70bcec10f3dac Assembly-CSharp.dll:Leap.Unity.Examples.Transfo
 0f0e8b49d171e61a5fe50bee83f0c573 Assembly-CSharp.dll:Leap.Unity.Space.LeapCylindricalSpace
 8e001e5fc5b51b3e4b1c112b63fc8ced Assembly-CSharp.dll:Leap.Unity.DisconnectionNotice
 1b2ad36ceb0553f2131389c80008c4aa Assembly-CSharp.dll:.HandTransitionEvent
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RigidBodyController
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -391,5 +393,4 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 3d1b89310e77c34bc0c8d7132231345c Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 05524b8f659e7bfe5756d1335fec24ba Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RigidBodyController
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ControlPanelController
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LayoutBodyController

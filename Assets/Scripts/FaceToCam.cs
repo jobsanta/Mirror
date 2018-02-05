@@ -246,7 +246,7 @@ public class FaceToCam : MonoBehaviour
                             }
                             else
                             {
-                                camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(x, y, z), Time.deltaTime * headSmooth * mod_x + 0.3f);
+                                camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(-x, y, z), Time.deltaTime * headSmooth * mod_x + 0.3f);
                             }
                               
 

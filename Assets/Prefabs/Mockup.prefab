@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114061685681653838}
   - component: {fileID: 114975252893461958}
   - component: {fileID: 114851175069531648}
-  - component: {fileID: 114058407766747934}
+  - component: {fileID: 114125918491086744}
   m_Layer: 0
   m_Name: Mockup
   m_TagString: Layout
@@ -670,17 +670,6 @@ MonoBehaviour:
   matchActiveStateWithAttachedObjects: 0
   _eventTable:
     _entries: []
---- !u!114 &114058407766747934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1074629180401056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10a9b9bb54f377846bd324264bf71af3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114061685681653838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -722,6 +711,17 @@ MonoBehaviour:
   matchActiveStateWithAttachedObjects: 0
   _eventTable:
     _entries: []
+--- !u!114 &114125918491086744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074629180401056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14547b1ee7abfb8479105db42fb0effd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114144615004185462
 MonoBehaviour:
   m_ObjectHideFlags: 1

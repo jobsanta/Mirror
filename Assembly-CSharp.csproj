@@ -51,7 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ControlPanelController.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\Algorithms\SlidingMax.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\Algorithms\SmoothedFloat.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\Algorithms\SmoothedQuaternion.cs" />
@@ -253,6 +252,7 @@
      <Compile Include="Assets\Scripts\AttachObjectManager.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\CollisionController.cs" />
+     <Compile Include="Assets\Scripts\ControlPanelController.cs" />
      <Compile Include="Assets\Scripts\EnableEventRelay.cs" />
      <Compile Include="Assets\Scripts\FaceToCam.cs" />
      <Compile Include="Assets\Scripts\HandPlayer.cs" />
@@ -268,6 +268,7 @@
      <Compile Include="Assets\Scripts\Kinect\InfraredSourceView.cs" />
      <Compile Include="Assets\Scripts\Kinect\KalmanFilterSimple1D.cs" />
      <Compile Include="Assets\Scripts\Kinect\MultiSourceManager.cs" />
+     <Compile Include="Assets\Scripts\LayoutBodyController.cs" />
      <Compile Include="Assets\Scripts\LayoutController.cs" />
      <Compile Include="Assets\Scripts\LeapSpawner.cs" />
      <Compile Include="Assets\Scripts\NetHandEnableDisable.cs" />

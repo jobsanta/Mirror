@@ -12,8 +12,25 @@ public class RigidBodyController : NetworkBehaviour {
     {
         Debug.Log(gameObject.name + ": isLocalPlayer " + isLocalPlayer + 
             " isServer " + isServer + " isClient " + isClient + " hasAuthority " + hasAuthority);
-        if (!hasAuthority && !isServer)
-            gameObject.GetComponent<BoxCollider>().enabled = false;
+        if (isServer)
+        {
+            if (gameObject.transform.position.z > 0)
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+                gameObject.tag = "Untagged";
+            }
+        }
+        else
+        {   
+            if (!hasAuthority)
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+                gameObject.tag = "Untagged";
+
+            }
+
+        }
+
 	}
 	
 

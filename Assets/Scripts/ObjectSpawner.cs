@@ -49,13 +49,13 @@ public class ObjectSpawner : NetworkBehaviour {
             0.0f, 
             0.0f);
         GameObject o = (GameObject)Instantiate(panelPrefab, spawnPosition, spawnRotation);
+
     }
 
 
     [Command]    
     void CmdCreateBox(Vector3 spawnPosition, Color c)
     {
-
             var spawnRotation = Quaternion.Euler( 
                 0.0f, 
                0.0f, 
@@ -64,6 +64,7 @@ public class ObjectSpawner : NetworkBehaviour {
 
             GameObject o = (GameObject)Instantiate(objectPrefab, spawnPosition, spawnRotation);
             NetworkServer.SpawnWithClientAuthority(o, gameObject);
+       
   
     }
         
@@ -85,6 +86,7 @@ public class ObjectSpawner : NetworkBehaviour {
 
         }
     }
+        
 
 
 
