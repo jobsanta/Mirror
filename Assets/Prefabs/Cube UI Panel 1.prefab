@@ -1319,10 +1319,10 @@ MonoBehaviour:
   _ignoreGrasping: 1
   _contactForceMode: 1
   _allowMultiGrasp: 0
-  _moveObjectWhenGrasped: 1
+  _moveObjectWhenGrasped: 0
   graspedMovementType: 0
   graspHoldWarpingEnabled__curIgnored: 1
-  _overrideInteractionLayer: 1
+  _overrideInteractionLayer: 0
   _interactionLayer:
     layerIndex: 5
   _overrideNoContactLayer: 0
@@ -1443,7 +1443,7 @@ MonoBehaviour:
   _moveObjectWhenGrasped: 1
   graspedMovementType: 0
   graspHoldWarpingEnabled__curIgnored: 1
-  _overrideInteractionLayer: 1
+  _overrideInteractionLayer: 0
   _interactionLayer:
     layerIndex: 5
   _overrideNoContactLayer: 0
@@ -1528,7 +1528,7 @@ MonoBehaviour:
   _moveObjectWhenGrasped: 1
   graspedMovementType: 0
   graspHoldWarpingEnabled__curIgnored: 1
-  _overrideInteractionLayer: 1
+  _overrideInteractionLayer: 0
   _interactionLayer:
     layerIndex: 5
   _overrideNoContactLayer: 0
@@ -1698,7 +1698,7 @@ MonoBehaviour:
   _moveObjectWhenGrasped: 1
   graspedMovementType: 0
   graspHoldWarpingEnabled__curIgnored: 1
-  _overrideInteractionLayer: 1
+  _overrideInteractionLayer: 0
   _interactionLayer:
     layerIndex: 5
   _overrideNoContactLayer: 0

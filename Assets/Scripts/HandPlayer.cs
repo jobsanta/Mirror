@@ -53,6 +53,7 @@ public class HandPlayer : NetworkBehaviour
         }
         else
         {
+            gameObject.tag = "Player";
             gameObject.name = "Player (Local)";
 
             leftHandEnabler = leftHand.gameObject.AddComponent<EnableEventRelay>();

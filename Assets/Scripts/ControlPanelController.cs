@@ -19,7 +19,7 @@ public class ControlPanelController : MonoBehaviour {
 
         controller = player.GetComponent<LayoutController>();
 
-        Debug.Log(
+        Debug.Log(player.name);
      
   
     }
@@ -44,11 +44,26 @@ public class ControlPanelController : MonoBehaviour {
 
     public void FreeFall()
     {
+        if (controller == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+
+
+            controller = player.GetComponent<LayoutController>();
+        }
         controller.SetFreeFall();
     }
     public void FixView()
     {
         Debug.Log("Button Press");
+        if (controller == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+
+
+            controller = player.GetComponent<LayoutController>();
+        }
+
         controller.SetFrontView();
     }
 }

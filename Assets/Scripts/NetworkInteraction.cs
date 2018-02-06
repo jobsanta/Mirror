@@ -61,7 +61,7 @@ public class NetworkInteraction : NetworkBehaviour {
     private void whileAttachedToAnchor(AnchorableBehaviour anbobj, Anchor anchor)
     {
 
-        Debug.Log("Transform object");
+       // Debug.Log("Transform object");
         Transform t = anchor.transform;
 
         CmdAnchorMovement(t.position, t.rotation);
