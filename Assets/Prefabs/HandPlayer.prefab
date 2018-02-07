@@ -5427,8 +5427,9 @@ MonoBehaviour:
   objectPrefab: {fileID: 1074629180401056, guid: cedad7243df521648adb727d9781877e,
     type: 2}
   numberOfObjects: 2
-  componentPrefab:
+  ServerComponentPrefab:
   - {fileID: 1216678141426808, guid: 4316ab8620c77234abe74bd48f8716ee, type: 2}
+  ClientComponentPrefab: []
   panelPrefab: {fileID: 1851270718450528, guid: 7f058cb550cee174091e52fc14aeefbe,
     type: 2}
 --- !u!136 &136094420565486906

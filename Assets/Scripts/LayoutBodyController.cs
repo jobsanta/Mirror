@@ -17,6 +17,11 @@ public class LayoutBodyController : NetworkBehaviour {
             {
                 gameObject.GetComponent<BoxCollider>().enabled = false;
                 gameObject.tag = "Untagged";
+                gameObject.name = "Mockup(client)";
+            }
+            else
+            {
+                gameObject.name = "Mockup(server)";
             }
         }
         else
@@ -25,8 +30,11 @@ public class LayoutBodyController : NetworkBehaviour {
             {
                 gameObject.GetComponent<BoxCollider>().enabled = false;
                 gameObject.tag = "Untagged";
+                gameObject.name = "Mockup(server)";
 
             }
+            else
+                gameObject.name = "Mockup(client)";
 
         }
             

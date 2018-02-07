@@ -144,7 +144,6 @@ fe1f246c3125df0499e5f9a33261d3c6 Assembly-CSharp.dll:Leap.Unity.LeapVRTemporalWa
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
 8a99c6f8639bfa9367c98e32a25cf5a1 Assembly-CSharp.dll:Leap.Unity.Examples.SimpleAnchorFeedback
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MultiSourceManager
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.NetworkInteraction
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -316,6 +315,7 @@ be68a326f522e456f6b5554c6b068fd4 Assembly-CSharp.dll:Leap.Unity.Comment
 8f843b90d2630e406fbec07e3595d6dd Assembly-CSharp.dll:Leap.Unity.Attachments.AttachmentHand
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LayoutBodyController
 4fdae900abf29ef9860818aa945aab1c Assembly-CSharp.dll:Leap.Unity.DetectorLogicGate
+1df234784afa2cbe0613283a35c66908 Assembly-CSharp.dll:.CustomNetworkManager
 0ed6872af1fdf77c68b420ba97653160 Assembly-CSharp.dll:.BodySourceView
 2f386c6b69d007ba0bc6d850a5bcd0de Assembly-CSharp.dll:Leap.Unity.Examples.TransformTool
 26215f135eeb48d8fa1189498c107f6c Vuforia.UnityExtensions.dll:Vuforia.AnchorBehaviour
@@ -355,7 +355,7 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
 6daf822fbfefbf0e5841375a5f907196 Assembly-CSharp.dll:Leap.Unity.KeyEnableBehaviors
 acc710d1ed38fc66b8f862a96232ef16 Assembly-CSharp.dll:Leap.Unity.Interaction.AnchorableBehaviour
-0c19df7afc7bebee33d84ae454bebf2d Assembly-CSharp.dll:.ObjectSpawner
+e6169a8047393e442b32f86110240932 Assembly-CSharp.dll:.ObjectSpawner
 d8b86f4fb9fa4c153334062c4f5a4a1d Assembly-CSharp.dll:Leap.Unity.StationaryTestLeapProvider
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SliderController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DepthSourceManager
@@ -394,3 +394,5 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 3d1b89310e77c34bc0c8d7132231345c Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 05524b8f659e7bfe5756d1335fec24ba Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AnchorNetworkInteraction
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GraspNetworkInteraction

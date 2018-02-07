@@ -16,12 +16,10 @@ public class ControlPanelController : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-
-        controller = player.GetComponent<LayoutController>();
-
-        Debug.Log(player.name);
-     
-  
+        if (player != null)
+        {
+            controller = player.GetComponent<LayoutController>();
+        }  
     }
 	// Update is called once per frame
 	void LateUpdate () {
@@ -41,21 +39,8 @@ public class ControlPanelController : MonoBehaviour {
         transform.position = Camera.main.transform.position + offset;
 	}
 
-
-    public void FreeFall()
+    public void changeFixView()
     {
-        if (controller == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-
-
-            controller = player.GetComponent<LayoutController>();
-        }
-        controller.SetFreeFall();
-    }
-    public void FixView()
-    {
-        Debug.Log("Button Press");
         if (controller == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
@@ -65,5 +50,18 @@ public class ControlPanelController : MonoBehaviour {
         }
 
         controller.SetFrontView();
+    }
+
+    public void changeSkeletonView()
+    {
+        if (controller == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+
+
+            controller = player.GetComponent<LayoutController>();
+        }
+
+        controller.SetSkeletonView();
     }
 }

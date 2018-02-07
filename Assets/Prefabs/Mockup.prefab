@@ -23,10 +23,10 @@ GameObject:
   - component: {fileID: 54662203506149920}
   - component: {fileID: 114889968472938296}
   - component: {fileID: 114144615004185462}
-  - component: {fileID: 114061685681653838}
   - component: {fileID: 114975252893461958}
   - component: {fileID: 114851175069531648}
   - component: {fileID: 114125918491086744}
+  - component: {fileID: 114991966577307720}
   m_Layer: 0
   m_Name: Mockup
   m_TagString: Layout
@@ -670,17 +670,6 @@ MonoBehaviour:
   matchActiveStateWithAttachedObjects: 0
   _eventTable:
     _entries: []
---- !u!114 &114061685681653838
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1074629180401056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8b70cd4959dc874f9647da2f8887182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114098767618839562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -832,3 +821,14 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114991966577307720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074629180401056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4253328aa0066674694b414b93baf917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

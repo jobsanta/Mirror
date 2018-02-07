@@ -71,7 +71,6 @@ public class FaceToCam : MonoBehaviour
         cos_deg = Mathf.Cos(tf.eulerAngles.x*Mathf.PI/180.0f);
         sin_deg = Mathf.Sin(tf.eulerAngles.x*Mathf.PI/180.0f);
 
-        Debug.Log(tf.eulerAngles.x);
 		updateFrame = 0;
 		kalman_X = new KalmanFilterSimple1D(f: 1, h: 1, q: qq, r: rr);
 		kalman_Y = new KalmanFilterSimple1D(f: 1, h: 1, q: qq, r: rr);

@@ -24,8 +24,9 @@ GameObject:
   - component: {fileID: 114375283569188440}
   - component: {fileID: 114697978253388224}
   - component: {fileID: 114565394219051948}
-  - component: {fileID: 114010245108201654}
   - component: {fileID: 114210171374585884}
+  - component: {fileID: 114810437342236122}
+  - component: {fileID: 114277566104292880}
   - component: {fileID: 114650487596553700}
   m_Layer: 0
   m_Name: Inner Component Cube
@@ -146,17 +147,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114010245108201654
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1216678141426808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8b70cd4959dc874f9647da2f8887182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114210171374585884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,6 +168,17 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114277566104292880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1216678141426808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4253328aa0066674694b414b93baf917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114375283569188440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -289,3 +290,14 @@ MonoBehaviour:
     m_RotationOrder: 4
   _eventTable:
     _entries: []
+--- !u!114 &114810437342236122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1216678141426808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc79aa9f9cdcff54b8ed072afc793f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
