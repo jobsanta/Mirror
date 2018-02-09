@@ -58,6 +58,8 @@ public class FaceToCam : MonoBehaviour
     float cos_deg;
     float sin_deg;
 
+    Vector3 camera_offset;
+    Vector3 accumulated_cameraOffset;
     public static void setClientPos()
     {
         isClientPos = true;
@@ -67,6 +69,7 @@ public class FaceToCam : MonoBehaviour
 	void Start()
 	{
         tf = GetComponent<Transform>();
+        accumulated_cameraOffset = new Vector3(0, 0, 0);
 
         cos_deg = Mathf.Cos(tf.eulerAngles.x*Mathf.PI/180.0f);
         sin_deg = Mathf.Sin(tf.eulerAngles.x*Mathf.PI/180.0f);
@@ -126,12 +129,20 @@ public class FaceToCam : MonoBehaviour
 		}
 	}
 
-    public 
+    void FixedUpdate()
+    {
+        camera_offset = new Vector3(0, 0, 0);
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+        Vector3 movement =new Vector3(moveHorizontal, moveVertical, 0.0f) * 0.005f;
+        accumulated_cameraOffset = accumulated_cameraOffset + movement;
+        camera_offset = camera_offset + movement;
+    }
 
 	void LateUpdate()
 	{
 
-
+        bool faceFound = false;
 		if(updateFrame < 1)
 		{
 			updateFrame++;
@@ -139,16 +150,20 @@ public class FaceToCam : MonoBehaviour
 		}
 		updateFrame = 0;
 		// get bodies either from BodySourceManager object get them from a BodyReader
-		var bodySourceManager = bodyManager.GetComponent<BodySourceManager>();
-		bodies = bodySourceManager.GetData();
-		if (bodies == null)
-		{
-			return;
-		}
 
 
 		if (MultiSourceManager == null) 
 		{
+            if (!isClientPos)
+            {
+                camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position+camera_offset, Time.deltaTime * headSmooth + 0.3f);
+            }
+            else
+            {
+                camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position+camera_offset, Time.deltaTime * headSmooth  + 0.3f);
+            }
+
+
 			return;
 		}
 		_MultiManager = MultiSourceManager.GetComponent<MultiSourceManager> ();
@@ -156,124 +171,221 @@ public class FaceToCam : MonoBehaviour
 		{
 			return;
 		}
+        var bodySourceManager = bodyManager.GetComponent<BodySourceManager>();
+        bodies = bodySourceManager.GetData();
+
+
+        if (bodies == null)
+        {
+            return;
+        }
+
 
 		ushort[] depthdata = _MultiManager.GetDepthData();
 		CameraSpacePoint[] camSpace = new CameraSpacePoint[1920*1080];
 		_Mapper.MapColorFrameToCameraSpace(depthdata, camSpace);
-
 		// iterate through each body and update face source
-		for (int i = 0; i < bodyCount; i++)
+        float closestHeadDistance = 1000;
+        int trackBodyIndex = -1;
+
+        for (int i = 0; i < bodyCount; i++)
 		{
-			// check if a valid face is tracked in this face source				
-			if (faceFrameSources[i].IsTrackingIdValid)
-			{
-				using (FaceFrame frame = faceFrameReaders[i].AcquireLatestFrame())
-				{
-					if (frame != null)
-					{
-						if (frame.TrackingId == 0)
-						{
-							continue;
-						}
+            // check if the corresponding body is tracked 
+            if (bodies[i].IsTracked)
+            {
+                float distanceNew = bodies[i].Joints[JointType.Head].Position.Z;
+                if (distanceNew != 0 && distanceNew <= closestHeadDistance)
+                {
+                    closestHeadDistance = distanceNew;
+                    faceFrameSources[i].TrackingId = bodies[i].TrackingId;
+                    trackBodyIndex = i;
+                }
+                // update the face frame source to track this body
 
-						// do something with result
-						//var result = frame.FaceFrameResult.FaceRotationQuaternion;
-						var faceResult = frame.FaceFrameResult;
-						var eyeLeft = faceResult.FacePointsInColorSpace [FacePointType.EyeLeft];
-						var eyeRight = faceResult.FacePointsInColorSpace [FacePointType.EyeRight];
+            }
+        }
+        if (trackBodyIndex != -1)
+        {
+            bool faceDataUsed = false;
+//            // check if a valid face is tracked in this face source             
+//            if (faceFrameSources[trackBodyIndex].IsTrackingIdValid)
+//            {
+//
+//                using (FaceFrame frame = faceFrameReaders[trackBodyIndex].AcquireLatestFrame())
+//                {
+//                    if (frame != null)
+//                    {
+//
+//                        // do something with result
+//                        //var result = frame.FaceFrameResult.FaceRotationQuaternion;
+//                        faceDataUsed = true;
+//                        var faceResult = frame.FaceFrameResult;
+//                        var eyeLeft = faceResult.FacePointsInColorSpace[FacePointType.EyeLeft];
+//                        var eyeRight = faceResult.FacePointsInColorSpace[FacePointType.EyeRight];
+//
+//                        var result = new Vector2((eyeLeft.X + eyeRight.X) / 2.0f, (eyeLeft.Y + eyeRight.Y) / 2.0f);
+//                        CameraSpacePoint eye = camSpace[(int)(result.x + 0.5f) + 1920 * (int)(result.y + 0.5f)];
+//                       
+//                        if (!float.IsNegativeInfinity(eye.X) && !float.IsInfinity(eye.X) && !float.IsNaN(eye.X) &&
+//                            !float.IsNegativeInfinity(eye.Y) && !float.IsInfinity(eye.Y) && !float.IsNaN(eye.Y) &&
+//                            !float.IsNegativeInfinity(eye.Z) && !float.IsInfinity(eye.Z) && !float.IsNaN(eye.Z))
+//                        {
+//
+//
+//
+//                            if (last_x == 0)
+//                            {
+//                                //last_x = face.transform.rotation.x;
+//                                last_x = camera.transform.position.x;
+//                            }
+//                            if (last_y == 0)
+//                            {
+//                                //last_y = face.transform.rotation.y;
+//                                last_y = camera.transform.position.y;
+//                            }
+//                            if (last_z == 0)
+//                            {
+//                                //last_y = face.transform.rotation.y;
+//                                last_z = camera.transform.position.z;
+//                            }
+//
+//                            //                          sx.WriteLine((-eye.X).ToString("0.000000"), true);
+//                            //                          sx.Flush();
+//
+//                            kalman_Z.SetState(last_z, init_state);
+//                            kalman_Z.Correct(eye.Z);
+//
+//                            kalman_X.SetState(last_x, init_state);
+//                            kalman_X.Correct(eye.X);
+//
+//                            kalman_Y.SetState(last_y, init_state);
+//                            kalman_Y.Correct(eye.Y);
+//                            float mod_x = last_x % -eye.Y;
+//
+//                            kalman_mod.SetState(last_mod, init_state);
+//                            kalman_mod.Correct(mod_x);
+//
+//
+//                            //small shakes
+//                            if (mod_x > 0.01f && mod_x < 0.08f)
+//                            {
+//
+//                                mod_x = mod_x / 2;
+//                            }
+//
+//                            float x = (float)kalman_X.State;
+//                            float y = cos_deg * (float)kalman_Y.State - sin_deg * (float)kalman_Z.State + tf.position.y;
+//                            float z = sin_deg * (float)kalman_Y.State + cos_deg * (float)kalman_Z.State - tf.position.z;
+//
+//                            //Debug.Log("Y " + kalman_Y.State + " Z " + kalman_Z.State);
+//
+//                            if (!isClientPos)
+//                            {
+//                                camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(x, y, -z), Time.deltaTime * headSmooth * mod_x + 0.3f);
+//                            }
+//                            else
+//                            {
+//                                camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(-x, y, z), Time.deltaTime * headSmooth * mod_x + 0.3f);
+//                            }
+//
+//
+//                            //face.transform.localRotation = Quaternion.Lerp(face.transform.localRotation, new Quaternion((float)kalman_X.State, (float)kalman_Y.State, face.transform.localRotation.z, face.transform.localRotation.w), Time.deltaTime * headSmooth * mod_x + 0.3f);
+//
+//                            // camera.transform.position =  new Vector3(x,y,-z);
+//                            //                          kx.WriteLine(kalman_X.State.ToString("0.000000"), true);
+//                            //                          kx.Flush();
+//                            last_y = (float)kalman_Y.State;
+//                            last_x = (float)kalman_X.State;
+//                            last_z = (float)kalman_Z.State;
+//                            last_mod = (float)kalman_mod.State;
+//                            faceDataUsed = true;
+//                            Debug.Log("used face");
+//                        }
+//
+//                        //updateFrame = !updateFrame;
+//                    }
+//                }       
+//            }
+            // if no face data is used regress back to body detection
+            if(!faceDataUsed)
+            {
+                CameraSpacePoint eye = bodies[trackBodyIndex].Joints[JointType.Head].Position;
+                if (!float.IsNegativeInfinity(eye.X) && !float.IsInfinity(eye.X) && !float.IsNaN(eye.X) &&
+                    !float.IsNegativeInfinity(eye.Y) && !float.IsInfinity(eye.Y) && !float.IsNaN(eye.Y) &&
+                    !float.IsNegativeInfinity(eye.Z) && !float.IsInfinity(eye.Z) && !float.IsNaN(eye.Z))
+                {
 
-						var result = new Vector2 ((eyeLeft.X + eyeRight.X) / 2.0f, (eyeLeft.Y + eyeRight.Y) / 2.0f);
-
-						CameraSpacePoint eye = camSpace[(int)(result.x+0.5f) + 1920 * (int)(result.y+0.5f)];
-
-						if (!float.IsNegativeInfinity(eye.X) && !float.IsInfinity(eye.X) && !float.IsNaN(eye.X)&&
-							!float.IsNegativeInfinity(eye.Y) && !float.IsInfinity(eye.Y) && !float.IsNaN(eye.Y)&&
-							!float.IsNegativeInfinity(eye.Z) && !float.IsInfinity(eye.Z) && !float.IsNaN(eye.Z))
-						{
 
 
+                    if (last_x == 0)
+                    {
+                        //last_x = face.transform.rotation.x;
+                        last_x = camera.transform.position.x;
+                    }
+                    if (last_y == 0)
+                    {
+                        //last_y = face.transform.rotation.y;
+                        last_y = camera.transform.position.y;
+                    }
+                    if (last_z == 0)
+                    {
+                        //last_y = face.transform.rotation.y;
+                        last_z = camera.transform.position.z;
+                    }
 
-							if (last_x == 0)
-							{
-								//last_x = face.transform.rotation.x;
-								last_x = camera.transform.position.x;
-							}
-							if (last_y == 0)
-							{
-								//last_y = face.transform.rotation.y;
-                                last_y = camera.transform.position.y;
-							}
-							if (last_z== 0)
-							{
-								//last_y = face.transform.rotation.y;
-                                last_z = camera.transform.position.z;
-							}
+                    //                          sx.WriteLine((-eye.X).ToString("0.000000"), true);
+                    //                          sx.Flush();
 
-//							sx.WriteLine((-eye.X).ToString("0.000000"), true);
-//							sx.Flush();
+                    kalman_Z.SetState(last_z, init_state);
+                    kalman_Z.Correct(eye.Z);
 
-							kalman_Z.SetState(last_z, init_state);
-							kalman_Z.Correct(eye.Z);
+                    kalman_X.SetState(last_x, init_state);
+                    kalman_X.Correct(eye.X);
 
-							kalman_X.SetState(last_x, init_state);
-							kalman_X.Correct(eye.X);
+                    kalman_Y.SetState(last_y, init_state);
+                    kalman_Y.Correct(eye.Y);
+                    float mod_x = last_x % -eye.Y;
 
-							kalman_Y.SetState(last_y, init_state);
-							kalman_Y.Correct(eye.Y);
-							float mod_x = last_x % -eye.Y;
-
-							kalman_mod.SetState(last_mod, init_state);
-							kalman_mod.Correct(mod_x);
+                    kalman_mod.SetState(last_mod, init_state);
+                    kalman_mod.Correct(mod_x);
 
 
-							//small shakes
-							if (mod_x > 0.01f && mod_x < 0.08f)
-							{
+                    //small shakes
+                    if (mod_x > 0.01f && mod_x < 0.08f)
+                    {
 
-								mod_x = mod_x / 2;
-							}
+                        mod_x = mod_x / 2;
+                    }
 
-                            float x = (float)kalman_X.State;
-                            float y = cos_deg * (float)kalman_Y.State - sin_deg * (float)kalman_Z.State + tf.position.y;
-                            float z = sin_deg * (float)kalman_Y.State + cos_deg * (float)kalman_Z.State - tf.position.z;
+                    float x = (float)kalman_X.State;
+                    float y = cos_deg * (float)kalman_Y.State - sin_deg * (float)kalman_Z.State + tf.position.y;
+                    float z = sin_deg * (float)kalman_Y.State + cos_deg * (float)kalman_Z.State - tf.position.z;
 
-                            //Debug.Log("Y " + kalman_Y.State + " Z " + kalman_Z.State);
+                    //Debug.Log("Y " + kalman_Y.State + " Z " + kalman_Z.State);
 
-                            if (!isClientPos)
-                            {
-                                camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(x, y, -z), Time.deltaTime * headSmooth * mod_x + 0.3f);
-                            }
-                            else
-                            {
-                                camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(-x, y, z), Time.deltaTime * headSmooth * mod_x + 0.3f);
-                            }
-                              
+                    if (!isClientPos)
+                    {
+                        camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(x, y, -z)+accumulated_cameraOffset, Time.deltaTime * headSmooth * mod_x + 0.3f);
+                    }
+                    else
+                    {
+                        camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(-x, y, z)+accumulated_cameraOffset, Time.deltaTime * headSmooth * mod_x + 0.3f);
+                    }
 
-							//face.transform.localRotation = Quaternion.Lerp(face.transform.localRotation, new Quaternion((float)kalman_X.State, (float)kalman_Y.State, face.transform.localRotation.z, face.transform.localRotation.w), Time.deltaTime * headSmooth * mod_x + 0.3f);
 
-                           // camera.transform.position =  new Vector3(x,y,-z);
-//							kx.WriteLine(kalman_X.State.ToString("0.000000"), true);
-//							kx.Flush();
-							last_y = (float)kalman_Y.State;
-							last_x = (float)kalman_X.State;
-							last_z = (float)kalman_Z.State;
-							last_mod = (float)kalman_mod.State;
-						}
+                    //face.transform.localRotation = Quaternion.Lerp(face.transform.localRotation, new Quaternion((float)kalman_X.State, (float)kalman_Y.State, face.transform.localRotation.z, face.transform.localRotation.w), Time.deltaTime * headSmooth * mod_x + 0.3f);
 
-						//updateFrame = !updateFrame;
-					}
-				}
-			}
-			else
-			{
-				// check if the corresponding body is tracked 
-				if (bodies[i].IsTracked)
-				{
-					// update the face frame source to track this body
-					faceFrameSources[i].TrackingId = bodies[i].TrackingId;
-				}
-			}
-		}
+                    // camera.transform.position =  new Vector3(x,y,-z);
+                    //                          kx.WriteLine(kalman_X.State.ToString("0.000000"), true);
+                    //                          kx.Flush();
+                    last_y = (float)kalman_Y.State;
+                    last_x = (float)kalman_X.State;
+                    last_z = (float)kalman_Z.State;
+                    last_mod = (float)kalman_mod.State;
+                }
+            }
+        }
+	
 
 	}
 }

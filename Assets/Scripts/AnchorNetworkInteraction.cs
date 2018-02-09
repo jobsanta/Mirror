@@ -10,11 +10,23 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
     private AnchorableBehaviour _anchObj;
     private Rigidbody rb;
     private BoxCollider bc;
-
+    AnchorGroup _extgroup;
+    AnchorGroup _intgroup;
 
     void Start() {
 
+        GameObject exterior_group =  GameObject.Find("Exterior Anchor Group"); 
+        GameObject interior_group =  GameObject.Find("Interior Anchor Group"); 
+
+
+        _extgroup = exterior_group.GetComponent<AnchorGroup>();
+        _intgroup = interior_group.GetComponent<AnchorGroup>();
+
         _anchObj = GetComponent<AnchorableBehaviour>();
+        if (tag == "Interior")
+            _anchObj.anchorGroup = _intgroup;
+        else if (tag == "Exterior")
+            _anchObj.anchorGroup = _extgroup;
 
         if (_anchObj != null)
         {
@@ -82,25 +94,49 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
 
             }
         }
+        else
+        {
+            CmdDeleteObject(anchor.name);
+        }
 
 
     }
+    [Command]
+    void CmdDeleteObject(string name)
+    {
+        GameObject layout = GameObject.Find("Mockup(server)");
+        if (layout != null)
+        {
+            Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
+            foreach (Anchor a in anchors)
+            {
+                if (a.name == name)
+                {
+                    AnchorableBehaviour[] objs = new AnchorableBehaviour[1];
+                    a.anchoredObjects.CopyTo(objs);
+
+                    objs[0].Detach();
+                    layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
+                    NetworkServer.Destroy(objs[0].gameObject);
+
+                }
+            }
 
 
-
+        }
+    }
 
     void CreateCopyComponent(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, string name)
     {
-        spawnPosition.z = -spawnPosition.z;
-        GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
 
         if (isServer)
         {
             GameObject layout = GameObject.Find("Mockup(client)");
             if (layout != null)
             {
+                spawnPosition.z = -spawnPosition.z;
+                GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
 
-                Debug.Log("found layout");
                 Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
                 foreach (Anchor a in anchors)
                 {
@@ -110,11 +146,42 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                         layout.GetComponent<AttachObjectManager>().addObject(o);
                     }
                 }
+                NetworkServer.Spawn(o);
             }
+
         }
-        NetworkServer.Spawn(o);
+        else
+        {
+            CmdSpawnObject(prefab, spawnPosition, spawnRotation, name);
+        }
+
 
     }
+
+
+
+    [Command]
+    void CmdSpawnObject(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, string name)
+    {
+        GameObject layout = GameObject.Find("Mockup(server)");
+        if (layout != null)
+        {
+            spawnPosition.z = -spawnPosition.z;
+            GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
+
+            Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
+            foreach (Anchor a in anchors)
+            {
+                if (a.name == name)
+                {
+                    o.GetComponent<AnchorableBehaviour>().anchor = a;
+                    layout.GetComponent<AttachObjectManager>().addObject(o);
+                }
+            }
+            NetworkServer.Spawn(o);
+        }
+    }
+
 
     private void whileAttachedToAnchor(AnchorableBehaviour anbobj, Anchor anchor)
     {
@@ -122,14 +189,14 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
         // Debug.Log("Transform object");
         Transform t = anchor.transform;
 
-        CmdAnchorMovement(t.position, t.rotation);
+        CmdAnchorMovement(transform.position, transform.rotation);
     }
 
     [Command]
     void CmdAnchorMovement(Vector3 pos, Quaternion rot)
     {
-        rb.position = pos;
-        rb.rotation = rot;
+        transform.position = pos;
+        transform.rotation = rot;
     }
 
 
