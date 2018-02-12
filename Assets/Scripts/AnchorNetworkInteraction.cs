@@ -189,7 +189,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
         // Debug.Log("Transform object");
         Transform t = anchor.transform;
 
-        CmdAnchorMovement(transform.position, transform.rotation);
+        CmdAnchorMovement(t.position, t.rotation);
     }
 
     [Command]
