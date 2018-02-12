@@ -87,11 +87,10 @@ public class FaceToCam : MonoBehaviour
 		// one sensor is currently supported
 		kinectSensor = KinectSensor.GetDefault();
 
-		if (kinectSensor != null) 
-		{
+		if (kinectSensor != null) {
 			_Mapper = kinectSensor.CoordinateMapper;
 
-		}
+		} 
 
 
 		// set the maximum number of bodies that would be tracked by Kinect
@@ -150,18 +149,8 @@ public class FaceToCam : MonoBehaviour
 		}
 		updateFrame = 0;
 		// get bodies either from BodySourceManager object get them from a BodyReader
-
-
 		if (MultiSourceManager == null) 
 		{
-            if (!isClientPos)
-            {
-                camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position+camera_offset, Time.deltaTime * headSmooth + 0.3f);
-            }
-            else
-            {
-                camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position+camera_offset, Time.deltaTime * headSmooth  + 0.3f);
-            }
 
 
 			return;
@@ -177,6 +166,15 @@ public class FaceToCam : MonoBehaviour
 
         if (bodies == null)
         {
+
+			if (!isClientPos)
+			{
+				camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position+camera_offset, Time.deltaTime * headSmooth + 0.3f);
+			}
+			else
+			{
+				camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position+camera_offset, Time.deltaTime * headSmooth  + 0.3f);
+			}
             return;
         }
 

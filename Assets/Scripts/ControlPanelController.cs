@@ -26,12 +26,20 @@ public class ControlPanelController : MonoBehaviour {
 
         Vector3 offset = new Vector3(-0.1f,-0.025f,0.6f);
 
+
         if (Camera.main.transform.position.z > 0)
         {
-            offset.z = -0.6f;
-            offset.x = 0.1f;
-
+			offset.x = (0.6f * (0.3f - Camera.main.transform.position.x) / Camera.main.transform.position.z);
+			offset.x -= 0.05f;
+            //offset.x = 0.1f;
+			offset.z = -0.6f;
         }
+		else if (Camera.main.transform.position.z < 0)
+		{
+			offset.x = (0.6f * (-0.3f - Camera.main.transform.position.x) / -Camera.main.transform.position.z);
+			offset.x += 0.05f;
+			//offset.x = 0.1f
+		}
 
 
         transform.LookAt(Camera.main.transform.position);

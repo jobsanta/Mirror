@@ -22,15 +22,15 @@ GameObject:
   - component: {fileID: 65038516748882682}
   - component: {fileID: 54638808936998044}
   - component: {fileID: 114168276234887546}
-  - component: {fileID: 114895340738682440}
   - component: {fileID: 114810362575638258}
   - component: {fileID: 114928764362759852}
   - component: {fileID: 114939776344551438}
-  - component: {fileID: 114041477063927838}
-  - component: {fileID: 114237899016821998}
+  - component: {fileID: 114102145868745476}
+  - component: {fileID: 114890481922707238}
+  - component: {fileID: 114522132118509556}
   m_Layer: 8
   m_Name: Inner Component Cylinder
-  m_TagString: Components
+  m_TagString: Interior
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,7 +147,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114041477063927838
+--- !u!114 &114102145868745476
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369122640442158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8b70cd4959dc874f9647da2f8887182, type: 3}
+  m_Script: {fileID: 11500000, guid: bc79aa9f9cdcff54b8ed072afc793f41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114168276234887546
@@ -188,7 +188,7 @@ MonoBehaviour:
     layerIndex: 8
   _eventTable:
     _entries: []
---- !u!114 &114237899016821998
+--- !u!114 &114522132118509556
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -196,17 +196,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369122640442158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 10a9b9bb54f377846bd324264bf71af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Target: {fileID: 4282419295252984}
-  m_ChildIndex: 0
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_MovementThreshold: 0.001
-  m_InterpolateRotation: 0.5
-  m_InterpolateMovement: 0.5
 --- !u!114 &114810362575638258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,7 +218,7 @@ MonoBehaviour:
   _motionlessRangeFraction: 0.4
   _maxMotionlessRange: 0.040000003
   _maxAttachmentAngle: 60
-  lockToAnchor: 0
+  lockToAnchor: 1
   lockWhenAttached: 1
   matchAnchorMotionWhileAttaching: 1
   anchorLerpCoeffPerSec: 20
@@ -245,7 +237,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _eventTable:
     _entries: []
---- !u!114 &114895340738682440
+--- !u!114 &114890481922707238
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -253,7 +245,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369122640442158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac2b6b6f8fdac34aa0ab2e773b8b6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 4253328aa0066674694b414b93baf917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114928764362759852
@@ -303,9 +295,9 @@ MonoBehaviour:
   m_SendInterval: 0.033333335
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
+  m_SyncSpin: 1
+  m_MovementTheshold: 0
   m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
+  m_SnapThreshold: 0.001
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
