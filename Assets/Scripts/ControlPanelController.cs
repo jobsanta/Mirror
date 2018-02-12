@@ -24,12 +24,12 @@ public class ControlPanelController : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
 
-        Vector3 offset = new Vector3(-0.07f,-0.025f,0.4f);
+        Vector3 offset = new Vector3(-0.1f,-0.025f,0.6f);
 
         if (Camera.main.transform.position.z > 0)
         {
-            offset.z = -0.4f;
-            offset.x = 0.07f;
+            offset.z = -0.6f;
+            offset.x = 0.1f;
 
         }
 
