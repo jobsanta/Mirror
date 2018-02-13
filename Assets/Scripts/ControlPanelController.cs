@@ -24,19 +24,19 @@ public class ControlPanelController : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
 
-        Vector3 offset = new Vector3(-0.1f,-0.025f,0.6f);
+        Vector3 offset = new Vector3(-0.1f,-0.025f,0.55f);
 
 
         if (Camera.main.transform.position.z > 0)
         {
-			offset.x = (0.6f * (0.3f - Camera.main.transform.position.x) / Camera.main.transform.position.z);
+			offset.x = (0.55f * (0.3f - Camera.main.transform.position.x) / Camera.main.transform.position.z);
 			offset.x -= 0.05f;
             //offset.x = 0.1f;
-			offset.z = -0.6f;
+			offset.z = -0.55f;
         }
 		else if (Camera.main.transform.position.z < 0)
 		{
-			offset.x = (0.6f * (-0.3f - Camera.main.transform.position.x) / -Camera.main.transform.position.z);
+			offset.x = (0.55f * (-0.3f - Camera.main.transform.position.x) / -Camera.main.transform.position.z);
 			offset.x += 0.05f;
 			//offset.x = 0.1f
 		}

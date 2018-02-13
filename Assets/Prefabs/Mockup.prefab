@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114354568228513880}
   m_Layer: 0
   m_Name: Exterior Anchor Point 3
-  m_TagString: Untagged
+  m_TagString: Exterior
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 114499806584549240}
   m_Layer: 0
   m_Name: Exterior Anchor Point 1
-  m_TagString: Untagged
+  m_TagString: Exterior
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1443342529146150
 GameObject:
   m_ObjectHideFlags: 1
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 4959839859246026}
   m_Layer: 0
   m_Name: Exterior Anchors
-  m_TagString: Untagged
+  m_TagString: Exterior
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 114843710669556850}
   m_Layer: 0
   m_Name: Exterior Anchor Point 2
-  m_TagString: Untagged
+  m_TagString: Exterior
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 114021196416405116}
   m_Layer: 0
   m_Name: Exterior Anchor Point 4
-  m_TagString: Untagged
+  m_TagString: Exterior
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

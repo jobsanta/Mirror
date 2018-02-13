@@ -17,7 +17,7 @@ public class RigidBodyController : NetworkBehaviour {
             if (gameObject.transform.position.z > 0)
             {
                 gameObject.GetComponent<BoxCollider>().enabled = false;
-                gameObject.tag = "Untagged";
+                //gameObject.tag = "Untagged";
             }
         }
         else
@@ -25,7 +25,7 @@ public class RigidBodyController : NetworkBehaviour {
             if (!hasAuthority)
             {
                 gameObject.GetComponent<BoxCollider>().enabled = false;
-                gameObject.tag = "Untagged";
+                //gameObject.tag = "Untagged";
 
             }
 
