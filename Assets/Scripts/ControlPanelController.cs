@@ -8,10 +8,14 @@ using Leap.Unity.Query;
 using Leap.Unity.Space;
 using Leap.Unity.Interaction;
 
+
 public class ControlPanelController : MonoBehaviour {
+
+    public bool Left;
 
     GameObject player;
     LayoutController controller;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -26,20 +30,40 @@ public class ControlPanelController : MonoBehaviour {
 
         Vector3 offset = new Vector3(-0.1f,-0.025f,0.55f);
 
-
-        if (Camera.main.transform.position.z > 0)
+        if (Left)
         {
-			offset.x = (0.55f * (0.3f - Camera.main.transform.position.x) / Camera.main.transform.position.z);
-			offset.x -= 0.05f;
-            //offset.x = 0.1f;
-			offset.z = -0.55f;
+            if (Camera.main.transform.position.z > 0)
+            {
+                offset.x = (0.55f * (0.3f - Camera.main.transform.position.x) / Camera.main.transform.position.z);
+                offset.x -= 0.05f;
+                //offset.x = 0.1f;
+                offset.z = -0.55f;
+            }
+            else if (Camera.main.transform.position.z < 0)
+            {
+                offset.x = (0.55f * (-0.3f - Camera.main.transform.position.x) / -Camera.main.transform.position.z);
+                offset.x += 0.05f;
+                //offset.x = 0.1f
+            }
+
         }
-		else if (Camera.main.transform.position.z < 0)
-		{
-			offset.x = (0.55f * (-0.3f - Camera.main.transform.position.x) / -Camera.main.transform.position.z);
-			offset.x += 0.05f;
-			//offset.x = 0.1f
-		}
+        else
+        {
+            if (Camera.main.transform.position.z > 0)
+            {
+                offset.x = (0.55f * (-0.3f - Camera.main.transform.position.x) / Camera.main.transform.position.z);
+                offset.x += 0.05f;
+                //offset.x = 0.1f;
+                offset.z = -0.55f;
+            }
+            else if (Camera.main.transform.position.z < 0)
+            {
+                offset.x = (0.55f * (0.3f - Camera.main.transform.position.x) / -Camera.main.transform.position.z);
+                offset.x -= 0.05f;
+                //offset.x = 0.1f
+            }
+
+        }
 
 
         transform.LookAt(Camera.main.transform.position);
@@ -60,7 +84,7 @@ public class ControlPanelController : MonoBehaviour {
         controller.SetFrontView();
     }
 
-    public void changeSkeletonView()
+    public void changeOwnSkeletonView()
     {
         if (controller == null)
         {
@@ -70,6 +94,67 @@ public class ControlPanelController : MonoBehaviour {
             controller = player.GetComponent<LayoutController>();
         }
 
-        controller.SetSkeletonView();
+        controller.SetOwnSkeletonView();
     }
+    public void changeTheirSkeletonView()
+    {
+        if (controller == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+
+
+            controller = player.GetComponent<LayoutController>();
+        }
+
+        controller.SetTheirSkeletonView();
+    }
+
+    public void moveLayoutHorizontal(float h)
+    {
+        if (controller == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+
+
+            controller = player.GetComponent<LayoutController>();
+        }
+        controller.SetHorizontalPosition(h);
+    }
+
+    public void moveLayoutVertical(float v)
+    {
+        if (controller == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+
+
+            controller = player.GetComponent<LayoutController>();
+        }
+        controller.SetVerticalPosition(v);
+    }
+
+    public void HorizontalRotation(float h)
+    {
+        if (controller == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+
+
+            controller = player.GetComponent<LayoutController>();
+        }
+        controller.SetHorizontalRotation(h);
+    }
+
+    public void VerticalRotation(float v)
+    {
+        if (controller == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+
+
+            controller = player.GetComponent<LayoutController>();
+        }
+        controller.SetVerticalRotation(v);
+    }
+
 }

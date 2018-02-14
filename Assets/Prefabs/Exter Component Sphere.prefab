@@ -260,7 +260,7 @@ MonoBehaviour:
   m_SyncSpin: 1
   m_MovementTheshold: 0
   m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 0.001
+  m_SnapThreshold: 0.01
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
 --- !u!114 &114975273183883320
@@ -282,7 +282,7 @@ MonoBehaviour:
   _motionlessRangeFraction: 0.4
   _maxMotionlessRange: 0.040000003
   _maxAttachmentAngle: 60
-  lockToAnchor: 0
+  lockToAnchor: 1
   lockWhenAttached: 1
   matchAnchorMotionWhileAttaching: 1
   anchorLerpCoeffPerSec: 20

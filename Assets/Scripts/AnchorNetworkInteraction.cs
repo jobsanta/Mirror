@@ -24,9 +24,37 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
 
         _anchObj = GetComponent<AnchorableBehaviour>();
         if (tag == "Interior")
+        {
             _anchObj.anchorGroup = _intgroup;
+            if(!LayoutController.isOwnInteriorView)
+            {   
+                if(isServer && _anchObj.transform.position.z < 0)
+                {
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                }
+                else if(!isServer && _anchObj.transform.position.z > 0)
+                {
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                }
+            }
+        }
         else if (tag == "Exterior")
+        {
+
             _anchObj.anchorGroup = _extgroup;
+            if (LayoutController.isOwnInteriorView)
+            {
+                if (isServer && _anchObj.transform.position.z < 0)
+                {
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                }
+                else if (!isServer && _anchObj.transform.position.z > 0)
+                {
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                }
+            }
+        }
+
 
         if (_anchObj != null)
         {
@@ -38,6 +66,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                 _anchObj.OnAttachedToAnchor += onAttachedToAnchor;
                 _anchObj.OnDetachedFromAnchor += onDetachedFromAnchor;
             }
+
 
 
             _anchObj.WhileAttachedToAnchor += whileAttachedToAnchor;
@@ -137,6 +166,9 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                 spawnPosition.z = -spawnPosition.z;
                 GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
 
+                o.GetComponent<Rigidbody>().isKinematic = true;
+
+
                 Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
                 foreach (Anchor a in anchors)
                 {
@@ -158,8 +190,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
 
     }
 
-
-
+    
     [Command]
     void CmdSpawnObject(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, string name)
     {
@@ -168,7 +199,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
         {
             spawnPosition.z = -spawnPosition.z;
             GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
-
+            o.GetComponent<Rigidbody>().isKinematic = true;
             Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
             foreach (Anchor a in anchors)
             {
