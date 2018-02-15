@@ -1,6 +1,6 @@
 WindowsStandalone
 SceneListBegin?
-Assets/_Scenes/main.unity
+Assets/_Scenes/Async.unity
 SceneListEnd?
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BodySourceManager
 787a8e7a5101867e9cc7b11645408842 Assembly-CSharp.dll:Leap.Unity.Interaction.InteractionBehaviour
@@ -112,6 +112,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 9ca6347af5ceb6b0d1c105af31b6722e UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 1c9dbf6588c2a86d918d6a6e3eb4ef45 Assembly-CSharp.dll:Leap.Unity.Examples.TransformHandle
 6a09e690cd34499bbdbf282308602ea0 Assembly-CSharp.dll:Leap.Unity.PalmDirectionDetector
+1f0f577a239e89d44a8388c13872df4c Assembly-CSharp.dll:.ObjectSpawnerAsync
 c4daf66b05f8d037f54b8882678c7854 Assembly-CSharp.dll:Leap.Unity.Examples.WorkstationBehaviourExample
 f5f82f4aae98a56d66a8448f308fd23f Assembly-CSharp.dll:Leap.Unity.Examples.SimpleMatchAnchorScaleAndState
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -237,17 +238,20 @@ d60795789e6f0b89266e69f672546749 Assembly-CSharp.dll:Leap.Unity.Interaction.Anch
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Leap.Unity.HandDrop
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CameraController
 343be47940603400482779ebf7519bbe Assembly-CSharp.dll:Leap.Unity.RigidHand
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GraspNetworkInteractionAsync
 3119d3adfac204dc57dfb88ecec4b912 Assembly-CSharp.dll:Leap.Unity.Interaction.InteractionHand
 755d1587cad23324c3dab4afd367d66f Assembly-CSharp.dll:Leap.Unity.KeyEnableGameObjects
 fd9a204a03e1ea7c4d4927ff4cd31a0f Assembly-CSharp.dll:Leap.Unity.LeapVRCameraControl
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Leap.Unity.Interaction.PhysicsCallbacks
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RigidBodyControllerAsync
 387f7f74fd3b9f6a11def026098e367c Assembly-CSharp.dll:Leap.Unity.RuntimeGizmos.RuntimeColliderGizmos
 28f0e5062e34eebf36494cc4d6e2b7e9 Assembly-CSharp.dll:.NetHandEnableDisable
 cc2e9ebf8025473961bf03b496ddc78d Assembly-CSharp.dll:.HandPlayer
 2220ddf26983420fa9e3a7681f419f0b Assembly-CSharp.dll:Leap.Unity.DebugHand
 0c17cba2608a887a33e716156ae4df38 Assembly-CSharp.dll:Leap.Unity.Examples.AngularSpeedTextBehaviour
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LayoutBodyControllerAsync
 abf0e52ce6a93a27fa785bfa25be1eab Assembly-CSharp.dll:Leap.Unity.FingerDirectionDetector
 83a5c949974e3983ef4867ce3449f684 Assembly-CSharp.dll:UnityEngine.Networking.NetworkSkeleton
 dc291c5c42cc11cf68d48cd30a18a9ab Assembly-CSharp.dll:Leap.Unity.HandPool
@@ -308,6 +312,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 659646d85380ed042c2bf77c6957d002 Assembly-CSharp.dll:Leap.Unity.Examples.WorkstationPoseTest
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AnchorNetworkInteractionAsync
 ac78702352b23eea116ae8cd263cafbf Assembly-CSharp.dll:Leap.Unity.ExtendedFingerDetector
 be68a326f522e456f6b5554c6b068fd4 Assembly-CSharp.dll:Leap.Unity.Comment
 540ce0f341c4ebabefbd0b62fa3f2693 Assembly-CSharp.dll:Leap.Unity.SkeletalHand
@@ -356,7 +361,7 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
 6daf822fbfefbf0e5841375a5f907196 Assembly-CSharp.dll:Leap.Unity.KeyEnableBehaviors
 acc710d1ed38fc66b8f862a96232ef16 Assembly-CSharp.dll:Leap.Unity.Interaction.AnchorableBehaviour
-1f0f577a239e89d44a8388c13872df4c Assembly-CSharp.dll:.ObjectSpawner
+7a6f407304a698c9e4bb124612e8c4a5 Assembly-CSharp.dll:.ObjectSpawner
 d8b86f4fb9fa4c153334062c4f5a4a1d Assembly-CSharp.dll:Leap.Unity.StationaryTestLeapProvider
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AnchorNetworkInteraction
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SliderController
@@ -396,3 +401,4 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 3d1b89310e77c34bc0c8d7132231345c Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 05524b8f659e7bfe5756d1335fec24ba Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BillboardController

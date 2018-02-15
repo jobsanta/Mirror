@@ -1425,22 +1425,22 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 1000010726267020, guid: f5e627454859d504ca1cb3ca51bb9763,
+  m_PlayerPrefab: {fileID: 1000010726267020, guid: 50575b942da735247a76bb3a40525f18,
     type: 2}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 1
   m_OfflineScene: 
   m_OnlineScene: 
   m_SpawnPrefabs:
-  - {fileID: 1074629180401056, guid: cedad7243df521648adb727d9781877e, type: 2}
-  - {fileID: 1216678141426808, guid: 4316ab8620c77234abe74bd48f8716ee, type: 2}
-  - {fileID: 1216678141426808, guid: 26b57dd7cb8b4d84ab5a8c550bfc5177, type: 2}
-  - {fileID: 1515384863940076, guid: 6eb71df277d7f5843aafb7c4433c18ff, type: 2}
-  - {fileID: 1515384863940076, guid: f3b87abc8632ab048b789cadc03c1dec, type: 2}
-  - {fileID: 1369122640442158, guid: 6df1dcd6e4dd7ba43819f96ce3e16861, type: 2}
-  - {fileID: 1839339273884742, guid: 340ccab1b1f82d44db6e62bef23643ce, type: 2}
-  - {fileID: 1369122640442158, guid: 49dd06c1a1e714b4b9a0aa42e367ecab, type: 2}
-  - {fileID: 1839339273884742, guid: b61babc48c58a0f409d0232b1dd4260a, type: 2}
+  - {fileID: 1074629180401056, guid: e435a82ba9694b346a2246fb6453b0ce, type: 2}
+  - {fileID: 1515384863940076, guid: 3f2a3a2621e185047b266d094ce518d1, type: 2}
+  - {fileID: 1216678141426808, guid: b9f531cf32d8fc244a6cf9eb52056f9d, type: 2}
+  - {fileID: 1369122640442158, guid: 4921542157caf254bbeab6fcf87e2263, type: 2}
+  - {fileID: 1839339273884742, guid: 76f81fc34c8d1444e83350862e19804f, type: 2}
+  - {fileID: 1515384863940076, guid: 869a7fbbb9e6a1348bf67010affffe2d, type: 2}
+  - {fileID: 1216678141426808, guid: 7e08d1c90a5295e4a851041d3237aa17, type: 2}
+  - {fileID: 1369122640442158, guid: 60a6a6243df91ea418b73f28e224aa92, type: 2}
+  - {fileID: 1839339273884742, guid: e488026a269ea784faf8bb2550a00210, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:

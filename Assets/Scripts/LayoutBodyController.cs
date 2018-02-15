@@ -25,18 +25,19 @@ public class LayoutBodyController : NetworkBehaviour {
             }
         }
         else
-        {   
-            if (!hasAuthority)
+        {
+            if (gameObject.transform.position.z < 0)
             {
                 gameObject.GetComponent<BoxCollider>().enabled = false;
                 gameObject.tag = "Untagged";
                 gameObject.name = "Mockup(server)";
-
             }
             else
+            {
                 gameObject.name = "Mockup(client)";
-
+            }
         }
-            
     }
+            
+    
 }
