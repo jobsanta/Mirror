@@ -1,6 +1,6 @@
 WindowsStandalone
 SceneListBegin?
-Assets/_Scenes/Async.unity
+Assets/_Scenes/Sync.unity
 SceneListEnd?
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BodySourceManager
 787a8e7a5101867e9cc7b11645408842 Assembly-CSharp.dll:Leap.Unity.Interaction.InteractionBehaviour
