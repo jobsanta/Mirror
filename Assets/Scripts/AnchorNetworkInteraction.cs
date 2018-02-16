@@ -112,10 +112,12 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                     {
                         AnchorableBehaviour[] objs = new AnchorableBehaviour[1];
                         a.anchoredObjects.CopyTo(objs);
-
-                        objs[0].Detach();
-                        layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                        NetworkServer.Destroy(objs[0].gameObject);
+                        if (objs[0] != null)
+                        {
+                            objs[0].Detach();
+                            layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
+                            NetworkServer.Destroy(objs[0].gameObject);
+                        }
 
                     }
                 }
@@ -143,10 +145,12 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                 {
                     AnchorableBehaviour[] objs = new AnchorableBehaviour[1];
                     a.anchoredObjects.CopyTo(objs);
-
-                    objs[0].Detach();
-                    layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                    NetworkServer.Destroy(objs[0].gameObject);
+                    if (objs[0] != null)
+                    {
+                        objs[0].Detach();
+                        layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
+                        NetworkServer.Destroy(objs[0].gameObject);
+                    }
 
                 }
             }

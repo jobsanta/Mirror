@@ -109,6 +109,20 @@ public class ControlPanelController : MonoBehaviour {
         controller.SetTheirSkeletonView();
     }
 
+    public void changeBillboardSkeletonView()
+    {
+        if (controller == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+
+
+            controller = player.GetComponent<LayoutController>();
+        }
+
+        controller.SetBillboardSkeletonView();
+    }
+
+
     public void moveLayoutHorizontal(float h)
     {
         if (controller == null)

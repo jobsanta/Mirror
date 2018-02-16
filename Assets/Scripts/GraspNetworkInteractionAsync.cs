@@ -16,7 +16,7 @@ public class GraspNetworkInteractionAsync : NetworkBehaviour {
         _intObj = GetComponent<InteractionBehaviour>();
         _intObj.OnGraspedMovement += onGraspedMovement;
 
-        bc = GetComponent < BoxCollider>();
+        bc = GetComponent<BoxCollider>();
 
         rb = GetComponent<Rigidbody>();
 
@@ -25,8 +25,8 @@ public class GraspNetworkInteractionAsync : NetworkBehaviour {
 
 
     private void onGraspedMovement(Vector3 presolvedPos, Quaternion presolvedRot,
-        Vector3 solvedPos,    Quaternion solvedRot,
-        List<InteractionController> graspingController) 
+        Vector3 solvedPos, Quaternion solvedRot,
+        List<InteractionController> graspingController)
     {
 
 
@@ -38,9 +38,20 @@ public class GraspNetworkInteractionAsync : NetworkBehaviour {
 
             _intObj.rigidbody.position = presolvedPos;
             _intObj.rigidbody.position += Vector3.right * xAxisMovement + Vector3.forward * zAxisMovement;
-
+            CmdGraspedMovement(solvedPos, solvedRot);
         }
-
-
+        else
+        {
+            CmdGraspedMovement(solvedPos, solvedRot);
+        }
     }
+            [Command]
+    void CmdGraspedMovement(Vector3 solvedPos, Quaternion solvedRot)
+    {
+        _intObj.transform.position = solvedPos;
+        _intObj.transform.rotation = solvedRot;
+    }
+
 }
+
+
