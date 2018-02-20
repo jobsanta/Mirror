@@ -5,9 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Layout
-  - Components
   - Exterior
   - Interior
+  - BillboardEx
+  - BillboardInterior
   layers:
   - Default
   - TransparentFX

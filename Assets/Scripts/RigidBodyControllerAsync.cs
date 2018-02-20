@@ -18,7 +18,7 @@ public class RigidBodyControllerAsync : NetworkBehaviour {
             {
                 // _anchObj = GetComponent<AnchorableBehaviour>();
 
-                if(gameObject.layer <= 11)
+                if(gameObject.tag != "BillboardEx" && gameObject.tag != "BillboardInterior")
                 {
                     Renderer[] rends = gameObject.GetComponentsInChildren<Renderer>();
                     for (int i = 0; i < rends.Length; i++)
@@ -39,7 +39,7 @@ public class RigidBodyControllerAsync : NetworkBehaviour {
             if (gameObject.transform.position.z < 0)
             {
                 // _anchObj = GetComponent<AnchorableBehaviour>();
-                if (gameObject.layer <= 11)
+                if (gameObject.tag != "BillboardEx" && gameObject.tag != "BillboardInterior")
                 {
                     Renderer[] rends = gameObject.GetComponentsInChildren<Renderer>();
                     for (int i = 0; i < rends.Length; i++)

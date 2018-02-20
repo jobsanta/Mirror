@@ -26,83 +26,112 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
         _anchObj = GetComponent<AnchorableBehaviour>();
 
-        if (gameObject.layer < 11)
+        Debug.Log("Name : " + gameObject.name + " tag: " + gameObject.tag + " isOIN " + LayoutController.isOwnInteriorView + " isbin " + LayoutController.isBillBoardInteriorView);
+        if (tag == "Interior")
         {
-            if (tag == "Interior")
+            _anchObj.anchorGroup = _intgroup;
+            if (!LayoutController.isOwnInteriorView)
             {
-                _anchObj.anchorGroup = _intgroup;
-                if (!LayoutController.isOwnInteriorView)
+                if (LayoutController.thisisServer && _anchObj.transform.position.z < 0)
                 {
-                    if (isServer && _anchObj.transform.position.z < 0)
-                    {
-                        _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
-                    }
-                    else if (!isServer && _anchObj.transform.position.z > 0)
-                    {
-                        _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
-                    }
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                }
+                else if (!LayoutController.thisisServer && _anchObj.transform.position.z > 0)
+                {
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
                 }
             }
-            else if (tag == "Exterior")
+            else if (LayoutController.isOwnInteriorView)
             {
-                _anchObj.anchorGroup = _extgroup;
-                if (LayoutController.isOwnInteriorView)
+                if (LayoutController.thisisServer && _anchObj.transform.position.z < 0)
                 {
-                    if (isServer && _anchObj.transform.position.z < 0)
-                    {
-                        _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
-                    }
-                    else if (!isServer && _anchObj.transform.position.z > 0)
-                    {
-                        _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
-                    }
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
+                }
+                else if (!LayoutController.thisisServer && _anchObj.transform.position.z > 0)
+                {
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
                 }
             }
         }
-        else if (gameObject.layer >= 11)
+        else if (tag == "BillboardInterior")
         {
-            Debug.Log(gameObject.name + " is billboard");
-            if (tag == "Interior")
+            if (LayoutController.isBillBoardInteriorView)
             {
-                Debug.Log(gameObject.name + " is Interior");
-                _anchObj.anchorGroup = _intgroup;
-                Debug.Log(LayoutController.isBillBoardInteriorView);
-                if (!LayoutController.isBillBoardInteriorView)
+                if (LayoutController.thisisServer && _anchObj.transform.position.z > 0)
                 {
-                    
-                        _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
-
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
                 }
-                else
+                else if (!LayoutController.thisisServer && _anchObj.transform.position.z < 0)
                 {
-
-                        _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
-
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
                 }
-                _anchObj.anchorGroup = _intgroup;
             }
-            else if (tag == "Exterior")
+            else if (!LayoutController.isBillBoardInteriorView)
             {
-                Debug.Log(gameObject.name + " is Exterior");
-              
-                Debug.Log(LayoutController.isBillBoardInteriorView);
-                if (LayoutController.isBillBoardInteriorView)
+                if (LayoutController.thisisServer && _anchObj.transform.position.z > 0)
                 {
-
-                        _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
-
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
                 }
-                else
+                else if (!LayoutController.thisisServer && _anchObj.transform.position.z < 0)
                 {
- 
-                        _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
-
-
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
                 }
-                _anchObj.anchorGroup = _extgroup;
             }
         }
+        else if (tag == "Exterior")
+        {
+            _anchObj.anchorGroup = _extgroup;
+            if (LayoutController.isOwnInteriorView)
+            {
+                if (LayoutController.thisisServer && _anchObj.transform.position.z < 0)
+                {
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                }
+                else if (!LayoutController.thisisServer && _anchObj.transform.position.z > 0)
+                {
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                }
+            }
 
+            else if (!LayoutController.isOwnInteriorView)
+            {
+                if (LayoutController.thisisServer && _anchObj.transform.position.z < 0)
+                {
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
+                }
+                else if (!LayoutController.thisisServer && _anchObj.transform.position.z > 0)
+                {
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
+                }
+            }
+        }
+        else if (tag == "BillboardEx")
+        {
+            if (LayoutController.isBillBoardInteriorView)
+            {
+                if (LayoutController.thisisServer && _anchObj.transform.position.z > 0)
+                {
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                }
+                else if (!LayoutController.thisisServer && _anchObj.transform.position.z < 0)
+                {
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                }
+            }
+            else if (!LayoutController.isBillBoardInteriorView)
+            {
+                if (LayoutController.thisisServer && _anchObj.transform.position.z > 0)
+                {
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
+                }
+                else if (!LayoutController.thisisServer && _anchObj.transform.position.z < 0)
+                {
+                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
+                }
+            }
+        }
+        
+      
 
 
         if (_anchObj != null)
@@ -152,31 +181,8 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
     {
         if (isServer)
         {
-        
-            GameObject layout = GameObject.Find("Mockup(client)");
-            if (layout != null)
-            {
-                Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
-                foreach (Anchor a in anchors)
-                {
-                    if (a.name == anchor.name)
-                    {
-                        AnchorableBehaviour[] objs = new AnchorableBehaviour[1];
-                        a.anchoredObjects.CopyTo(objs);
-                        if (objs[0] != null)
-                        {
-                            objs[0].Detach();
-                            layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                            NetworkServer.Destroy(objs[0].gameObject);
-                        }
 
-                    }
-                }
-
-
-            }
-
-            layout = GameObject.Find("Mockup(billboard)");
+            GameObject layout = GameObject.Find("Mockup(billboard)");
             if (layout != null)
             {
                 Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
@@ -191,18 +197,19 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                         {
                             objs[0].Detach();
                             layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                            NetworkServer.Destroy(objs[0].gameObject);
+                            DestroyObject(objs[0].gameObject);
                         }
 
 
                     }
                 }
-
-
+                
             }
+            RpcDeleteObject(anchor.name);
         }
         else
         {
+            //Destroy client bill board objects
             GameObject layout = GameObject.Find("Mockup(billboard)");
             if (layout != null)
             {
@@ -218,7 +225,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                         {
                             objs[0].Detach();
                             layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                            NetworkServer.Destroy(objs[0].gameObject);
+                            DestroyObject(objs[0].gameObject);
                         }
 
                     }
@@ -226,6 +233,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
 
             }
+            //Destroy server and server billboard object
             CmdDeleteObject(anchor.name);
         }
 
@@ -248,7 +256,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                     {
                         objs[0].Detach();
                         layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                        NetworkServer.Destroy(objs[0].gameObject);
+                        DestroyObject(objs[0].gameObject);
                     }
 
                 }
@@ -271,7 +279,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                     {
                         objs[0].Detach();
                         layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                        NetworkServer.Destroy(objs[0].gameObject);
+                        DestroyObject(objs[0].gameObject);
                     }
 
                 }
@@ -280,44 +288,82 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
         }
     }
-
-    void CreateCopyComponent(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, string name)
+    [ClientRpc]
+    void RpcDeleteObject(string name)
     {
-
-        if (isServer)
+        if(!isServer)
         {
             GameObject layout = GameObject.Find("Mockup(client)");
             if (layout != null)
             {
-                spawnPosition.z = -spawnPosition.z;
-                GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
-                o.GetComponent<BoxCollider>().enabled = false;
-                o.GetComponent<Rigidbody>().isKinematic = true;
-                o.GetComponentInChildren<Renderer>().enabled = true;
-
-
                 Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
                 foreach (Anchor a in anchors)
                 {
                     if (a.name == name)
                     {
-                        o.GetComponent<AnchorableBehaviour>().anchor = a;
-                        o.GetComponent<AnchorableBehaviour>().TryAttach(true);
-                        layout.GetComponent<AttachObjectManager>().addObject(o);
+                        AnchorableBehaviour[] objs = new AnchorableBehaviour[1];
+                        a.anchoredObjects.CopyTo(objs);
+                        if (objs[0] != null)
+                        {
+                            objs[0].Detach();
+                            layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
+                            DestroyObject(objs[0].gameObject);
+                        }
+
                     }
                 }
-                NetworkServer.Spawn(o);
-                RpcSetSpawnObject(o.GetComponent<NetworkIdentity>().netId,name,spawnPosition,spawnRotation);
+
+
             }
 
             layout = GameObject.Find("Mockup(billboard)");
+            if (layout != null)
+            {
+                Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
+                foreach (Anchor a in anchors)
+                {
+                    if (a.name == name)
+                    {
+                        AnchorableBehaviour[] objs = new AnchorableBehaviour[1];
+                        a.anchoredObjects.CopyTo(objs);
+                        if (objs[0] != null)
+                        {
+                            objs[0].Detach();
+                            layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
+                            DestroyObject(objs[0].gameObject);
+                        }
+
+                    }
+                }
+
+
+            }
+        }
+
+    }
+
+    void CreateCopyComponent(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, string name)
+    {
+       // yield return new WaitForSeconds(3.0f);
+        if (isServer)
+        {
+            //Spawn object in client
+            spawnPosition.z = -spawnPosition.z;
+            RpcSetSpawnObject(prefab, name,spawnPosition,spawnRotation);
+            
+            //Spawn object in server for billboard
+            GameObject layout = GameObject.Find("Mockup(billboard)");
             if (layout != null)
             {
                 //spawnPosition.z = -spawnPosition.z;
                 GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
                 o.GetComponent<BoxCollider>().enabled = false;
                 o.GetComponent<Rigidbody>().isKinematic = true;
-                o.name = o.name + "billboard";
+                if (o.tag == "Exterior")
+                    o.tag = "BillboardEx";
+                else if (o.tag == "Interior")
+                    o.tag = "BillboardInterior";
+
                 o.layer = 11;
                 Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
                 foreach (Anchor a in anchors)
@@ -334,15 +380,19 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
         }
         else
         {
+            //spawn object in client billboard
             GameObject layout = GameObject.Find("Mockup(billboard)");
             if (layout != null)
             {
-                //spawnPosition.z = -spawnPosition.z;
+                spawnPosition.z = -spawnPosition.z;
                 GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
                 o.GetComponent<BoxCollider>().enabled = false;
                 o.GetComponent<Rigidbody>().isKinematic = true;
                 o.name = o.name + "billboard";
-                o.layer = 11;
+                if (o.tag == "Exterior")
+                    o.tag = "BillboardEx";
+                else if (o.tag == "Interior")
+                    o.tag = "BillboardInterior";
 
                 Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
                 foreach (Anchor a in anchors)
@@ -355,6 +405,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                     }
                 }
             }
+            //spawn object in server
             CmdSpawnObject(prefab, spawnPosition, spawnRotation, name);
         }
 
@@ -363,17 +414,21 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
 
     [ClientRpc]
-    void RpcSetSpawnObject(NetworkInstanceId netid, string anchorname, Vector3 spawnPosition, Quaternion spawnRotation)
+    void RpcSetSpawnObject(GameObject prefab, string anchorname, Vector3 spawnPosition, Quaternion spawnRotation)
     {
+      
         if(!isServer)
         {
+            //spawn object on client side and attach to client layout
+
+
             GameObject layout = GameObject.Find("Mockup(client)");
-            GameObject o = ClientScene.FindLocalObject(netid);
+            GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
             if (layout != null)
             {
                 o.GetComponent<BoxCollider>().enabled = false;
                 o.GetComponent<Rigidbody>().isKinematic = true;
-                o.GetComponentInChildren<Renderer>().enabled = true;
+                
 
 
                 Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
@@ -388,6 +443,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                 }
             }
 
+            //spawn object on client side and attach to client billboard layout
             layout = GameObject.Find("Mockup(billboard)");
             spawnPosition.z = -spawnPosition.z;
             GameObject b = (GameObject)Instantiate(o, spawnPosition, spawnRotation);
@@ -397,7 +453,10 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                 b.GetComponent<BoxCollider>().enabled = false;
                 b.GetComponent<Rigidbody>().isKinematic = true;
                 b.name = b.name + "billboard";
-                b.layer = 11;
+                if (o.tag == "Exterior")
+                    b.tag = "BillboardEx";
+                else if (o.tag == "Interior")
+                    b.tag = "BillboardInterior";
 
                 Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
                 foreach (Anchor a in anchors)
@@ -405,7 +464,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                     if (a.name == anchorname)
                     {
                         b.GetComponent<AnchorableBehaviour>().anchor = a;
-                        o.GetComponent<AnchorableBehaviour>().TryAttach(true);
+                       // b.GetComponent<AnchorableBehaviour>().TryAttach(true);
                         layout.GetComponent<AttachObjectManager>().addObject(b);
                     }
                 }
@@ -417,47 +476,59 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
     [Command]
     void CmdSpawnObject(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, string name)
     {
-        GameObject layout = GameObject.Find("Mockup(server)");
-        if (layout != null)
+        if(isServer)
         {
-            spawnPosition.z = -spawnPosition.z;
-            GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
-            o.GetComponent<BoxCollider>().enabled = false;
-            o.GetComponent<Rigidbody>().isKinematic = true;
-            o.GetComponentInChildren<Renderer>().enabled = true;
-            Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
-            foreach (Anchor a in anchors)
+            //spawn object in the server
+            GameObject layout = GameObject.Find("Mockup(server)");
+            if (layout != null)
             {
-                if (a.name == name)
+                if(spawnPosition.z >0)
+                spawnPosition.z = -spawnPosition.z;
+
+                GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
+                o.GetComponent<BoxCollider>().enabled = false;
+                o.GetComponent<Rigidbody>().isKinematic = true;
+              
+                Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
+                foreach (Anchor a in anchors)
                 {
-                    o.GetComponent<AnchorableBehaviour>().anchor = a;
-                    o.GetComponent<AnchorableBehaviour>().TryAttach(true);
-                    layout.GetComponent<AttachObjectManager>().addObject(o);
+                    if (a.name == name)
+                    {
+                        o.GetComponent<AnchorableBehaviour>().anchor = a;
+                        o.GetComponent<AnchorableBehaviour>().TryAttach(true);
+                        layout.GetComponent<AttachObjectManager>().addObject(o);
+                    }
                 }
             }
-            NetworkServer.Spawn(o);
+
+            //spawn object in server billboard
+            layout = GameObject.Find("Mockup(billboard)");
+            if (layout != null)
+            {
+                if(spawnPosition.z < 0)
+                spawnPosition.z = -spawnPosition.z;
+
+                GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
+                o.GetComponent<BoxCollider>().enabled = false;
+                o.GetComponent<Rigidbody>().isKinematic = true;
+                o.name = o.name + "billboard";
+                if (o.tag == "Exterior")
+                    o.tag = "BillboardEx";
+                else if (o.tag == "Interior")
+                    o.tag = "BillboardInterior";
+                Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
+                foreach (Anchor a in anchors)
+                {
+                    if (a.name == name)
+                    {
+                        o.GetComponent<AnchorableBehaviour>().anchor = a;
+                        o.GetComponent<AnchorableBehaviour>().TryAttach(true);
+                        layout.GetComponent<AttachObjectManager>().addObject(o);
+                    }
+                }
+            }
         }
 
-        layout = GameObject.Find("Mockup(billboard)");
-        if (layout != null)
-        {
-            spawnPosition.z = -spawnPosition.z;
-            GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
-            o.GetComponent<BoxCollider>().enabled = false;
-            o.GetComponent<Rigidbody>().isKinematic = true;
-            o.name = o.name + "billboard";
-            o.layer = 11;
-            Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
-            foreach (Anchor a in anchors)
-            {
-                if (a.name == name)
-                {
-                    o.GetComponent<AnchorableBehaviour>().anchor = a;
-                    o.GetComponent<AnchorableBehaviour>().TryAttach(true);
-                    layout.GetComponent<AttachObjectManager>().addObject(o);
-                }
-            }
-        }
     }
 
 
