@@ -7,12 +7,14 @@ using Leap.Unity.Interaction;
 public class AttachObjectManager : MonoBehaviour {
 
 	// Use this for initialization
-    public List<GameObject> childList;
+    public List<GameObject> exteriorList;
+    public List<GameObject> interiorList;
     AnchorGroup _extgroup;
     AnchorGroup _intgroup;
 
     void Start () {
-        childList = new List<GameObject>();
+        exteriorList = new List<GameObject>();
+        interiorList = new List<GameObject>();
         GameObject exterior_group =  GameObject.Find("Exterior Anchor Group"); 
         GameObject interior_group =  GameObject.Find("Interior Anchor Group"); 
 
@@ -31,18 +33,43 @@ public class AttachObjectManager : MonoBehaviour {
             _intgroup.Add(intanchor[i]);
     }
 
-    public void addObject(GameObject objects)
+    public List<GameObject> getInteriorList()
     {
-        childList.Add(objects);
+        return interiorList;
     }
 
-    public void clearObject()
+    public List<GameObject> getExteriorList()
     {
-        childList.Clear();
+        return exteriorList;
     }
 
-    public void removeObject(GameObject objects)
+    public void addInteriorObject(GameObject objects)
     {
-        childList.Remove(objects);
+        interiorList.Add(objects);
+    }
+
+    public void clearInteriorObject()
+    {
+        interiorList.Clear();
+    }
+
+    public void removeInteriorObject(GameObject objects)
+    {
+        interiorList.Remove(objects);
+    }
+
+    public void addExteriorObject(GameObject objects)
+    {
+        exteriorList.Add(objects);
+    }
+
+    public void clearExteriorObject()
+    {
+        exteriorList.Clear();
+    }
+
+    public void removeExteriorObject(GameObject objects)
+    {
+        exteriorList.Remove(objects);
     }
 }

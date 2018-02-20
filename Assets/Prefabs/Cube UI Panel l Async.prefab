@@ -1265,7 +1265,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114536035618294766}
-        m_MethodName: changeFixView
+        m_MethodName: Sync
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

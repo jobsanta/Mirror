@@ -165,7 +165,6 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
     void onAttachedToAnchor(AnchorableBehaviour anbobj, Anchor anchor)
     {
-        Debug.Log(anbobj.anchor);
         AttachObjectManager attachObjectList = anchor.GetComponentInParent<AttachObjectManager>();
         if (attachObjectList == null)
         {
@@ -173,7 +172,10 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
         }
         else
         {
-            attachObjectList.addObject(gameObject);
+            if (gameObject.tag == "Exterior" || gameObject.tag == "BillboardEx")
+                attachObjectList.addExteriorObject(gameObject);
+            else if (gameObject.tag == "Interior" || gameObject.tag == "BillboardInterior")
+                attachObjectList.addInteriorObject(gameObject);
         }
 
         if(isPR)
@@ -183,7 +185,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
         }
         else
         {
-            CreateCopyComponent(gameObject, transform.position, transform.rotation, anchor.name);
+            //CreateCopyComponent(gameObject, transform.position, transform.rotation, anchor.name);
         }
 
 
@@ -195,6 +197,26 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
         if (isPR)
             StopCoroutine(coroutine);
 
+
+        AttachObjectManager attachObjectList = anchor.GetComponentInParent<AttachObjectManager>();
+        if (attachObjectList == null)
+        {
+            Debug.Log("no attach list");
+        }
+        else
+        {
+            if (gameObject.tag == "Exterior" || gameObject.tag == "BillboardEx")
+                attachObjectList.removeExteriorObject(gameObject);
+            else if (gameObject.tag == "Interior" || gameObject.tag == "BillboardInterior")
+                attachObjectList.removeInteriorObject(gameObject);
+        }
+
+        if(isPR)
+        DeleteCopyComponent(anchor);
+    }
+
+    public void DeleteCopyComponent(Anchor anchor)
+    {
         if (isServer)
         {
 
@@ -206,20 +228,26 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                 {
                     if (a.name == anchor.name)
                     {
-                        AnchorableBehaviour[] objs = new AnchorableBehaviour[1];
-                        a.anchoredObjects.CopyTo(objs);
-
-                        if(objs[0] != null)
+                        if (a.anchoredObjects.Count > 0)
                         {
-                            objs[0].Detach();
-                            layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                            DestroyObject(objs[0].gameObject);
+                            AnchorableBehaviour[] objs = new AnchorableBehaviour[a.anchoredObjects.Count];
+                            a.anchoredObjects.CopyTo(objs);
+
+                            if (objs[0] != null)
+                            {
+                                objs[0].Detach();
+
+                                if (objs[0].gameObject.tag == "Exterior" || objs[0].gameObject.tag == "BillboardEx")
+                                    layout.GetComponent<AttachObjectManager>().removeExteriorObject(objs[0].gameObject);
+                                else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
+                                    layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
+
+                                DestroyObject(objs[0].gameObject);
+                            }
                         }
-
-
                     }
                 }
-                
+
             }
             RpcDeleteObject(anchor.name);
         }
@@ -234,16 +262,23 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                 {
                     if (a.name == anchor.name)
                     {
-                        AnchorableBehaviour[] objs = new AnchorableBehaviour[1];
-                        a.anchoredObjects.CopyTo(objs);
-
-                        if (objs[0] != null)
+                        if (a.anchoredObjects.Count > 0)
                         {
-                            objs[0].Detach();
-                            layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                            DestroyObject(objs[0].gameObject);
-                        }
+                            AnchorableBehaviour[] objs = new AnchorableBehaviour[a.anchoredObjects.Count];
+                            a.anchoredObjects.CopyTo(objs);
 
+                            if (objs[0] != null)
+                            {
+                                objs[0].Detach();
+
+                                if (objs[0].gameObject.tag == "Exterior" || objs[0].gameObject.tag == "BillboardEx")
+                                    layout.GetComponent<AttachObjectManager>().removeExteriorObject(objs[0].gameObject);
+                                else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
+                                    layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
+
+                                DestroyObject(objs[0].gameObject);
+                            }
+                        }
                     }
                 }
 
@@ -255,6 +290,8 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
 
     }
+
+
     [Command]
     void CmdDeleteObject(string name)
     {
@@ -266,13 +303,20 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
             {
                 if (a.name == name)
                 {
-                    AnchorableBehaviour[] objs = new AnchorableBehaviour[1];
-                    a.anchoredObjects.CopyTo(objs);
-                    if (objs[0] != null)
+                    if (a.anchoredObjects.Count > 0)
                     {
-                        objs[0].Detach();
-                        layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                        DestroyObject(objs[0].gameObject);
+                        AnchorableBehaviour[] objs = new AnchorableBehaviour[a.anchoredObjects.Count];
+                        a.anchoredObjects.CopyTo(objs);
+                        if (objs[0] != null)
+                        {
+                            objs[0].Detach();
+                            if (objs[0].gameObject.tag == "Exterior" || objs[0].gameObject.tag == "BillboardEx")
+                                layout.GetComponent<AttachObjectManager>().removeExteriorObject(objs[0].gameObject);
+                            else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
+                                layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
+
+                            DestroyObject(objs[0].gameObject);
+                        }
                     }
 
                 }
@@ -289,13 +333,20 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
             {
                 if (a.name == name)
                 {
-                    AnchorableBehaviour[] objs = new AnchorableBehaviour[1];
-                    a.anchoredObjects.CopyTo(objs);
-                    if (objs[0] != null)
+                    if (a.anchoredObjects.Count > 0)
                     {
-                        objs[0].Detach();
-                        layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                        DestroyObject(objs[0].gameObject);
+                        AnchorableBehaviour[] objs = new AnchorableBehaviour[a.anchoredObjects.Count];
+                        a.anchoredObjects.CopyTo(objs);
+                        if (objs[0] != null)
+                        {
+                            objs[0].Detach();
+                            objs[0].Detach();
+                            if (objs[0].gameObject.tag == "Exterior" || objs[0].gameObject.tag == "BillboardEx")
+                                layout.GetComponent<AttachObjectManager>().removeExteriorObject(objs[0].gameObject);
+                            else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
+                                layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
+                            DestroyObject(objs[0].gameObject);
+                        }
                     }
 
                 }
@@ -317,13 +368,19 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                 {
                     if (a.name == name)
                     {
-                        AnchorableBehaviour[] objs = new AnchorableBehaviour[1];
-                        a.anchoredObjects.CopyTo(objs);
-                        if (objs[0] != null)
+                        if (a.anchoredObjects.Count > 0)
                         {
-                            objs[0].Detach();
-                            layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                            DestroyObject(objs[0].gameObject);
+                            AnchorableBehaviour[] objs = new AnchorableBehaviour[a.anchoredObjects.Count];
+                            a.anchoredObjects.CopyTo(objs);
+                            if (objs[0] != null)
+                            {
+                                objs[0].Detach();
+                                if (objs[0].gameObject.tag == "Exterior" || objs[0].gameObject.tag == "BillboardEx")
+                                    layout.GetComponent<AttachObjectManager>().removeExteriorObject(objs[0].gameObject);
+                                else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
+                                    layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
+                                DestroyObject(objs[0].gameObject);
+                            }
                         }
 
                     }
@@ -340,13 +397,19 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                 {
                     if (a.name == name)
                     {
-                        AnchorableBehaviour[] objs = new AnchorableBehaviour[1];
-                        a.anchoredObjects.CopyTo(objs);
-                        if (objs[0] != null)
+                        if (a.anchoredObjects.Count > 0)
                         {
-                            objs[0].Detach();
-                            layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                            DestroyObject(objs[0].gameObject);
+                            AnchorableBehaviour[] objs = new AnchorableBehaviour[a.anchoredObjects.Count];
+                            a.anchoredObjects.CopyTo(objs);
+                            if (objs[0] != null)
+                            {
+                                objs[0].Detach();
+                                if (objs[0].gameObject.tag == "Exterior" || objs[0].gameObject.tag == "BillboardEx")
+                                    layout.GetComponent<AttachObjectManager>().removeExteriorObject(objs[0].gameObject);
+                                else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
+                                    layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
+                                DestroyObject(objs[0].gameObject);
+                            }
                         }
 
                     }
@@ -358,9 +421,8 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
     }
 
-    void CreateCopyComponent(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, string name)
+    public void CreateCopyComponent(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, string name)
     {
-       // yield return new WaitForSeconds(3.0f);
         if (isServer)
         {
             //Spawn object in client
@@ -380,7 +442,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                 else if (o.tag == "Interior")
                     o.tag = "BillboardInterior";
 
-                o.layer = 11;
+               
                 Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
                 foreach (Anchor a in anchors)
                 {
@@ -388,7 +450,11 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                     {
                         o.GetComponent<AnchorableBehaviour>().anchor = a;
                         o.GetComponent<AnchorableBehaviour>().TryAttach(true);
-                        layout.GetComponent<AttachObjectManager>().addObject(o);
+
+                        if (o.tag == "Exterior" || o.tag == "BillboardEx")
+                            layout.GetComponent<AttachObjectManager>().addExteriorObject(o);
+                        else if (o.tag == "Interior" || o.tag == "BillboardInterior")
+                            layout.GetComponent<AttachObjectManager>().addInteriorObject(o);
                     }
                 }
             }
@@ -417,7 +483,10 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                     {
                         o.GetComponent<AnchorableBehaviour>().anchor = a;
                         o.GetComponent<AnchorableBehaviour>().TryAttach(true);
-                        layout.GetComponent<AttachObjectManager>().addObject(o);
+                        if (o.tag == "Exterior" || o.tag == "BillboardEx")
+                            layout.GetComponent<AttachObjectManager>().addExteriorObject(o);
+                        else if (o.tag == "Interior" || o.tag == "BillboardInterior")
+                            layout.GetComponent<AttachObjectManager>().addInteriorObject(o);
                     }
                 }
             }
@@ -458,7 +527,10 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                     {
                         o.GetComponent<AnchorableBehaviour>().anchor = a;
                         o.GetComponent<AnchorableBehaviour>().TryAttach(true);
-                        layout.GetComponent<AttachObjectManager>().addObject(o);
+                        if (o.tag == "Exterior" || o.tag == "BillboardEx")
+                            layout.GetComponent<AttachObjectManager>().addExteriorObject(o);
+                        else if (o.tag == "Interior" || o.tag == "BillboardInterior")
+                            layout.GetComponent<AttachObjectManager>().addInteriorObject(o);
                     }
                 }
             }
@@ -487,7 +559,10 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                     {
                         o.GetComponent<AnchorableBehaviour>().anchor = a;
                         o.GetComponent<AnchorableBehaviour>().TryAttach(true);
-                        layout.GetComponent<AttachObjectManager>().addObject(o);
+                        if (o.tag == "Exterior" || o.tag == "BillboardEx")
+                            layout.GetComponent<AttachObjectManager>().addExteriorObject(o);
+                        else if (o.tag == "Interior" || o.tag == "BillboardInterior")
+                            layout.GetComponent<AttachObjectManager>().addInteriorObject(o);
                     }
                 }
             }
@@ -497,8 +572,6 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
 
     }
-
-
 
     [ClientRpc]
     void RpcSetSpawnObject(GameObject prefab, string anchorname, Vector3 spawnPosition, Quaternion spawnRotation)
@@ -525,7 +598,10 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                     {
                         o.GetComponent<AnchorableBehaviour>().anchor = a;
                         o.GetComponent<AnchorableBehaviour>().TryAttach(true);
-                        layout.GetComponent<AttachObjectManager>().addObject(o);
+                        if (o.tag == "Exterior" || o.tag == "BillboardEx")
+                            layout.GetComponent<AttachObjectManager>().addExteriorObject(o);
+                        else if (o.tag == "Interior" || o.tag == "BillboardInterior")
+                            layout.GetComponent<AttachObjectManager>().addInteriorObject(o);
                     }
                 }
             }
@@ -551,8 +627,11 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                     if (a.name == anchorname)
                     {
                         b.GetComponent<AnchorableBehaviour>().anchor = a;
-                       // b.GetComponent<AnchorableBehaviour>().TryAttach(true);
-                        layout.GetComponent<AttachObjectManager>().addObject(b);
+                        // b.GetComponent<AnchorableBehaviour>().TryAttach(true);
+                        if (o.tag == "Exterior" || o.tag == "BillboardEx")
+                            layout.GetComponent<AttachObjectManager>().addExteriorObject(b);
+                        else if (o.tag == "Interior" || o.tag == "BillboardInterior")
+                            layout.GetComponent<AttachObjectManager>().addInteriorObject(b);
                     }
                 }
             }
@@ -583,7 +662,10 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                     {
                         o.GetComponent<AnchorableBehaviour>().anchor = a;
                         o.GetComponent<AnchorableBehaviour>().TryAttach(true);
-                        layout.GetComponent<AttachObjectManager>().addObject(o);
+                        if (o.tag == "Exterior" || o.tag == "BillboardEx")
+                            layout.GetComponent<AttachObjectManager>().addExteriorObject(o);
+                        else if (o.tag == "Interior" || o.tag == "BillboardInterior")
+                            layout.GetComponent<AttachObjectManager>().addInteriorObject(o);
                     }
                 }
             }
@@ -610,7 +692,10 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                     {
                         o.GetComponent<AnchorableBehaviour>().anchor = a;
                         o.GetComponent<AnchorableBehaviour>().TryAttach(true);
-                        layout.GetComponent<AttachObjectManager>().addObject(o);
+                        if (o.tag == "Exterior" || o.tag == "BillboardEx")
+                            layout.GetComponent<AttachObjectManager>().addExteriorObject(o);
+                        else if (o.tag == "Interior" || o.tag == "BillboardInterior")
+                            layout.GetComponent<AttachObjectManager>().addInteriorObject(o);
                     }
                 }
             }

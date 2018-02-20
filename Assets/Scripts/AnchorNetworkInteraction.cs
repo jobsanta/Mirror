@@ -90,7 +90,10 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
         }
         else
         {
-            attachObjectList.addObject(gameObject);
+            if (gameObject.tag == "Exterior" || gameObject.tag == "BillboardEx")
+                attachObjectList.addExteriorObject(gameObject);
+            else if (gameObject.tag == "Interior" || gameObject.tag == "BillboardInterior")
+                attachObjectList.addInteriorObject(gameObject);
         }
 
         CreateCopyComponent(gameObject, transform.position, transform.rotation, anchor.name);
@@ -110,13 +113,20 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                 {
                     if (a.name == anchor.name)
                     {
-                        AnchorableBehaviour[] objs = new AnchorableBehaviour[1];
-                        a.anchoredObjects.CopyTo(objs);
-                        if (objs[0] != null)
+                        if (a.anchoredObjects.Count > 0)
                         {
-                            objs[0].Detach();
-                            layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                            NetworkServer.Destroy(objs[0].gameObject);
+                            AnchorableBehaviour[] objs = new AnchorableBehaviour[a.anchoredObjects.Count];
+                            a.anchoredObjects.CopyTo(objs);
+                            if (objs[0] != null)
+                            {
+                                objs[0].Detach();
+                                if (objs[0].gameObject.tag == "Exterior" || objs[0].gameObject.tag == "BillboardEx")
+                                    layout.GetComponent<AttachObjectManager>().removeExteriorObject(objs[0].gameObject);
+                                else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
+                                    layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
+
+                                NetworkServer.Destroy(objs[0].gameObject);
+                            }
                         }
 
                     }
@@ -143,13 +153,20 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
             {
                 if (a.name == name)
                 {
-                    AnchorableBehaviour[] objs = new AnchorableBehaviour[1];
-                    a.anchoredObjects.CopyTo(objs);
-                    if (objs[0] != null)
+                    if (a.anchoredObjects.Count > 0)
                     {
-                        objs[0].Detach();
-                        layout.GetComponent<AttachObjectManager>().removeObject(objs[0].gameObject);
-                        NetworkServer.Destroy(objs[0].gameObject);
+                        AnchorableBehaviour[] objs = new AnchorableBehaviour[a.anchoredObjects.Count];
+                        a.anchoredObjects.CopyTo(objs);
+                        if (objs[0] != null)
+                        {
+                            objs[0].Detach();
+                            if (objs[0].gameObject.tag == "Exterior" || objs[0].gameObject.tag == "BillboardEx")
+                                layout.GetComponent<AttachObjectManager>().removeExteriorObject(objs[0].gameObject);
+                            else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
+                                layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
+
+                            NetworkServer.Destroy(objs[0].gameObject);
+                        }
                     }
 
                 }
@@ -179,7 +196,11 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                     if (a.name == name)
                     {
                         o.GetComponent<AnchorableBehaviour>().anchor = a;
-                        layout.GetComponent<AttachObjectManager>().addObject(o);
+
+                        if (o.tag == "Exterior" || o.tag == "BillboardEx")
+                            layout.GetComponent<AttachObjectManager>().addExteriorObject(o);
+                        else if (o.tag == "Interior" || o.tag == "BillboardInterior")
+                            layout.GetComponent<AttachObjectManager>().addInteriorObject(o);
                     }
                 }
                 NetworkServer.Spawn(o);
@@ -210,7 +231,10 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                 if (a.name == name)
                 {
                     o.GetComponent<AnchorableBehaviour>().anchor = a;
-                    layout.GetComponent<AttachObjectManager>().addObject(o);
+                    if (o.tag == "Exterior" || o.tag == "BillboardEx")
+                        layout.GetComponent<AttachObjectManager>().addExteriorObject(o);
+                    else if (o.tag == "Interior" || o.tag == "BillboardInterior")
+                        layout.GetComponent<AttachObjectManager>().addInteriorObject(o);
                 }
             }
             NetworkServer.Spawn(o);

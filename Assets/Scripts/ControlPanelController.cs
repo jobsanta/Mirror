@@ -171,4 +171,17 @@ public class ControlPanelController : MonoBehaviour {
         controller.SetVerticalRotation(v);
     }
 
+    public void Sync()
+    {
+        if (controller == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+
+
+            controller = player.GetComponent<LayoutController>();
+        }
+        controller.Synchronize();
+    }
+
+
 }
