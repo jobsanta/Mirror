@@ -260,7 +260,7 @@ dc291c5c42cc11cf68d48cd30a18a9ab Assembly-CSharp.dll:Leap.Unity.HandPool
 df3e70c85d1064a2d40688b78c36a15d Assembly-CSharp.dll:Leap.Unity.Examples.SimpleInteractionEmission
 1c9dbf6588c2a86d918d6a6e3eb4ef45 Assembly-CSharp.dll:Leap.Unity.Examples.TransformRotationHandle
 31c42b3592971844b4cdd3dcef7dd226 Assembly-CSharp.dll:.SimpleInteractionGlow
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LayoutController
+7dbf7e4fbb61577e775486629eeb7e0f Assembly-CSharp.dll:.LayoutController
 1bd6d90fb4d8b0ed26aa2ba8d8c82fbb Assembly-CSharp.dll:.VRHeightOffset
 d58e2c87c3d8d644a4c90cc26ef6498e Assembly-CSharp.dll:Leap.Unity.Examples.AutopilotSystem
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Leap.Unity.LeapHandController

@@ -13,10 +13,14 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
     private BoxCollider bc;
     AnchorGroup _extgroup;
     AnchorGroup _intgroup;
+    private IEnumerator coroutine;
+    public static bool isPR;
+
 
     void Start()
     {
 
+        isPR = LayoutController.globalPR;
         GameObject exterior_group = GameObject.Find("Exterior Anchor Group");
         GameObject interior_group = GameObject.Find("Interior Anchor Group");
 
@@ -172,13 +176,25 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
             attachObjectList.addObject(gameObject);
         }
 
-        CreateCopyComponent(gameObject, transform.position, transform.rotation, anchor.name);
+        if(isPR)
+        {
+            coroutine = DelayCopyComponent(gameObject, transform.position, transform.rotation, anchor.name);
+            StartCoroutine(coroutine);
+        }
+        else
+        {
+            CreateCopyComponent(gameObject, transform.position, transform.rotation, anchor.name);
+        }
+
 
 
     }
 
     void onDetachedFromAnchor(AnchorableBehaviour anbobj, Anchor anchor)
     {
+        if (isPR)
+            StopCoroutine(coroutine);
+
         if (isServer)
         {
 
@@ -411,6 +427,77 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
 
     }
+
+    IEnumerator DelayCopyComponent(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, string name)
+    {
+         yield return new WaitForSeconds(3.0f);
+        if (isServer)
+        {
+            //Spawn object in client
+            spawnPosition.z = -spawnPosition.z;
+            RpcSetSpawnObject(prefab, name, spawnPosition, spawnRotation);
+
+            //Spawn object in server for billboard
+            GameObject layout = GameObject.Find("Mockup(billboard)");
+            if (layout != null)
+            {
+                //spawnPosition.z = -spawnPosition.z;
+                GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
+                o.GetComponent<BoxCollider>().enabled = false;
+                o.GetComponent<Rigidbody>().isKinematic = true;
+                if (o.tag == "Exterior")
+                    o.tag = "BillboardEx";
+                else if (o.tag == "Interior")
+                    o.tag = "BillboardInterior";
+
+                o.layer = 11;
+                Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
+                foreach (Anchor a in anchors)
+                {
+                    if (a.name == name)
+                    {
+                        o.GetComponent<AnchorableBehaviour>().anchor = a;
+                        o.GetComponent<AnchorableBehaviour>().TryAttach(true);
+                        layout.GetComponent<AttachObjectManager>().addObject(o);
+                    }
+                }
+            }
+
+        }
+        else
+        {
+            //spawn object in client billboard
+            GameObject layout = GameObject.Find("Mockup(billboard)");
+            if (layout != null)
+            {
+                spawnPosition.z = -spawnPosition.z;
+                GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
+                o.GetComponent<BoxCollider>().enabled = false;
+                o.GetComponent<Rigidbody>().isKinematic = true;
+                o.name = o.name + "billboard";
+                if (o.tag == "Exterior")
+                    o.tag = "BillboardEx";
+                else if (o.tag == "Interior")
+                    o.tag = "BillboardInterior";
+
+                Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
+                foreach (Anchor a in anchors)
+                {
+                    if (a.name == name)
+                    {
+                        o.GetComponent<AnchorableBehaviour>().anchor = a;
+                        o.GetComponent<AnchorableBehaviour>().TryAttach(true);
+                        layout.GetComponent<AttachObjectManager>().addObject(o);
+                    }
+                }
+            }
+            //spawn object in server
+            CmdSpawnObject(prefab, spawnPosition, spawnRotation, name);
+        }
+
+
+    }
+
 
 
     [ClientRpc]
