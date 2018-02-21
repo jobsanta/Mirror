@@ -11,10 +11,11 @@ public class GraspNetworkInteractionAsync : NetworkBehaviour {
     private Rigidbody rb;
     private BoxCollider bc;
 
-
     void Start() {
         _intObj = GetComponent<InteractionBehaviour>();
         _intObj.OnGraspedMovement += onGraspedMovement;
+        _intObj.OnGraspEnd += onGraspedEnd;
+        _intObj.OnGraspBegin += OnGraspedStart;
 
         bc = GetComponent<BoxCollider>();
 
@@ -22,6 +23,15 @@ public class GraspNetworkInteractionAsync : NetworkBehaviour {
 
     }
 
+    private void onGraspedEnd()
+    {
+        gameObject.GetComponent<AnchorNetworkInteractionAsync>().OnGraspEndCheckAnchor(gameObject);
+    }
+
+    private void OnGraspedStart()
+    {
+        gameObject.GetComponent<AnchorNetworkInteractionAsync>().OnGraspBeginCheck(gameObject);
+    }
 
 
     private void onGraspedMovement(Vector3 presolvedPos, Quaternion presolvedRot,

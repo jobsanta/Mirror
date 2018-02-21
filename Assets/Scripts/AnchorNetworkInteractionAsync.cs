@@ -13,14 +13,23 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
     private BoxCollider bc;
     AnchorGroup _extgroup;
     AnchorGroup _intgroup;
-    private IEnumerator coroutine;
+    private IEnumerator createcoroutine;
+    private IEnumerator deletecoroutine;
+    private IEnumerator checkcoroutine;
     public static bool isPR;
+    public static bool isHyBrid;
 
+    Dictionary<string, string> relationDict;
 
     void Start()
     {
 
+        GameObject relation = GameObject.Find("Relation Dictionary");
+
+        relationDict = relation.GetComponent<RelationDictionary>().getRelationship();
+
         isPR = LayoutController.globalPR;
+        isHyBrid = LayoutController.globalHybrid;
         GameObject exterior_group = GameObject.Find("Exterior Anchor Group");
         GameObject interior_group = GameObject.Find("Interior Anchor Group");
 
@@ -30,7 +39,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
         _anchObj = GetComponent<AnchorableBehaviour>();
 
-        Debug.Log("Name : " + gameObject.name + " tag: " + gameObject.tag + " isOIN " + LayoutController.isOwnInteriorView + " isbin " + LayoutController.isBillBoardInteriorView);
+        //Debug.Log("Name : " + gameObject.name + " tag: " + gameObject.tag + " isOIN " + LayoutController.isOwnInteriorView + " isbin " + LayoutController.isBillBoardInteriorView);
         if (tag == "Interior")
         {
             _anchObj.anchorGroup = _intgroup;
@@ -145,8 +154,8 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
             {
 
 
-                _anchObj.OnAttachedToAnchor += onAttachedToAnchor;
-                _anchObj.OnDetachedFromAnchor += onDetachedFromAnchor;
+                _anchObj.OnAttachedToAnchor += OnAttachedToAnchor;
+                _anchObj.OnDetachedFromAnchor += OnDetachedFromAnchor;
             }
 
 
@@ -163,8 +172,9 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
     }
 
-    void onAttachedToAnchor(AnchorableBehaviour anbobj, Anchor anchor)
+    void OnAttachedToAnchor(AnchorableBehaviour anbobj, Anchor anchor)
     {
+
         AttachObjectManager attachObjectList = anchor.GetComponentInParent<AttachObjectManager>();
         if (attachObjectList == null)
         {
@@ -178,24 +188,24 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                 attachObjectList.addInteriorObject(gameObject);
         }
 
-        if(isPR)
-        {
-            coroutine = DelayCopyComponent(gameObject, transform.position, transform.rotation, anchor.name);
-            StartCoroutine(coroutine);
-        }
-        else
-        {
-            //CreateCopyComponent(gameObject, transform.position, transform.rotation, anchor.name);
-        }
+        //if(isPR)
+        //{
+        //    createcoroutine = DelayCopyComponent(gameObject, transform.position, transform.rotation, anchor.name);
+        //    StartCoroutine(createcoroutine);
+        //}
+        //else
+        //{
+        //    //CreateCopyComponent(gameObject, transform.position, transform.rotation, anchor.name);
+        //}
 
 
 
     }
 
-    void onDetachedFromAnchor(AnchorableBehaviour anbobj, Anchor anchor)
+    void OnDetachedFromAnchor(AnchorableBehaviour anbobj, Anchor anchor)
     {
-        if (isPR)
-            StopCoroutine(coroutine);
+        //if (isPR)
+        //    StopCoroutine(createcoroutine);
 
 
         AttachObjectManager attachObjectList = anchor.GetComponentInParent<AttachObjectManager>();
@@ -211,8 +221,239 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                 attachObjectList.removeInteriorObject(gameObject);
         }
 
-        if(isPR)
-        DeleteCopyComponent(anchor);
+        //if(isPR)
+        //{
+        //    deletecoroutine = DelayDeleteCopyComponent(anchor);
+        //    StartCoroutine(deletecoroutine);
+        //}
+        
+    }
+
+    public void OnGraspBeginCheck(GameObject obj)
+    {
+
+        if (!isHyBrid)
+            return;
+
+        string name = obj.name.Remove(obj.name.Length - 7);
+        string related;
+        bool orignalfound = false;
+        Anchor originalAnchor = null;
+
+        if (relationDict.TryGetValue(name, out related))
+        {
+
+            //get previos anchor if any
+            GameObject layout;
+            if (isServer) layout = GameObject.Find("Mockup(server)");
+            else layout = GameObject.Find("Mockup(client)");
+            if (layout != null)
+            {
+
+                AttachObjectManager attachObject = layout.GetComponent<AttachObjectManager>();
+
+                List<GameObject> attachlist;
+                //switch because check another 
+                if (isServer) attachlist = attachObject.getExteriorList();
+                else attachlist = attachObject.getInteriorList();
+
+
+                foreach (GameObject o in attachlist)
+                {
+                    if (o.name == string.Format("{0}(Clone)(Clone)", related))
+                    {
+                        orignalfound = true;
+                        originalAnchor = o.GetComponent<AnchorableBehaviour>().anchor;
+                    }
+                }
+                
+            }
+
+            if(orignalfound)
+            {
+                if (isServer) RpcCheckRelation(related,originalAnchor.name);
+                else CmdCheckRelation(related, originalAnchor.name);
+            }
+            else
+            {
+                if (isServer) RpcCheckRelation(related, null);
+                else CmdCheckRelation(related, null);
+            }
+
+        }
+    }
+
+    [Command]
+    public void CmdCheckRelation(string name, string anchorname)
+    {
+        if (!isServer)
+            return;
+
+        GameObject layout = GameObject.Find("Mockup(server)");
+        if (layout != null)
+        {
+            List<GameObject> list = layout.GetComponent<AttachObjectManager>().getInteriorList();
+            bool found = false;
+            foreach (GameObject o in list)
+            {
+                if (o.name == string.Format("{0}(Clone)", name))
+                {
+                    found = true;
+                    //if found any in the list update information
+                    if(anchorname != null)
+                    {
+                        Debug.Log("emg transfer objects " + anchorname);
+                        o.GetComponent<AnchorNetworkInteractionAsync>().DeleteCopyComponent(anchorname);
+                    }
+                    Debug.Log("emg clone objects");
+                    o.GetComponent<AnchorNetworkInteractionAsync>().CreateCopyComponent(o, o.transform.position,
+                     o.transform.rotation, o.GetComponent<AnchorableBehaviour>().anchor.name);
+                }
+            }
+
+            if(!found)
+            {
+                GameObject relatedObject = GameObject.Find(string.Format("{0}(Clone)", name));
+                if(relatedObject !=null)
+                {
+                    Debug.Log("emg delete objects");
+                    if(relatedObject.GetComponent<AnchorableBehaviour>().anchor !=null)
+                    relatedObject.GetComponent<AnchorNetworkInteractionAsync>().DeleteCopyComponent(relatedObject.GetComponent<AnchorableBehaviour>().anchor);
+                }
+            }
+
+
+        }
+    }
+
+    [ClientRpc]
+    public void RpcCheckRelation(string name, string anchorname)
+    {
+        if (isServer)
+            return;
+
+        GameObject layout = GameObject.Find("Mockup(client)");
+        if (layout != null)
+        {
+            List<GameObject> list = layout.GetComponent<AttachObjectManager>().getExteriorList();
+            bool found = false;
+            foreach (GameObject o in list)
+            {
+                if (o.name == string.Format("{0}(Clone)", name))
+                {
+                    found = true;
+                    //if found any in the list update information
+                    if (anchorname != null)
+                    {
+                        Debug.Log("emg transfer objects " + anchorname);
+                        o.GetComponent<AnchorNetworkInteractionAsync>().DeleteCopyComponent(anchorname);
+                    }
+                    Debug.Log("emg clone objects");
+                    o.GetComponent<AnchorNetworkInteractionAsync>().CreateCopyComponent(o, o.transform.position,
+                         o.transform.rotation, o.GetComponent<AnchorableBehaviour>().anchor.name);
+                }
+            }
+
+            if (!found)
+            {
+                GameObject relatedObject = GameObject.Find(string.Format("{0}(Clone)", name));
+                if (relatedObject != null)
+                {
+                    if(relatedObject.GetComponent<AnchorableBehaviour>().anchor != null)
+                    {
+                        Debug.Log("emg delete objects");
+                        if (relatedObject.GetComponent<AnchorableBehaviour>().anchor != null)
+                            relatedObject.GetComponent<AnchorNetworkInteractionAsync>().DeleteCopyComponent(relatedObject.GetComponent<AnchorableBehaviour>().anchor);
+                    }
+                   
+                }
+            }
+
+        }
+    }
+
+    public void OnGraspEndCheckAnchor(GameObject obj)
+    {
+        if (isPR)
+        {
+            checkcoroutine = DelayCheckAnchor(obj);
+            StartCoroutine(checkcoroutine);
+        }
+
+    }
+
+    IEnumerator DelayCheckAnchor(GameObject obj)
+    {
+        yield return new WaitForSeconds(5.0f);
+        GameObject layout;
+
+        bool orignalfound = false;
+        bool billboardfound = false;
+        Anchor originalAnchor = null;
+        Anchor billboardAnchor=null;
+
+        if (isServer) layout = GameObject.Find("Mockup(server)");
+        else layout = GameObject.Find("Mockup(client)");
+
+        if (layout != null)
+        {
+            AttachObjectManager attachObject =  layout.GetComponent<AttachObjectManager>();
+
+            List<GameObject> attachlist;
+            if (isServer) attachlist = attachObject.getInteriorList();
+            else  attachlist = attachObject.getExteriorList();
+
+
+            foreach (GameObject o in attachlist)
+            {
+                if(o.Equals(obj))
+                {
+                    orignalfound = true;
+                    originalAnchor = o.GetComponent<AnchorableBehaviour>().anchor;
+                }
+            }
+        }
+
+        layout = GameObject.Find("Mockup(billboard)");
+        if (layout != null)
+        {
+            AttachObjectManager attachObject = layout.GetComponent<AttachObjectManager>();
+
+            List<GameObject> attachlist;
+            if (isServer) attachlist = attachObject.getInteriorList();
+            else attachlist = attachObject.getExteriorList();
+            foreach (GameObject o in attachlist)
+            {
+                if (o.name == string.Format("{0}(Clone)", obj.name))
+                {
+                    billboardfound = true;
+                    billboardAnchor = o.GetComponent<AnchorableBehaviour>().anchor;
+                }
+            }
+        }
+
+        if (orignalfound == false && billboardfound == true)
+        {
+            //remove in original remove objects in the copy
+            Debug.Log("Delete object");
+            DeleteCopyComponent(obj.GetComponent<AnchorableBehaviour>().anchor);
+        }
+        else if (orignalfound == true && billboardfound == false)
+        {
+            //add in original add objects to the copy
+            Debug.Log("Add object");
+            CreateCopyComponent(obj, obj.transform.position, obj.transform.rotation, obj.GetComponent<AnchorableBehaviour>().anchor.name);
+        }
+        else if ((orignalfound == true && billboardfound == true) )
+        {
+            if(originalAnchor.name != billboardAnchor.name)
+            {
+                Debug.Log("Transfer");
+                DeleteCopyComponent(billboardAnchor);
+                CreateCopyComponent(obj, obj.transform.position, obj.transform.rotation, obj.GetComponent<AnchorableBehaviour>().anchor.name);
+            }
+        }
+
     }
 
     public void DeleteCopyComponent(Anchor anchor)
@@ -291,7 +532,159 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
     }
 
+    public void DeleteCopyComponent(string anchor)
+    {
+        if (isServer)
+        {
 
+            GameObject layout = GameObject.Find("Mockup(billboard)");
+            if (layout != null)
+            {
+                Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
+                foreach (Anchor a in anchors)
+                {
+                    if (a.name == anchor)
+                    {
+                        if (a.anchoredObjects.Count > 0)
+                        {
+                            AnchorableBehaviour[] objs = new AnchorableBehaviour[a.anchoredObjects.Count];
+                            a.anchoredObjects.CopyTo(objs);
+
+                            if (objs[0] != null)
+                            {
+                                objs[0].Detach();
+
+                                if (objs[0].gameObject.tag == "Exterior" || objs[0].gameObject.tag == "BillboardEx")
+                                    layout.GetComponent<AttachObjectManager>().removeExteriorObject(objs[0].gameObject);
+                                else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
+                                    layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
+
+                                DestroyObject(objs[0].gameObject);
+                            }
+                        }
+                    }
+                }
+
+            }
+            RpcDeleteObject(anchor);
+        }
+        else
+        {
+            //Destroy client bill board objects
+            GameObject layout = GameObject.Find("Mockup(billboard)");
+            if (layout != null)
+            {
+                Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
+                foreach (Anchor a in anchors)
+                {
+                    if (a.name == anchor)
+                    {
+                        if (a.anchoredObjects.Count > 0)
+                        {
+                            AnchorableBehaviour[] objs = new AnchorableBehaviour[a.anchoredObjects.Count];
+                            a.anchoredObjects.CopyTo(objs);
+
+                            if (objs[0] != null)
+                            {
+                                objs[0].Detach();
+
+                                if (objs[0].gameObject.tag == "Exterior" || objs[0].gameObject.tag == "BillboardEx")
+                                    layout.GetComponent<AttachObjectManager>().removeExteriorObject(objs[0].gameObject);
+                                else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
+                                    layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
+
+                                DestroyObject(objs[0].gameObject);
+                            }
+                        }
+                    }
+                }
+
+
+            }
+            //Destroy server and server billboard object
+            CmdDeleteObject(anchor);
+        }
+
+    }
+
+    IEnumerator DelayDeleteCopyComponent(Anchor anchor)
+    {
+
+        yield return new WaitForSeconds(3.0f);
+        if (isServer)
+        {
+
+            GameObject layout = GameObject.Find("Mockup(billboard)");
+            if (layout != null)
+            {
+                Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
+                foreach (Anchor a in anchors)
+                {
+                    if (a.name == anchor.name)
+                    {
+                        if (a.anchoredObjects.Count > 0)
+                        {
+                            AnchorableBehaviour[] objs = new AnchorableBehaviour[a.anchoredObjects.Count];
+                            a.anchoredObjects.CopyTo(objs);
+
+                            if (objs[0] != null)
+                            {
+                                objs[0].Detach();
+
+                                if (objs[0].gameObject.tag == "Exterior" || objs[0].gameObject.tag == "BillboardEx")
+                                    layout.GetComponent<AttachObjectManager>().removeExteriorObject(objs[0].gameObject);
+                                else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
+                                    layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
+
+                                DestroyObject(objs[0].gameObject);
+                            }
+                        }
+                    }
+                }
+
+            }
+            RpcDeleteObject(anchor.name);
+        }
+        else
+        {
+            //Destroy client bill board objects
+            GameObject layout = GameObject.Find("Mockup(billboard)");
+            if (layout != null)
+            {
+                Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
+                foreach (Anchor a in anchors)
+                {
+                    if (a.name == anchor.name)
+                    {
+                        if (a.anchoredObjects.Count > 0)
+                        {
+                            AnchorableBehaviour[] objs = new AnchorableBehaviour[a.anchoredObjects.Count];
+                            a.anchoredObjects.CopyTo(objs);
+
+                            if (objs[0] != null)
+                            {
+                                objs[0].Detach();
+
+                                if (objs[0].gameObject.tag == "Exterior" || objs[0].gameObject.tag == "BillboardEx")
+                                    layout.GetComponent<AttachObjectManager>().removeExteriorObject(objs[0].gameObject);
+                                else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
+                                    layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
+
+                                DestroyObject(objs[0].gameObject);
+                            }
+                        }
+                    }
+                }
+
+
+            }
+            //Destroy server and server billboard object
+            CmdDeleteObject(anchor.name);
+        }
+
+    }
+
+    
     [Command]
     void CmdDeleteObject(string name)
     {
@@ -470,7 +863,6 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                 GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
                 o.GetComponent<BoxCollider>().enabled = false;
                 o.GetComponent<Rigidbody>().isKinematic = true;
-                o.name = o.name + "billboard";
                 if (o.tag == "Exterior")
                     o.tag = "BillboardEx";
                 else if (o.tag == "Interior")
@@ -680,7 +1072,6 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                 GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
                 o.GetComponent<BoxCollider>().enabled = false;
                 o.GetComponent<Rigidbody>().isKinematic = true;
-                o.name = o.name + "billboard";
                 if (o.tag == "Exterior")
                     o.tag = "BillboardEx";
                 else if (o.tag == "Interior")
