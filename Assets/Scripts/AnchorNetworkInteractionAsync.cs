@@ -26,7 +26,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
         GameObject relation = GameObject.Find("Relation Dictionary");
 
-        relationDict = relation.GetComponent<RelationDictionary>().getRelationship();
+        relationDict = relation.GetComponent<RelationDictionary>().GetRelationship();
 
         isPR = LayoutController.globalPR;
         isHyBrid = LayoutController.globalHybrid;
