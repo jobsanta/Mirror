@@ -234,6 +234,7 @@ a1bd51472deaf5e09fd19603c6063289 Assembly-CSharp.dll:Leap.Unity.Space.LeapSpaceA
 d60795789e6f0b89266e69f672546749 Assembly-CSharp.dll:Leap.Unity.Interaction.AnchorScoreTest
 5ed935b5a777826f463ab9976bc1a5d7 Assembly-CSharp.dll:Leap.Unity.EnableDepthBuffer
 1e9c3079a441c0c7ae003aa4b709d040 Assembly-CSharp.dll:Leap.Unity.RiggedFinger
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ConflictDictionary
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Leap.Unity.Examples.IgnoreCollisionsInChildren
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CollisionController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Leap.Unity.HandDrop

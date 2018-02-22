@@ -498,13 +498,13 @@
     <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\InteractionControllerSwitcher.cs" />
     <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\KabschSolver.cs" />
     <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\PhysicsCallbacks.cs" />
-    <Compile Include="Assets\RelationDictionary.cs" />
     <Compile Include="Assets\Scripts\AnchorNetworkInteraction.cs" />
     <Compile Include="Assets\Scripts\AnchorNetworkInteractionAsync.cs" />
     <Compile Include="Assets\Scripts\AttachObjectManager.cs" />
     <Compile Include="Assets\Scripts\BillboardController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CollisionController.cs" />
+    <Compile Include="Assets\Scripts\ConflictDictionary.cs" />
     <Compile Include="Assets\Scripts\ControlPanelController.cs" />
     <Compile Include="Assets\Scripts\CustomNetworkManager.cs" />
     <Compile Include="Assets\Scripts\EnableEventRelay.cs" />
@@ -533,6 +533,7 @@
     <Compile Include="Assets\Scripts\NetworkSkeleton.cs" />
     <Compile Include="Assets\Scripts\ObjectSpawner.cs" />
     <Compile Include="Assets\Scripts\ObjectSpawnerAsync.cs" />
+    <Compile Include="Assets\Scripts\RelationDictionary.cs" />
     <Compile Include="Assets\Scripts\RigidBodyController.cs" />
     <Compile Include="Assets\Scripts\RigidBodyControllerAsync.cs" />
     <Compile Include="Assets\Scripts\SliderController.cs" />

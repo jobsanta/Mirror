@@ -20,6 +20,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
     public static bool isHyBrid;
 
     Dictionary<string, string> relationDict;
+    Dictionary<string, List<ConflictPair>> conflictDict;
 
     void Start()
     {
@@ -27,6 +28,10 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
         GameObject relation = GameObject.Find("Relation Dictionary");
 
         relationDict = relation.GetComponent<RelationDictionary>().GetRelationship();
+
+        GameObject conflict = GameObject.Find("Conflict Dictionary");
+
+        conflictDict = conflict.GetComponent<ConflictDictionary>().getConflictDictionary();
 
         isPR = LayoutController.globalPR;
         isHyBrid = LayoutController.globalHybrid;
@@ -68,6 +73,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
         }
         else if (tag == "BillboardInterior")
         {
+            checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, true, "Mockup(billboard)");
             if (LayoutController.isBillBoardInteriorView)
             {
                 if (LayoutController.thisisServer && _anchObj.transform.position.z > 0)
@@ -120,6 +126,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
         }
         else if (tag == "BillboardEx")
         {
+            checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, false, "Mockup(billboard)");
             if (LayoutController.isBillBoardInteriorView)
             {
                 if (LayoutController.thisisServer && _anchObj.transform.position.z > 0)
@@ -172,6 +179,46 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
     }
 
+    void checkConflict(GameObject obj, string anchorname, bool isInterior, string Layoutname)
+    {
+        GameObject layout = GameObject.Find(Layoutname);
+        if (layout != null)
+        {
+            List<GameObject> attachList;
+
+            if(isInterior) attachList = layout.GetComponent<AttachObjectManager>().getExteriorList();
+            else attachList = layout.GetComponent<AttachObjectManager>().getInteriorList();
+
+
+            //"Inner Component Capsule Async"
+            string[] split=obj.name.Split('(');
+
+            Debug.Log(split[0]);
+            List<ConflictPair> conflicted;
+            if (conflictDict.TryGetValue(split[0], out conflicted))
+            {
+
+                List<ConflictPair> possible_conflict = conflicted.FindAll(x => x.Conflict_in == anchorname);
+                //("Anchor Point 1", "Exterior Anchor Point 1", "Exter Component Capsule Async"));
+                //("Anchor Point 2", "Exterior Anchor Point 2", "Exter Component Capsule Async"));
+                //("Anchor Point 3", "Exterior Anchor Point 3", "Exter Component Capsule Async"));
+                //("Anchor Point 4", "Exterior Anchor Point 4", "Exter Component Capsule Async"));
+                foreach (ConflictPair cp in possible_conflict)
+                {
+                    foreach (GameObject l in attachList)
+                    {
+                        string[] l_split = l.name.Split('(');
+                        Debug.Log(l_split[0]);
+                        if (cp.Conflict_name == l_split[0] && l.GetComponent<AnchorableBehaviour>().anchor.name == cp.Conflict_out)
+                        {
+                            Debug.Log("Conflict found at" + split[0]+"-"+cp.Conflict_in + "-" + cp.Conflict_name + "-" + cp.Conflict_out);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     void OnAttachedToAnchor(AnchorableBehaviour anbobj, Anchor anchor)
     {
 
@@ -183,9 +230,22 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
         else
         {
             if (gameObject.tag == "Exterior" || gameObject.tag == "BillboardEx")
+            {
                 attachObjectList.addExteriorObject(gameObject);
+
+                if(isServer) checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, false, "Mockup(server)");
+                else checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, false, "Mockup(client)");
+            }
+
             else if (gameObject.tag == "Interior" || gameObject.tag == "BillboardInterior")
+            {
                 attachObjectList.addInteriorObject(gameObject);
+
+                if (isServer) checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, true, "Mockup(server)");
+                else checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, true, "Mockup(client)");
+            }
+                
+            
         }
 
         //if(isPR)
