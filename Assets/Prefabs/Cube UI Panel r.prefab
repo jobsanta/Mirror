@@ -873,7 +873,7 @@ MonoBehaviour:
   overrideRectLimits: 0
   _parentHasRectTransform: 1
   defaultHorizontalValue: 0
-  horizontalValueRange: {x: 0, y: 180}
+  _horizontalValueRange: {x: 0, y: 179}
   horizontalSlideLimits: {x: -0.08882, y: 0.08882}
   horizontalSteps: 0
   _horizontalSlideEvent:
@@ -893,7 +893,7 @@ MonoBehaviour:
     m_TypeName: Leap.Unity.Interaction.InteractionSlider+FloatEvent, Assembly-CSharp,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   defaultVerticalValue: 0
-  verticalValueRange: {x: 0, y: 180}
+  _verticalValueRange: {x: 0, y: 179}
   verticalSlideLimits: {x: -0.065655, y: 0.065655}
   verticalSteps: 0
   _verticalSlideEvent:
@@ -980,7 +980,7 @@ MonoBehaviour:
   overrideRectLimits: 0
   _parentHasRectTransform: 1
   defaultHorizontalValue: 0
-  horizontalValueRange: {x: -0.2, y: 0.2}
+  _horizontalValueRange: {x: -0.3, y: 0.3}
   horizontalSlideLimits: {x: -0.08882, y: 0.08882}
   horizontalSteps: 0
   _horizontalSlideEvent:
@@ -1000,7 +1000,7 @@ MonoBehaviour:
     m_TypeName: Leap.Unity.Interaction.InteractionSlider+FloatEvent, Assembly-CSharp,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   defaultVerticalValue: 0.2
-  verticalValueRange: {x: 0.12, y: 0.3}
+  _verticalValueRange: {x: 0.1, y: 0.3}
   verticalSlideLimits: {x: -0.065655, y: 0.065655}
   verticalSteps: 0
   _verticalSlideEvent:

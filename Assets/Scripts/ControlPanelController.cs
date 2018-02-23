@@ -16,18 +16,26 @@ public class ControlPanelController : MonoBehaviour {
     GameObject player;
     LayoutController controller;
 
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-
-        if (player != null)
-        {
-            controller = player.GetComponent<LayoutController>();
-        }  
-    }
 	// Update is called once per frame
-	void LateUpdate () {
+	void LateUpdate () 
+        {
+        //if (player == null)
+        //{
+        //    player = GameObject.FindGameObjectWithTag("Player");
 
+        //    if (player != null)
+        //    {
+        //        controller = player.GetComponent<LayoutController>();
+        //        InteractionButton[] buttons = gameObject.GetComponentsInChildren<InteractionButton>();
+        //        Debug.Log(buttons.Length);
+        //        for (int i = 0; i < buttons.Length; i++)
+        //        {
+        //            Debug.Log(buttons[i].name);
+        //            buttons[i].manager = player.GetComponentInChildren<InteractionManager>();
+        //        }
+        //    }
+        //}
+        
         Vector3 offset = new Vector3(-0.1f,-0.025f,0.55f);
 
         if (Left)

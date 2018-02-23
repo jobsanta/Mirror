@@ -8,7 +8,6 @@
  ******************************************************************************/
 
 using UnityEngine;
-using UnityEngine.VR;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -339,8 +338,10 @@ namespace Leap.Unity {
         _shouldSetLocalPosition = false;
       }
 
-      if (Input.GetKeyDown(_recenter) && UnityEngine.XR.XRSettings.enabled && UnityEngine.XR.XRDevice.isPresent) {
-        UnityEngine.XR.InputTracking.Recenter();
+      if (Input.GetKeyDown(_recenter)
+          && XRSupportUtil.IsXREnabled()
+          && XRSupportUtil.IsXRDevicePresent()) {
+        XRSupportUtil.Recenter();
       }
 
       // Manual Time Alignment
@@ -359,31 +360,31 @@ namespace Leap.Unity {
     protected void LateUpdate() {
       if (_forceCustomUpdate) {
         ManuallyUpdateTemporalWarping();
-      } else if (UnityEngine.XR.XRSettings.enabled) {
-        updateTemporalWarping(UnityEngine.XR.InputTracking.GetLocalPosition(UnityEngine.XR.XRNode.CenterEye),
-                              UnityEngine.XR.InputTracking.GetLocalRotation(UnityEngine.XR.XRNode.CenterEye));
+      } else if (XRSupportUtil.IsXREnabled()) {
+        updateTemporalWarping(XRSupportUtil.GetXRNodeCenterEyeLocalPosition(),
+                              XRSupportUtil.GetXRNodeCenterEyeLocalRotation());
       }
     }
 
     private void onValidCameraParams(LeapVRCameraControl.CameraParams cameraParams) {
       _projectionMatrix = cameraParams.ProjectionMatrix;
 
-      if (UnityEngine.XR.XRSettings.enabled) {
+      if (XRSupportUtil.IsXREnabled()) {
         if (provider != null) {
-          updateHistory(UnityEngine.XR.InputTracking.GetLocalPosition(UnityEngine.XR.XRNode.CenterEye),
-                        UnityEngine.XR.InputTracking.GetLocalRotation(UnityEngine.XR.XRNode.CenterEye));
+          updateHistory(XRSupportUtil.GetXRNodeCenterEyeLocalPosition(),
+                        XRSupportUtil.GetXRNodeCenterEyeLocalRotation());
         }
 
         if (_syncMode == SyncMode.LOW_LATENCY) {
-          updateTemporalWarping(UnityEngine.XR.InputTracking.GetLocalPosition(UnityEngine.XR.XRNode.CenterEye),
-                                UnityEngine.XR.InputTracking.GetLocalRotation(UnityEngine.XR.XRNode.CenterEye));
+          updateTemporalWarping(XRSupportUtil.GetXRNodeCenterEyeLocalPosition(),
+                                XRSupportUtil.GetXRNodeCenterEyeLocalRotation());
         }
       }
     }
 
-    #endregion
+#endregion
 
-    #region Temporal Warping
+#region Temporal Warping
 
     private LeapDeviceInfo _deviceInfo;
     private Matrix4x4 _projectionMatrix;
@@ -470,9 +471,9 @@ namespace Leap.Unity {
       return TransformData.Lerp(_history[t - 1], _history[t], time);
     }
 
-    #endregion
+#endregion
 
-    #region Support
+#region Support
 
     public enum WarpedAnchor {
       CENTER,
@@ -508,7 +509,7 @@ namespace Leap.Unity {
       }
     }
 
-    #endregion
+#endregion
 
   }
 

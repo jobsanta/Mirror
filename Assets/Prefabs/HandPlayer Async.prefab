@@ -3539,6 +3539,8 @@ MonoBehaviour:
   _isHeadMounted: 0
   _temporalWarping: {fileID: 0}
   _frameOptimization: 0
+  _physicsExtrapolation: 1
+  _physicsExtrapolationTime: 0.011111111
   _updateHandInPrecull: 0
 --- !u!114 &114000011576985558
 MonoBehaviour:
@@ -3703,22 +3705,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0ed5922e911b343b8400997c95409c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  group:
-    GroupName: 
-    _handPool: {fileID: 0}
-    LeftModel: {fileID: 0}
-    IsLeftToBeSpawned: 0
-    RightModel: {fileID: 0}
-    IsRightToBeSpawned: 0
-    modelList: []
-    modelsCheckedOut: []
-    IsEnabled: 1
-    CanDuplicate: 0
-    HandPostProcesses:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: Leap.Unity.Hands+HandEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
   handedness: 1
   handModelPalmWidth: 0.085
   fingers:
@@ -3801,22 +3787,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0ed5922e911b343b8400997c95409c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  group:
-    GroupName: 
-    _handPool: {fileID: 0}
-    LeftModel: {fileID: 0}
-    IsLeftToBeSpawned: 0
-    RightModel: {fileID: 0}
-    IsRightToBeSpawned: 0
-    modelList: []
-    modelsCheckedOut: []
-    IsEnabled: 1
-    CanDuplicate: 0
-    HandPostProcesses:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: Leap.Unity.Hands+HandEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
   handedness: 0
   handModelPalmWidth: 0.085
   fingers:
@@ -3858,8 +3828,6 @@ MonoBehaviour:
     IsLeftToBeSpawned: 0
     RightModel: {fileID: 114000012883968422}
     IsRightToBeSpawned: 0
-    modelList: []
-    modelsCheckedOut: []
     IsEnabled: 1
     CanDuplicate: 0
     HandPostProcesses:
@@ -3941,7 +3909,7 @@ MonoBehaviour:
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _trackingProviderType: Leap.Unity.Interaction.DefaultVRNodeTrackingProvider
+  _trackingProviderType: Leap.Unity.Interaction.DefaultXRNodeTrackingProvider
   _deviceJoystickTokens: oculus touch right
   _chirality: 1
   _hoverPoint: {fileID: 4747125431615632}
@@ -4045,7 +4013,7 @@ MonoBehaviour:
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _trackingProviderType: Leap.Unity.Interaction.DefaultVRNodeTrackingProvider
+  _trackingProviderType: Leap.Unity.Interaction.DefaultXRNodeTrackingProvider
   _deviceJoystickTokens: openvr controller left
   _chirality: 0
   _hoverPoint: {fileID: 4131482904455678}
@@ -4098,8 +4066,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc2a629342de6b459d6fe27c8cb3308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPR: 0
-  isHybrid: 1
+  isPR: 1
+  isHybrid: 0
 --- !u!114 &114412223268443922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4186,7 +4154,7 @@ MonoBehaviour:
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _trackingProviderType: Leap.Unity.Interaction.DefaultVRNodeTrackingProvider
+  _trackingProviderType: Leap.Unity.Interaction.DefaultXRNodeTrackingProvider
   _deviceJoystickTokens: openvr controller right
   _chirality: 1
   _hoverPoint: {fileID: 4831906277161776}
@@ -4223,7 +4191,7 @@ MonoBehaviour:
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _trackingProviderType: Leap.Unity.Interaction.DefaultVRNodeTrackingProvider
+  _trackingProviderType: Leap.Unity.Interaction.DefaultXRNodeTrackingProvider
   _deviceJoystickTokens: oculus touch left
   _chirality: 0
   _hoverPoint: {fileID: 4714185816496254}
@@ -4342,6 +4310,8 @@ MonoBehaviour:
   panelPrefabL: {fileID: 1851270718450528, guid: df19c1b2aedf56248b2dedcb2ee6eb95,
     type: 2}
   panelPrefabR: {fileID: 1851270718450528, guid: 6b0319cb2a7b5c04a922ae1204faa185,
+    type: 2}
+  TransformTool: {fileID: 1103588776523428, guid: 12e473c506bd6bf47af39263573ee3fb,
     type: 2}
 --- !u!136 &136094420565486906
 CapsuleCollider:

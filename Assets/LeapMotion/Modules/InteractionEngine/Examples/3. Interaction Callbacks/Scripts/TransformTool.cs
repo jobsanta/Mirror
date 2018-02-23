@@ -26,6 +26,8 @@ namespace Leap.Unity.Examples {
     [Tooltip("The target object to be moved by this tool.")]
     public Transform target;
 
+    public bool Enable { set; get; }
+
     private Vector3    _moveBuffer = Vector3.zero;
     private Quaternion _rotateBuffer = Quaternion.identity;
 
@@ -47,7 +49,11 @@ namespace Leap.Unity.Examples {
       PhysicsCallbacks.OnPostPhysics += onPostPhysics;
     }
 
+
+
     void Update() {
+    if (!Enable)
+        return;
       // Enable or disable handles based on hand proximity and tool state.
       updateHandles();
     }
@@ -71,11 +77,12 @@ namespace Leap.Unity.Examples {
     }
 
     private void onPostPhysics() {
-      // Hooked up via PhysicsCallbacks in Start(), this method will run after
-      // FixedUpdate and after PhysX has run. We take the opportunity to immediately
-      // manipulate the target object's and this object's transforms using the
-      // accumulated information about movement and rotation from the Transform Handles.
-
+            // Hooked up via PhysicsCallbacks in Start(), this method will run after
+            // FixedUpdate and after PhysX has run. We take the opportunity to immediately
+            // manipulate the target object's and this object's transforms using the
+            // accumulated information about movement and rotation from the Transform Handles.
+        if (!Enable)
+            return;
       // Apply accumulated movement and rotation to target object.
       target.transform.rotation = _rotateBuffer * target.transform.rotation;
       this.transform.rotation = target.transform.rotation;

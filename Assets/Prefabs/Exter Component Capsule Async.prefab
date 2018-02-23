@@ -208,11 +208,12 @@ MonoBehaviour:
   _motionlessRangeFraction: 0.4
   _maxMotionlessRange: 0.040000003
   _maxAttachmentAngle: 60
+  _alwaysAttachDistance: 0
   lockToAnchor: 1
   lockWhenAttached: 1
   matchAnchorMotionWhileAttaching: 1
   anchorLerpCoeffPerSec: 20
-  anchorRotation: 0
+  anchorRotation: 1
   interactionBehaviour: {fileID: 114475029168285922}
   _interactionBehaviourIsNull: 0
   detachWhenGrasped: 1

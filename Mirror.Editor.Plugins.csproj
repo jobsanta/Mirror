@@ -311,7 +311,6 @@
     <None Include="Assets\LeapMotion\Core\Resources\PassthroughForeground.shader" />
     <None Include="Assets\LeapMotion\Core\Resources\RuntimeGizmos.shader" />
     <None Include="Assets\LeapMotion\Core\Resources\ThresholdOverlay.shader" />
-    <None Include="Assets\LeapMotion\Core\Resources\VOSvision.shader" />
     <None Include="Assets\LeapMotion\Core\Resources\VertexOffsetShader.shader" />
     <None Include="Assets\LeapMotion\Core\Version.txt" />
     <None Include="Assets\LeapMotion\Core\readme.txt" />

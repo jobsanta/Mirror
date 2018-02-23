@@ -81,8 +81,9 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
 
     }
 
-    void onAttachedToAnchor(AnchorableBehaviour anbobj, Anchor anchor)
+    void onAttachedToAnchor()
     {
+        Anchor anchor = gameObject.GetComponent<AnchorableBehaviour>().anchor;
         AttachObjectManager attachObjectList =  anchor.GetComponentInParent<AttachObjectManager>();
         if (attachObjectList == null)
         {
@@ -101,8 +102,9 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
 
     }
 
-    void onDetachedFromAnchor(AnchorableBehaviour anbobj, Anchor anchor)
+    void onDetachedFromAnchor()
     {
+        Anchor anchor = gameObject.GetComponent<AnchorableBehaviour>().anchor;
         if (isServer)
         {
             GameObject layout = GameObject.Find("Mockup(client)");
@@ -242,9 +244,9 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
     }
 
 
-    private void whileAttachedToAnchor(AnchorableBehaviour anbobj, Anchor anchor)
+    private void whileAttachedToAnchor()
     {
-
+        Anchor anchor = gameObject.GetComponent<AnchorableBehaviour>().anchor;
         // Debug.Log("Transform object");
         Transform t = anchor.transform;
 

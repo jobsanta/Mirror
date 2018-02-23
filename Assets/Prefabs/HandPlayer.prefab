@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 114813206682745306}
   - component: {fileID: 114624742121974180}
   - component: {fileID: 114845388807811480}
-  - component: {fileID: 114894743648234428}
+  - component: {fileID: 114252713297137280}
   - component: {fileID: 114000011633675166}
   - component: {fileID: 114000011891052432}
   - component: {fileID: 114000013849350932}
@@ -3955,6 +3955,8 @@ MonoBehaviour:
   _isHeadMounted: 0
   _temporalWarping: {fileID: 0}
   _frameOptimization: 0
+  _physicsExtrapolation: 1
+  _physicsExtrapolationTime: 0.011111111
   _updateHandInPrecull: 0
 --- !u!114 &114000011539380762
 MonoBehaviour:
@@ -4463,22 +4465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0ed5922e911b343b8400997c95409c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  group:
-    GroupName: 
-    _handPool: {fileID: 0}
-    LeftModel: {fileID: 0}
-    IsLeftToBeSpawned: 0
-    RightModel: {fileID: 0}
-    IsRightToBeSpawned: 0
-    modelList: []
-    modelsCheckedOut: []
-    IsEnabled: 1
-    CanDuplicate: 0
-    HandPostProcesses:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: Leap.Unity.Hands+HandEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
   handedness: 1
   handModelPalmWidth: 0.085
   fingers:
@@ -4618,22 +4604,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0ed5922e911b343b8400997c95409c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  group:
-    GroupName: 
-    _handPool: {fileID: 0}
-    LeftModel: {fileID: 0}
-    IsLeftToBeSpawned: 0
-    RightModel: {fileID: 0}
-    IsRightToBeSpawned: 0
-    modelList: []
-    modelsCheckedOut: []
-    IsEnabled: 1
-    CanDuplicate: 0
-    HandPostProcesses:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: Leap.Unity.Hands+HandEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
   handedness: 0
   handModelPalmWidth: 0.085
   fingers:
@@ -4675,8 +4645,6 @@ MonoBehaviour:
     IsLeftToBeSpawned: 0
     RightModel: {fileID: 114000012883968422}
     IsRightToBeSpawned: 0
-    modelList: []
-    modelsCheckedOut: []
     IsEnabled: 1
     CanDuplicate: 0
     HandPostProcesses:
@@ -5043,7 +5011,7 @@ MonoBehaviour:
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _trackingProviderType: Leap.Unity.Interaction.DefaultVRNodeTrackingProvider
+  _trackingProviderType: Leap.Unity.Interaction.DefaultXRNodeTrackingProvider
   _deviceJoystickTokens: oculus touch right
   _chirality: 1
   _hoverPoint: {fileID: 4747125431615632}
@@ -5147,7 +5115,7 @@ MonoBehaviour:
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _trackingProviderType: Leap.Unity.Interaction.DefaultVRNodeTrackingProvider
+  _trackingProviderType: Leap.Unity.Interaction.DefaultXRNodeTrackingProvider
   _deviceJoystickTokens: openvr controller left
   _chirality: 0
   _hoverPoint: {fileID: 4131482904455678}
@@ -5158,6 +5126,37 @@ MonoBehaviour:
   maxGraspDistance: 0.06
   graspButtonAxis: LeftVRTriggerAxis
   graspTimingSlop: 0.1
+--- !u!114 &114252713297137280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010726267020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8535e2fec146024b93b42cd20d9d25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 1074629180401056, guid: cedad7243df521648adb727d9781877e,
+    type: 2}
+  billboardPrefab: {fileID: 0}
+  numberOfObjects: 4
+  ServerComponentPrefab:
+  - {fileID: 1515384863940076, guid: 6eb71df277d7f5843aafb7c4433c18ff, type: 2}
+  - {fileID: 1216678141426808, guid: 4316ab8620c77234abe74bd48f8716ee, type: 2}
+  - {fileID: 1369122640442158, guid: 49dd06c1a1e714b4b9a0aa42e367ecab, type: 2}
+  - {fileID: 1839339273884742, guid: b61babc48c58a0f409d0232b1dd4260a, type: 2}
+  ClientComponentPrefab:
+  - {fileID: 1515384863940076, guid: f3b87abc8632ab048b789cadc03c1dec, type: 2}
+  - {fileID: 1216678141426808, guid: 26b57dd7cb8b4d84ab5a8c550bfc5177, type: 2}
+  - {fileID: 1369122640442158, guid: 6df1dcd6e4dd7ba43819f96ce3e16861, type: 2}
+  - {fileID: 1839339273884742, guid: 340ccab1b1f82d44db6e62bef23643ce, type: 2}
+  panelPrefabL: {fileID: 1851270718450528, guid: 7f058cb550cee174091e52fc14aeefbe,
+    type: 2}
+  panelPrefabR: {fileID: 1851270718450528, guid: 6b0319cb2a7b5c04a922ae1204faa185,
+    type: 2}
+  TransformTool: {fileID: 1103588776523428, guid: 12e473c506bd6bf47af39263573ee3fb,
+    type: 2}
 --- !u!114 &114343203791661874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5183,11 +5182,11 @@ MonoBehaviour:
   _templateLayer:
     layerIndex: 0
   _interactionLayer:
-    layerIndex: 11
-  _interactionNoContactLayer:
     layerIndex: 12
-  _contactBoneLayer:
+  _interactionNoContactLayer:
     layerIndex: 13
+  _contactBoneLayer:
+    layerIndex: 14
   _drawControllerRuntimeGizmos: 0
 --- !u!114 &114412223268443922
 MonoBehaviour:
@@ -5275,7 +5274,7 @@ MonoBehaviour:
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _trackingProviderType: Leap.Unity.Interaction.DefaultVRNodeTrackingProvider
+  _trackingProviderType: Leap.Unity.Interaction.DefaultXRNodeTrackingProvider
   _deviceJoystickTokens: openvr controller right
   _chirality: 1
   _hoverPoint: {fileID: 4831906277161776}
@@ -5312,7 +5311,7 @@ MonoBehaviour:
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _trackingProviderType: Leap.Unity.Interaction.DefaultVRNodeTrackingProvider
+  _trackingProviderType: Leap.Unity.Interaction.DefaultXRNodeTrackingProvider
   _deviceJoystickTokens: oculus touch left
   _chirality: 0
   _hoverPoint: {fileID: 4714185816496254}
@@ -5385,6 +5384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc2a629342de6b459d6fe27c8cb3308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPR: 0
+  isHybrid: 0
 --- !u!114 &114848343683076330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5413,34 +5414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c3b6f9e7a282941977291a82b4e7f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114894743648234428
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010726267020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8535e2fec146024b93b42cd20d9d25c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPrefab: {fileID: 1074629180401056, guid: cedad7243df521648adb727d9781877e,
-    type: 2}
-  numberOfObjects: 4
-  ServerComponentPrefab:
-  - {fileID: 1216678141426808, guid: 4316ab8620c77234abe74bd48f8716ee, type: 2}
-  - {fileID: 1515384863940076, guid: 6eb71df277d7f5843aafb7c4433c18ff, type: 2}
-  - {fileID: 1369122640442158, guid: 49dd06c1a1e714b4b9a0aa42e367ecab, type: 2}
-  - {fileID: 1839339273884742, guid: b61babc48c58a0f409d0232b1dd4260a, type: 2}
-  ClientComponentPrefab:
-  - {fileID: 1216678141426808, guid: 26b57dd7cb8b4d84ab5a8c550bfc5177, type: 2}
-  - {fileID: 1515384863940076, guid: f3b87abc8632ab048b789cadc03c1dec, type: 2}
-  - {fileID: 1369122640442158, guid: 6df1dcd6e4dd7ba43819f96ce3e16861, type: 2}
-  - {fileID: 1839339273884742, guid: 340ccab1b1f82d44db6e62bef23643ce, type: 2}
-  panelPrefabL: {fileID: 1851270718450528, guid: 7f058cb550cee174091e52fc14aeefbe,
-    type: 2}
-  panelPrefabR: {fileID: 1851270718450528, guid: 6b0319cb2a7b5c04a922ae1204faa185,
-    type: 2}
 --- !u!136 &136094420565486906
 CapsuleCollider:
   m_ObjectHideFlags: 1

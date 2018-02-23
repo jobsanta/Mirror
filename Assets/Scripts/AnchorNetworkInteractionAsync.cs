@@ -219,9 +219,9 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
         }
     }
 
-    void OnAttachedToAnchor(AnchorableBehaviour anbobj, Anchor anchor)
+    void OnAttachedToAnchor()
     {
-
+        Anchor anchor = gameObject.GetComponent<AnchorableBehaviour>().anchor;
         AttachObjectManager attachObjectList = anchor.GetComponentInParent<AttachObjectManager>();
         if (attachObjectList == null)
         {
@@ -262,12 +262,12 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
     }
 
-    void OnDetachedFromAnchor(AnchorableBehaviour anbobj, Anchor anchor)
+    void OnDetachedFromAnchor()
     {
         //if (isPR)
         //    StopCoroutine(createcoroutine);
 
-
+        Anchor anchor = gameObject.GetComponent<AnchorableBehaviour>().anchor;
         AttachObjectManager attachObjectList = anchor.GetComponentInParent<AttachObjectManager>();
         if (attachObjectList == null)
         {
@@ -1155,9 +1155,9 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
     }
 
 
-    private void whileAttachedToAnchor(AnchorableBehaviour anbobj, Anchor anchor)
+    private void whileAttachedToAnchor()
     {
-
+        Anchor anchor = gameObject.GetComponent<AnchorableBehaviour>().anchor;
         // Debug.Log("Transform object");
         Transform t = anchor.transform;
 
