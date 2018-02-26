@@ -21,7 +21,9 @@ public class HandPlayer : NetworkBehaviour
             for (int i = 0; i < removeGameObjectsIfNonLocal.Length; i++)
             {
                 if (removeGameObjectsIfNonLocal[i] == null) continue;
+                Debug.Log(removeGameObjectsIfNonLocal[i].name);
                 Destroy(removeGameObjectsIfNonLocal[i]);
+               
             }
 
             // we need to get rid everything except the raw transforms

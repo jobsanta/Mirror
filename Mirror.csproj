@@ -518,6 +518,7 @@
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CollisionController.cs" />
     <Compile Include="Assets\Scripts\ConflictDictionary.cs" />
+    <Compile Include="Assets\Scripts\ConflictDictionarySync.cs" />
     <Compile Include="Assets\Scripts\ControlPanelController.cs" />
     <Compile Include="Assets\Scripts\CustomNetworkManager.cs" />
     <Compile Include="Assets\Scripts\EnableEventRelay.cs" />
