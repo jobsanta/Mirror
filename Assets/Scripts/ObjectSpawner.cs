@@ -35,7 +35,7 @@ public class ObjectSpawner : NetworkBehaviour {
 
             Vector3 spawnPosition;
             
-            spawnPosition = new Vector3(0.0f, 0.2f, 0.10f);
+            spawnPosition = new Vector3(0.0f, 0.15f, 0.15f);
 
             CmdCreateBox(spawnPosition, Color.red);
 
@@ -43,7 +43,7 @@ public class ObjectSpawner : NetworkBehaviour {
                 CreateBillboard(billboardPrefab, spawnPosition);
 
 
-            spawnPosition = new Vector3(0.0f, 0.2f, 0.20f);
+            spawnPosition = new Vector3(0.0f, 0.15f, 0.15f);
             CmdCreateClientComponent(spawnPosition, Color.red);
 
             coroutine = CreatePanel(panelPrefabL, Camera.main.transform.position);
@@ -56,13 +56,13 @@ public class ObjectSpawner : NetworkBehaviour {
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             Vector3 spawnPosition;
 
-                spawnPosition = new Vector3(0.0f, 0.2f, -0.10f);
+                spawnPosition = new Vector3(0.0f, 0.15f, -0.15f);
 
             CmdCreateBox(spawnPosition, Color.red);
 
             if(billboardPrefab != null)
             CreateBillboard(billboardPrefab, spawnPosition);
-            spawnPosition = new Vector3(0.0f, 0.2f, -0.20f);
+            spawnPosition = new Vector3(0.0f, 0.15f, -0.15f);
 
             CmdCreateServerComponent(spawnPosition, Color.red);
 
@@ -125,7 +125,7 @@ public class ObjectSpawner : NetworkBehaviour {
         {
             var spawnRotation = Quaternion.Euler(
             0.0f,
-           0.0f,
+           45.0f,
             0.0f);
 
 
@@ -139,13 +139,12 @@ public class ObjectSpawner : NetworkBehaviour {
         {
             var spawnRotation = Quaternion.Euler(
             0.0f,
-           180.0f,
+          -135.0f,
             0.0f);
 
 
             GameObject o = (GameObject)Instantiate(objectPrefab, spawnPosition, spawnRotation);
 
-     
 
             NetworkServer.SpawnWithClientAuthority(o, gameObject);
 

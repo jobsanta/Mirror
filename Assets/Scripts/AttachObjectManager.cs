@@ -23,8 +23,8 @@ public class AttachObjectManager : MonoBehaviour {
         _intgroup = interior_group.GetComponent<AnchorGroup>();
 
 
-        Anchor[] extanchor = gameObject.transform.GetChild(2).gameObject.GetComponentsInChildren<Anchor>();
-        Anchor[] intanchor = gameObject.transform.GetChild(1).gameObject.GetComponentsInChildren<Anchor>();
+        Anchor[] extanchor = gameObject.transform.GetChild(1).gameObject.GetComponentsInChildren<Anchor>();
+        Anchor[] intanchor = gameObject.transform.GetChild(0).gameObject.GetComponentsInChildren<Anchor>();
 
         for (int i = 0; i < extanchor.Length; i++)
             _extgroup.Add(extanchor[i]);
