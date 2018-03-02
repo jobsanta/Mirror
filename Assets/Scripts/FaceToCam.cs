@@ -23,9 +23,12 @@ public class FaceToCam : MonoBehaviour
 
     private Transform tf;
 
-//	StreamWriter sx;
-//	StreamWriter sy;
-//	StreamWriter kx;
+    //	StreamWriter sx;
+    //	StreamWriter sy;
+    //	StreamWriter kx;
+
+    public float ff;
+    public float hh;
 
 	//my value 0.005
 	public float qq;
@@ -75,10 +78,10 @@ public class FaceToCam : MonoBehaviour
         sin_deg = Mathf.Sin(tf.eulerAngles.x*Mathf.PI/180.0f);
 
 		updateFrame = 0;
-		kalman_X = new KalmanFilterSimple1D(f: 1, h: 1, q: qq, r: rr);
-		kalman_Y = new KalmanFilterSimple1D(f: 1, h: 1, q: qq, r: rr);
-		kalman_Z= new KalmanFilterSimple1D(f: 1, h: 1, q: qq, r: rr);
-		kalman_mod = new KalmanFilterSimple1D(f: 1, h: 1, q: qq, r: rr);
+		kalman_X = new KalmanFilterSimple1D(f: ff, h: hh, q: qq, r: rr);
+		kalman_Y = new KalmanFilterSimple1D(f: ff, h: hh, q: qq, r: rr);
+		kalman_Z= new KalmanFilterSimple1D(f: ff, h: hh, q: qq, r: rr);
+		kalman_mod = new KalmanFilterSimple1D(f:ff, h: hh, q: qq, r: rr);
 
 		//sx = new StreamWriter("coords_X.txt");
 		//kx = new StreamWriter("coords_KX.txt");
@@ -191,7 +194,7 @@ public class FaceToCam : MonoBehaviour
             // check if the corresponding body is tracked 
             if (bodies[i].IsTracked)
             {
-                float distanceNew = bodies[i].Joints[JointType.Head].Position.Z;
+                float distanceNew = bodies[i].Joints[JointType.Neck].Position.Z;
                 if (distanceNew != 0 && distanceNew <= closestHeadDistance)
                 {
                     closestHeadDistance = distanceNew;
@@ -342,7 +345,7 @@ public class FaceToCam : MonoBehaviour
 
                     kalman_Y.SetState(last_y, init_state);
                     kalman_Y.Correct(eye.Y);
-                    float mod_x = last_x % -eye.Y;
+                    float mod_x = last_y % -eye.Y;
 
                     kalman_mod.SetState(last_mod, init_state);
                     kalman_mod.Correct(mod_x);

@@ -631,10 +631,12 @@ MonoBehaviour:
   bodyManager: {fileID: 616008076}
   MultiSourceManager: {fileID: 840781267}
   camera: {fileID: 643613543}
+  ff: 1
+  hh: 1
   qq: 0.05
   rr: 0.01
   init_state: 0.001
-  headSmooth: 10
+  headSmooth: 100
 --- !u!4 &409223249
 Transform:
   m_ObjectHideFlags: 0
