@@ -36,11 +36,14 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
             {   
                 if(isServer && _anchObj.transform.position.z < 0)
                 {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = false; ;
+                        
                 }
                 else if(!isServer && _anchObj.transform.position.z > 0)
                 {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = false;
                 }
             }
         }
@@ -53,11 +56,13 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
             {
                 if (isServer && _anchObj.transform.position.z < 0)
                 {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = false; 
                 }
                 else if (!isServer && _anchObj.transform.position.z > 0)
                 {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = false;
                 }
             }
         }
@@ -377,9 +382,11 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
 
     private void whileAttachedToAnchor()
     {
-        Anchor anchor = gameObject.GetComponent<AnchorableBehaviour>().anchor;
+        // Anchor anchor = gameObject.GetComponent<AnchorableBehaviour>().anchor;
         // Debug.Log("Transform object");
-        Transform t = anchor.transform;
+        //Transform t = anchor.transform;
+        Vector3 angles = transform.rotation.eulerAngles;
+        transform.rotation = Quaternion.Euler(new Vector3(0, Mathf.Floor((angles.y)/90.0f)*90+45, 0));
 
        //if(!isServer)
        //  CmdAnchorMovement(t.position, t.rotation);

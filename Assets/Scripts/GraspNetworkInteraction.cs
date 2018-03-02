@@ -28,6 +28,9 @@ public class GraspNetworkInteraction : NetworkBehaviour {
         Vector3 solvedPos,    Quaternion solvedRot,
         List<InteractionController> graspingController) 
     {
+        Vector3 angle = solvedRot.eulerAngles;
+        
+        solvedRot = Quaternion.Euler(0, angle.y, 0);
 
 
         if (solvedPos.y < 0.1f)

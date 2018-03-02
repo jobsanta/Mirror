@@ -21,10 +21,9 @@ GameObject:
   - component: {fileID: 4388357611131696}
   - component: {fileID: 33802706537376166}
   - component: {fileID: 23222490055227568}
-  - component: {fileID: 64216779843219686}
   m_Layer: 0
   m_Name: Concrete pipe joint prefab
-  m_TagString: Untagged
+  m_TagString: Exterior
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,10 +62,9 @@ GameObject:
   - component: {fileID: 4087523066204064}
   - component: {fileID: 33944832690195306}
   - component: {fileID: 23618776218197906}
-  - component: {fileID: 64292320552905222}
   m_Layer: 0
   m_Name: Concrete pipe main prefab
-  m_TagString: Untagged
+  m_TagString: Exterior
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,36 +205,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 1
---- !u!64 &64216779843219686
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1036795531734032}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300006, guid: bbe07b5af6295f347800b425f4434c67, type: 3}
---- !u!64 &64292320552905222
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1878371817876202}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300006, guid: f7260c28ba15eea47ada6570bd80de0d, type: 3}
 --- !u!65 &65259327763855204
 BoxCollider:
   m_ObjectHideFlags: 1

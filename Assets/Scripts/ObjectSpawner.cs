@@ -158,15 +158,18 @@ public class ObjectSpawner : NetworkBehaviour {
     [Command]
     void CmdCreateServerComponent(Vector3 spawnPosition, Color c)
     {
-        for (int i=0; i < numberOfObjects; i++)
+        int row = ServerComponentPrefab.Length / 4;
+        if (row == 0) row = 1;
+        int col = ServerComponentPrefab.Length / row;
+
+        for (int i=0; i < ServerComponentPrefab.Length; i++)
         {
             var spawnRotation = Quaternion.Euler( 
                 0.0f, 
                 0.0f, 
                 0.0f);
-
-
-            GameObject o = (GameObject)Instantiate(ServerComponentPrefab[i%ServerComponentPrefab.Length], spawnPosition, spawnRotation);
+            Vector3 pos = new Vector3(((int)i/row)*0.4f/col-0.2f, 0.1f, -0.3f+ (i%row)/10.0f);
+            GameObject o = (GameObject)Instantiate(ServerComponentPrefab[i%ServerComponentPrefab.Length], pos, spawnRotation);
 
             NetworkServer.SpawnWithClientAuthority(o, gameObject);
 
@@ -176,15 +179,20 @@ public class ObjectSpawner : NetworkBehaviour {
     [Command]
     void CmdCreateClientComponent(Vector3 spawnPosition, Color c)
     {
-        for (int i=0; i < numberOfObjects; i++)
+
+        int row = ClientComponentPrefab.Length / 4;
+
+        if (row == 0) row = 1;
+        int col = ClientComponentPrefab.Length / row;
+        for (int i=0; i < ClientComponentPrefab.Length; i++)
         {
             var spawnRotation = Quaternion.Euler( 
                 0.0f, 
                 0.0f, 
                 0.0f);
 
-
-            GameObject o = (GameObject)Instantiate(ClientComponentPrefab[i%ClientComponentPrefab.Length], spawnPosition, spawnRotation);
+            Vector3 pos = new Vector3(((int)i / row) * 0.4f / col - 0.2f, 0.1f, 0.3f - (i % row) / 10.0f);
+            GameObject o = (GameObject)Instantiate(ClientComponentPrefab[i%ClientComponentPrefab.Length], pos, spawnRotation);
 
             NetworkServer.SpawnWithClientAuthority(o, gameObject);
 

@@ -133,7 +133,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 1
 --- !u!65 &65391452275230324
 BoxCollider:
@@ -276,7 +276,7 @@ MonoBehaviour:
   lockWhenAttached: 1
   matchAnchorMotionWhileAttaching: 1
   anchorLerpCoeffPerSec: 20
-  anchorRotation: 1
+  anchorRotation: 0
   interactionBehaviour: {fileID: 114725615519194108}
   _interactionBehaviourIsNull: 0
   detachWhenGrasped: 1

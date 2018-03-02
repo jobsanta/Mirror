@@ -5141,15 +5141,21 @@ MonoBehaviour:
   billboardPrefab: {fileID: 0}
   numberOfObjects: 4
   ServerComponentPrefab:
-  - {fileID: 1515384863940076, guid: 6eb71df277d7f5843aafb7c4433c18ff, type: 2}
-  - {fileID: 1216678141426808, guid: 4316ab8620c77234abe74bd48f8716ee, type: 2}
-  - {fileID: 1369122640442158, guid: 49dd06c1a1e714b4b9a0aa42e367ecab, type: 2}
-  - {fileID: 1839339273884742, guid: b61babc48c58a0f409d0232b1dd4260a, type: 2}
+  - {fileID: 1429281832697310, guid: 0c902528ea522c642a42f55c5ea08aaa, type: 2}
+  - {fileID: 1310013148723308, guid: e693a9f5f776b3d42b6392efbb158222, type: 2}
+  - {fileID: 1391365564902366, guid: 309b0f0827a459845a3d9c619272f06d, type: 2}
+  - {fileID: 1296112378881308, guid: 821278fbd1ff30f4ab05caf147e2fdc7, type: 2}
+  - {fileID: 1047952485321828, guid: 5300531e7cd4f7e4f823419b1dd70029, type: 2}
+  - {fileID: 1123531175174208, guid: 8d64880c1fb38414c8d78dc1edb03ae9, type: 2}
+  - {fileID: 1175186123139898, guid: b25058bb8480eb8408941a7cfb52b52e, type: 2}
+  - {fileID: 1482363256166314, guid: b7d181aac1e6fa042ac0223625b1bd8b, type: 2}
+  - {fileID: 1738347478826418, guid: 3010f2959f8ebac4784de9d067a2850a, type: 2}
+  - {fileID: 1036727997470082, guid: 95f487b89d478a44e8a4bc10f5307f3d, type: 2}
+  - {fileID: 1487523958530564, guid: 0d53a0bee1dbbdb42bcd8d4a29bbd5ed, type: 2}
+  - {fileID: 1093656944413132, guid: dd1f6041bd52a6d448ac101303a8e7fb, type: 2}
   ClientComponentPrefab:
-  - {fileID: 1515384863940076, guid: f3b87abc8632ab048b789cadc03c1dec, type: 2}
-  - {fileID: 1216678141426808, guid: 26b57dd7cb8b4d84ab5a8c550bfc5177, type: 2}
-  - {fileID: 1369122640442158, guid: 6df1dcd6e4dd7ba43819f96ce3e16861, type: 2}
-  - {fileID: 1839339273884742, guid: 340ccab1b1f82d44db6e62bef23643ce, type: 2}
+  - {fileID: 1231712189340840, guid: 778f42efbd8e8cc418565718defd0d0e, type: 2}
+  - {fileID: 1817146475557290, guid: 6370b60fab03d3f49b0a682e6320babc, type: 2}
   panelPrefabL: {fileID: 1851270718450528, guid: 7f058cb550cee174091e52fc14aeefbe,
     type: 2}
   panelPrefabR: {fileID: 1851270718450528, guid: 6b0319cb2a7b5c04a922ae1204faa185,
