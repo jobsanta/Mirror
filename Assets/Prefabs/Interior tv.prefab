@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114242097962925472}
   - component: {fileID: 114873623302156904}
   - component: {fileID: 114358840893701956}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Interior tv
   m_TagString: Interior
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4876682133653094}
   - component: {fileID: 33139742415090104}
   - component: {fileID: 23867788627793512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Speaker_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,8 +62,25 @@ GameObject:
   - component: {fileID: 4894956637914226}
   - component: {fileID: 33996415987668616}
   - component: {fileID: 23309251036257454}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Vcr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1262589369270868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4260349978619926}
+  - component: {fileID: 33869372734010422}
+  - component: {fileID: 23504550935055532}
+  m_Layer: 8
+  m_Name: Floor_Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +96,7 @@ GameObject:
   - component: {fileID: 4859071950562360}
   - component: {fileID: 33188997173312112}
   - component: {fileID: 23011495065663250}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Speaker_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +113,7 @@ GameObject:
   - component: {fileID: 4237594328909352}
   - component: {fileID: 33044828060360566}
   - component: {fileID: 23956929939726484}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Small_Table_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +130,7 @@ GameObject:
   - component: {fileID: 4444007181261738}
   - component: {fileID: 33612780423749040}
   - component: {fileID: 23803655932141988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Sound_System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +147,7 @@ GameObject:
   - component: {fileID: 4934564996945744}
   - component: {fileID: 33022315182472408}
   - component: {fileID: 23100989654685428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Speaker_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +164,7 @@ GameObject:
   - component: {fileID: 4950891167516232}
   - component: {fileID: 33225965434422694}
   - component: {fileID: 23294067125759484}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Tv_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,6 +183,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4636663388710762}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4260349978619926
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262589369270868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4636663388710762}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4444007181261738
 Transform:
@@ -188,7 +218,7 @@ Transform:
   m_GameObject: {fileID: 1036727997470082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.0125, y: 0.0125, z: 0.0125}
   m_Children:
   - {fileID: 4444007181261738}
   - {fileID: 4934564996945744}
@@ -197,6 +227,7 @@ Transform:
   - {fileID: 4859071950562360}
   - {fileID: 4894956637914226}
   - {fileID: 4950891167516232}
+  - {fileID: 4260349978619926}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -401,6 +432,40 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23504550935055532
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262589369270868}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 6a8a6da5881ed144e8c833df96287856, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!23 &23803655932141988
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -545,6 +610,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1619245396250708}
   m_Mesh: {fileID: 4300000, guid: 3f73a278f9259db4c9a404fed26c033d, type: 3}
+--- !u!33 &33869372734010422
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262589369270868}
+  m_Mesh: {fileID: 4300000, guid: 08d1e5044ffd6bd42b94e8bd521ea64e, type: 3}
 --- !u!33 &33996415987668616
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -578,7 +650,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 2.5, z: 0}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &114104448152842428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -707,8 +779,8 @@ MonoBehaviour:
   _manager: {fileID: 0}
   _ignoreHoverMode: 0
   _isIgnoringAllHoverState: 0
-  _ignorePrimaryHover: 0
-  _ignoreContact: 0
+  _ignorePrimaryHover: 1
+  _ignoreContact: 1
   _ignoreGrasping: 0
   _contactForceMode: 0
   _allowMultiGrasp: 0
@@ -718,7 +790,7 @@ MonoBehaviour:
   _overrideInteractionLayer: 0
   _interactionLayer:
     layerIndex: 8
-  _overrideNoContactLayer: 0
+  _overrideNoContactLayer: 1
   _noContactLayer:
     layerIndex: 8
   _eventTable:

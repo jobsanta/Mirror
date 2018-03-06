@@ -386,7 +386,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
         // Debug.Log("Transform object");
         //Transform t = anchor.transform;
         Vector3 angles = transform.rotation.eulerAngles;
-        transform.rotation = Quaternion.Euler(new Vector3(0, Mathf.Floor((angles.y)/90.0f)*90+45, 0));
+        transform.rotation = Quaternion.Euler(new Vector3(0, Mathf.Floor((angles.y)/90.0f)*90+30, 0));
 
        //if(!isServer)
        //  CmdAnchorMovement(t.position, t.rotation);

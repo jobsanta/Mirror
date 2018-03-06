@@ -10,11 +10,15 @@ public class GraspNetworkInteraction : NetworkBehaviour {
     private InteractionBehaviour _intObj;
     private Rigidbody rb;
     private BoxCollider bc;
+    private GlowObject _glowObj;
 
 
     void Start() {
         _intObj = GetComponent<InteractionBehaviour>();
-        _intObj.OnGraspedMovement += onGraspedMovement;
+        _glowObj = GetComponent<GlowObject>();
+        _intObj.OnGraspedMovement += OnGraspedMovement;
+        _intObj.OnPrimaryHoverBegin += OnHoverStart;
+        _intObj.OnPrimaryHoverEnd += OnHoverEnd;
 
         bc = GetComponent < BoxCollider>();
 
@@ -22,9 +26,18 @@ public class GraspNetworkInteraction : NetworkBehaviour {
 
     }
 
+    private void OnHoverStart()
+    {
+        _glowObj.OnHoverStart();
+    }
+
+    private void OnHoverEnd()
+    {
+        _glowObj.OnHoverEnd();
+    }
 
 
-    private void onGraspedMovement(Vector3 presolvedPos, Quaternion presolvedRot,
+    private void OnGraspedMovement(Vector3 presolvedPos, Quaternion presolvedRot,
         Vector3 solvedPos,    Quaternion solvedRot,
         List<InteractionController> graspingController) 
     {
@@ -33,21 +46,15 @@ public class GraspNetworkInteraction : NetworkBehaviour {
         solvedRot = Quaternion.Euler(0, angle.y, 0);
 
 
-        if (solvedPos.y < 0.1f)
-        {
-            Vector3 movementDueToGrasp = solvedPos - presolvedPos;
-            float xAxisMovement = movementDueToGrasp.x;
-            float zAxisMovement = movementDueToGrasp.z;
+        Vector3 movementDueToGrasp = solvedPos - presolvedPos;
+        float xAxisMovement = movementDueToGrasp.x;
+        float zAxisMovement = movementDueToGrasp.z;
 
-            _intObj.rigidbody.position = presolvedPos;
-            _intObj.rigidbody.position += Vector3.right * xAxisMovement + Vector3.forward * zAxisMovement;
-            CmdGraspedMovement(_intObj.rigidbody.position, solvedRot);
+        _intObj.rigidbody.position = presolvedPos;
+        _intObj.rigidbody.position += Vector3.right * xAxisMovement + Vector3.forward * zAxisMovement;
+        CmdGraspedMovement(_intObj.rigidbody.position, solvedRot);
 
-        }
-        else
-        {
-            CmdGraspedMovement(solvedPos, solvedRot);
-        }
+
 
 
     }

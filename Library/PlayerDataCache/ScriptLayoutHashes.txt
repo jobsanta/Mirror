@@ -17,11 +17,14 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 9ca6347af5ceb6b0d1c105af31b6722e UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
+b96505d1139d19db37fa34ee066f2af4 Assembly-CSharp.dll:.GlowComposite
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Leap.Unity.HandEnableDisable
 c8063074ad672db8628cb521e2cabfea Assembly-CSharp.dll:Leap.Unity.Animation.TransformTweenBehaviour
 834373787abc2c64ae41fe4643497bba Assembly-CSharp.dll:Leap.Unity.SkeletalFinger
+03284d30f0d8540e8a38a36ded2841c8 Assembly-CSharp.dll:.Spinner
 760d61dcd067c1148397c7cadd4f2e33 Assembly-CSharp.dll:.InfraredSourceView
 fe18c362a9aa836a32e78fc8df719357 Assembly-CSharp.dll:Leap.Unity.PinchDetector
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GlowPrePass
 bc152bc9f558094f67bd84123e7b1336 Assembly-CSharp.dll:Leap.Unity.Detector
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -129,6 +132,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 3f32f08a64daf40b09ed864d96fe3840 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
+4e1c63de97d8346077e579a2ec9a6c45 Assembly-CSharp.dll:.GlowObject
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Leap.Unity.Examples.SimpleTransformUtil
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DisableOnStart
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
@@ -263,6 +267,7 @@ e07dd47845cec7a766d5f64ebf13ebd6 Assembly-CSharp.dll:Leap.Unity.FingerDirectionD
 df3e70c85d1064a2d40688b78c36a15d Assembly-CSharp.dll:Leap.Unity.Examples.SimpleInteractionEmission
 1c9dbf6588c2a86d918d6a6e3eb4ef45 Assembly-CSharp.dll:Leap.Unity.Examples.TransformRotationHandle
 31c42b3592971844b4cdd3dcef7dd226 Assembly-CSharp.dll:.SimpleInteractionGlow
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GlowController
 8d618d04ec653529f4af45d4c371b260 Assembly-CSharp.dll:.LayoutController
 1bd6d90fb4d8b0ed26aa2ba8d8c82fbb Assembly-CSharp.dll:.VRHeightOffset
 d58e2c87c3d8d644a4c90cc26ef6498e Assembly-CSharp.dll:Leap.Unity.Examples.AutopilotSystem
@@ -367,6 +372,7 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 c401d950aa023aec5daa2becef6db068 Assembly-CSharp.dll:Leap.Unity.Interaction.AnchorableBehaviour
 fbc853ba0058ca97a7d079fa0e29e207 Assembly-CSharp.dll:.ObjectSpawner
 d8b86f4fb9fa4c153334062c4f5a4a1d Assembly-CSharp.dll:Leap.Unity.StationaryTestLeapProvider
+4e1c63de97d8346077e579a2ec9a6c45 Assembly-CSharp.dll:.GlowObjectCmd
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AnchorNetworkInteraction
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SliderController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DepthSourceManager

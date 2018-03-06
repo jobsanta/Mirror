@@ -11,6 +11,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1738347478826418}
   m_IsPrefabParent: 1
+--- !u!1 &1029339490410988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4376728558305262}
+  - component: {fileID: 33629019739742378}
+  - component: {fileID: 23533213646187402}
+  m_Layer: 8
+  m_Name: Floor_Carpet_Tiles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1143882071251530
 GameObject:
   m_ObjectHideFlags: 0
@@ -21,7 +38,7 @@ GameObject:
   - component: {fileID: 4687870066082180}
   - component: {fileID: 33403580010498866}
   - component: {fileID: 23470150616925318}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Toilet_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +55,7 @@ GameObject:
   - component: {fileID: 4223498155974102}
   - component: {fileID: 33702141950953306}
   - component: {fileID: 23649241874752414}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_BathMat_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +72,7 @@ GameObject:
   - component: {fileID: 4393658706728768}
   - component: {fileID: 33102660726012324}
   - component: {fileID: 23692233788080614}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_ToiletSeat_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +96,7 @@ GameObject:
   - component: {fileID: 114828955423199896}
   - component: {fileID: 114226027872959100}
   - component: {fileID: 114633911764204208}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Interior toilet
   m_TagString: Interior
   m_Icon: {fileID: 0}
@@ -96,7 +113,7 @@ GameObject:
   - component: {fileID: 4375448720353412}
   - component: {fileID: 33826051226553190}
   - component: {fileID: 23792058529817252}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_ToiletRoll_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +130,7 @@ GameObject:
   - component: {fileID: 4726573221991984}
   - component: {fileID: 33097080855558584}
   - component: {fileID: 23024937118166550}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_ToiletBrush_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,6 +162,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4854183813115780}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4376728558305262
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029339490410988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4854183813115780}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4393658706728768
 Transform:
@@ -194,12 +224,13 @@ Transform:
   m_GameObject: {fileID: 1738347478826418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.0125, y: 0.0125, z: 0.0125}
   m_Children:
   - {fileID: 4687870066082180}
   - {fileID: 4375448720353412}
   - {fileID: 4726573221991984}
   - {fileID: 4223498155974102}
+  - {fileID: 4376728558305262}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -243,6 +274,40 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143882071251530}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 6a8a6da5881ed144e8c833df96287856, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23533213646187402
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029339490410988}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -394,6 +459,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143882071251530}
   m_Mesh: {fileID: 4300000, guid: 47a146ee389f8ee45b213f3dc1bac100, type: 3}
+--- !u!33 &33629019739742378
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029339490410988}
+  m_Mesh: {fileID: 4300000, guid: ebf36920622c5384ab9bf907b7d74025, type: 3}
 --- !u!33 &33702141950953306
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -434,7 +506,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 2.5, z: 0}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &114130029194579664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -531,8 +603,8 @@ MonoBehaviour:
   _manager: {fileID: 0}
   _ignoreHoverMode: 0
   _isIgnoringAllHoverState: 0
-  _ignorePrimaryHover: 0
-  _ignoreContact: 0
+  _ignorePrimaryHover: 1
+  _ignoreContact: 1
   _ignoreGrasping: 0
   _contactForceMode: 0
   _allowMultiGrasp: 0
@@ -542,7 +614,7 @@ MonoBehaviour:
   _overrideInteractionLayer: 0
   _interactionLayer:
     layerIndex: 8
-  _overrideNoContactLayer: 0
+  _overrideNoContactLayer: 1
   _noContactLayer:
     layerIndex: 8
   _eventTable:

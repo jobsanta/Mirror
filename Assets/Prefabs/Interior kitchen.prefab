@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114822787768680000}
   - component: {fileID: 114850872359740352}
   - component: {fileID: 114528603978402644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Interior kitchen
   m_TagString: Interior
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4621655991790088}
   - component: {fileID: 33185531231273886}
   - component: {fileID: 23250981492765258}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Food_Bowl_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 4574413074005070}
   - component: {fileID: 33230633662269440}
   - component: {fileID: 23021465752079608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Cupboard_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 4861413132941222}
   - component: {fileID: 33417121473765810}
   - component: {fileID: 23245005301335018}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Bar_Stool (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4097764504745056}
   - component: {fileID: 33060042321065216}
   - component: {fileID: 23657099223284064}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Microwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 4168123764094158}
   - component: {fileID: 33051484240187644}
   - component: {fileID: 23960000538564174}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Bar_Stool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 4411885727656698}
   - component: {fileID: 33304168868469448}
   - component: {fileID: 23908518520524876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_KitchenSink_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 4885901198388232}
   - component: {fileID: 33640112547245206}
   - component: {fileID: 23263128691727916}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Fridge_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 4310256166574106}
   - component: {fileID: 33895522131443314}
   - component: {fileID: 23215525583836534}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Bar_Bench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,8 +181,25 @@ GameObject:
   - component: {fileID: 4557836780426420}
   - component: {fileID: 33110385985718562}
   - component: {fileID: 23823950849509166}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_FruitBowl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1963475412116200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4260656754581942}
+  - component: {fileID: 33830957346560042}
+  - component: {fileID: 23926875034701340}
+  m_Layer: 8
+  m_Name: Floor_Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,6 +231,19 @@ Transform:
   m_Father: {fileID: 4831415077874234}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!4 &4260656754581942
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963475412116200}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4831415077874234}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4310256166574106
 Transform:
   m_ObjectHideFlags: 1
@@ -287,7 +317,7 @@ Transform:
   m_GameObject: {fileID: 1047952485321828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.0125, y: 0.0125, z: 0.0125}
   m_Children:
   - {fileID: 4885901198388232}
   - {fileID: 4310256166574106}
@@ -298,6 +328,7 @@ Transform:
   - {fileID: 4097764504745056}
   - {fileID: 4621655991790088}
   - {fileID: 4557836780426420}
+  - {fileID: 4260656754581942}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -599,6 +630,40 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23926875034701340
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963475412116200}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 6a8a6da5881ed144e8c833df96287856, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!23 &23960000538564174
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -689,6 +754,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1835757072948886}
   m_Mesh: {fileID: 4300000, guid: 70d005c5813061c41b6484de384fcb96, type: 3}
+--- !u!33 &33830957346560042
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963475412116200}
+  m_Mesh: {fileID: 4300000, guid: 08d1e5044ffd6bd42b94e8bd521ea64e, type: 3}
 --- !u!33 &33895522131443314
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -722,7 +794,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 2.5, z: 0}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &114225206579290356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -769,8 +841,8 @@ MonoBehaviour:
   _manager: {fileID: 0}
   _ignoreHoverMode: 0
   _isIgnoringAllHoverState: 0
-  _ignorePrimaryHover: 0
-  _ignoreContact: 0
+  _ignorePrimaryHover: 1
+  _ignoreContact: 1
   _ignoreGrasping: 0
   _contactForceMode: 0
   _allowMultiGrasp: 0
@@ -780,7 +852,7 @@ MonoBehaviour:
   _overrideInteractionLayer: 0
   _interactionLayer:
     layerIndex: 8
-  _overrideNoContactLayer: 0
+  _overrideNoContactLayer: 1
   _noContactLayer:
     layerIndex: 8
   _eventTable:

@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114802541097151462}
   - component: {fileID: 114624030936030044}
   - component: {fileID: 114637842319611154}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Interior workdesk
   m_TagString: Interior
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4145964640439680}
   - component: {fileID: 33461307281285430}
   - component: {fileID: 23100197117552910}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Computer_Keyboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 4679829981203976}
   - component: {fileID: 33250198626396852}
   - component: {fileID: 23410486972012516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Desk_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 4530345452640352}
   - component: {fileID: 33475586903684148}
   - component: {fileID: 23102958626658920}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Computer_Mouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4298157000385164}
   - component: {fileID: 33743528989052692}
   - component: {fileID: 23659248771760640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Computer_Case
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 4410003032668488}
   - component: {fileID: 33097901633070054}
   - component: {fileID: 23635990678447660}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Chair_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 4338681137848352}
   - component: {fileID: 33729435145955516}
   - component: {fileID: 23717916099716772}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Computer_Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,8 +147,25 @@ GameObject:
   - component: {fileID: 4025986284587072}
   - component: {fileID: 33830103582932320}
   - component: {fileID: 23018907380443338}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Desk_Lamp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1959103401048504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4430884233761278}
+  - component: {fileID: 33380794509467056}
+  - component: {fileID: 23918337698878760}
+  m_Layer: 8
+  m_Name: Floor_Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,6 +236,19 @@ Transform:
   m_Father: {fileID: 4436378502474480}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 163, z: 0}
+--- !u!4 &4430884233761278
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1959103401048504}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4436378502474480}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4436378502474480
 Transform:
   m_ObjectHideFlags: 1
@@ -227,7 +257,7 @@ Transform:
   m_GameObject: {fileID: 1093656944413132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.0125, y: 0.0125, z: 0.0125}
   m_Children:
   - {fileID: 4025986284587072}
   - {fileID: 4410003032668488}
@@ -236,6 +266,7 @@ Transform:
   - {fileID: 4298157000385164}
   - {fileID: 4145964640439680}
   - {fileID: 4530345452640352}
+  - {fileID: 4430884233761278}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -503,6 +534,40 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23918337698878760
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1959103401048504}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 6a8a6da5881ed144e8c833df96287856, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!33 &33097901633070054
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -517,6 +582,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1208335065920524}
   m_Mesh: {fileID: 4300000, guid: 5038df4f4c0d8274494d8f7153e9ac7d, type: 3}
+--- !u!33 &33380794509467056
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1959103401048504}
+  m_Mesh: {fileID: 4300000, guid: 08d1e5044ffd6bd42b94e8bd521ea64e, type: 3}
 --- !u!33 &33461307281285430
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -578,7 +650,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 2.5, z: 0}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &114022316077100630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -625,8 +697,8 @@ MonoBehaviour:
   _manager: {fileID: 0}
   _ignoreHoverMode: 0
   _isIgnoringAllHoverState: 0
-  _ignorePrimaryHover: 0
-  _ignoreContact: 0
+  _ignorePrimaryHover: 1
+  _ignoreContact: 1
   _ignoreGrasping: 0
   _contactForceMode: 0
   _allowMultiGrasp: 0
@@ -636,7 +708,7 @@ MonoBehaviour:
   _overrideInteractionLayer: 0
   _interactionLayer:
     layerIndex: 8
-  _overrideNoContactLayer: 0
+  _overrideNoContactLayer: 1
   _noContactLayer:
     layerIndex: 8
   _eventTable:

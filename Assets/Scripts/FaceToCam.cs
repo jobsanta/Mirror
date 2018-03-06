@@ -366,11 +366,11 @@ public class FaceToCam : MonoBehaviour
 
                     if (!isClientPos)
                     {
-                        camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(x, y, -z)+accumulated_cameraOffset, Time.deltaTime * headSmooth * mod_x + 0.3f);
+                        camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(x, 0.2f, -z)+accumulated_cameraOffset, Time.deltaTime * headSmooth * mod_x + 0.3f);
                     }
                     else
                     {
-                        camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(-x, y, z)+accumulated_cameraOffset, Time.deltaTime * headSmooth * mod_x + 0.3f);
+                        camera.transform.position = Vector3.Lerp(camera.transform.position, new Vector3(-x,0.2f, z)+accumulated_cameraOffset, Time.deltaTime * headSmooth * mod_x + 0.3f);
                     }
 
 

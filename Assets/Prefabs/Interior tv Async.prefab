@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4827329414678210}
   - component: {fileID: 33765475990612168}
   - component: {fileID: 23501479510337554}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Tv_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4726499956187036}
   - component: {fileID: 33419261236800740}
   - component: {fileID: 23496604514058150}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Sound_System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4193679824802502}
   - component: {fileID: 33747647358505106}
   - component: {fileID: 23832599608556358}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Speaker_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 114460366978800662}
   - component: {fileID: 114815292544811270}
   - component: {fileID: 114770720976747926}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Interior tv Async
   m_TagString: Interior
   m_Icon: {fileID: 0}
@@ -95,8 +95,25 @@ GameObject:
   - component: {fileID: 4908105020095740}
   - component: {fileID: 33159823888349096}
   - component: {fileID: 23651807798678146}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Speaker_02 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1543013375191592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4992614227001702}
+  - component: {fileID: 33823389793860764}
+  - component: {fileID: 23278782619956944}
+  m_Layer: 8
+  m_Name: Floor_Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +129,7 @@ GameObject:
   - component: {fileID: 4821701694186728}
   - component: {fileID: 33695064382471166}
   - component: {fileID: 23750306649611562}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Speaker_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +146,7 @@ GameObject:
   - component: {fileID: 4477565884461294}
   - component: {fileID: 33804682989517652}
   - component: {fileID: 23215221531917648}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Vcr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +163,7 @@ GameObject:
   - component: {fileID: 4920791566976764}
   - component: {fileID: 33664680635323008}
   - component: {fileID: 23199200061315468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Prop_Small_Table_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +191,7 @@ Transform:
   m_GameObject: {fileID: 1301578892983938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.05, y: 0.2, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.0125, y: 0.0125, z: 0.0125}
   m_Children:
   - {fileID: 4827329414678210}
   - {fileID: 4477565884461294}
@@ -183,6 +200,7 @@ Transform:
   - {fileID: 4908105020095740}
   - {fileID: 4821701694186728}
   - {fileID: 4920791566976764}
+  - {fileID: 4992614227001702}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -264,6 +282,19 @@ Transform:
   m_Father: {fileID: 4295701422777364}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4992614227001702
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1543013375191592}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4295701422777364}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23199200061315468
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -304,6 +335,40 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1817740978964422}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 6a8a6da5881ed144e8c833df96287856, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23278782619956944
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1543013375191592}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -551,6 +616,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1817740978964422}
   m_Mesh: {fileID: 4300000, guid: a0b0543c876c7f842adc5d5bf32c019d, type: 3}
+--- !u!33 &33823389793860764
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1543013375191592}
+  m_Mesh: {fileID: 4300000, guid: 08d1e5044ffd6bd42b94e8bd521ea64e, type: 3}
 --- !u!54 &54297787549180708
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -577,7 +649,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 2.5, z: 0}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &114209257193298966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -631,8 +703,8 @@ MonoBehaviour:
   _manager: {fileID: 0}
   _ignoreHoverMode: 0
   _isIgnoringAllHoverState: 0
-  _ignorePrimaryHover: 0
-  _ignoreContact: 0
+  _ignorePrimaryHover: 1
+  _ignoreContact: 1
   _ignoreGrasping: 0
   _contactForceMode: 0
   _allowMultiGrasp: 0
@@ -642,7 +714,7 @@ MonoBehaviour:
   _overrideInteractionLayer: 0
   _interactionLayer:
     layerIndex: 8
-  _overrideNoContactLayer: 0
+  _overrideNoContactLayer: 1
   _noContactLayer:
     layerIndex: 8
   _eventTable:
