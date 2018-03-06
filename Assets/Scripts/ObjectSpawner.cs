@@ -169,40 +169,33 @@ public class ObjectSpawner : NetworkBehaviour {
     [Command]
     void CmdCreateServerComponent()
     {
-        int row = ServerComponentPrefab.Length / 4;
-        if (row == 0) row = 1;
-        int col = ServerComponentPrefab.Length / row;
-
-        GameObject layout = GameObject.Find("Mockup(server)");
-        Anchor[] anchors = layout.transform.GetChild(0).gameObject.GetComponentsInChildren<Anchor>();
-
-        for (int i = 0; i < ServerComponentPrefab.Length; i++)
+        var spawnRotation = Quaternion.Euler(
+        0.0f,
+        0.0f,
+        0.0f);
+        Vector3 pos;
+        GameObject o;
+        for (int i = 0; i < ServerComponentPrefab.Length/2 ; i++)
         {
-            var spawnRotation = Quaternion.Euler(
-                0.0f,
-                0.0f,
-                0.0f);
-            Vector3 pos = new Vector3(((int)i / row) * 0.4f / col - 0.2f, 0.105f, -0.3f + (i % row) / 20.0f);
+            pos = new Vector3(-0.1975f+i*0.0625f,0.105f,-0.4f);
 
-            GameObject o = (GameObject)Instantiate(ServerComponentPrefab[i % ServerComponentPrefab.Length], pos, spawnRotation);
+            o = (GameObject)Instantiate(ServerComponentPrefab[i % ServerComponentPrefab.Length], pos, spawnRotation);
 
+            o.transform.RotateAround(new Vector3(0.0f, 0.0f, -0.2f), Vector3.up, 30.0f);
 
-            bool attach = false;
+            NetworkServer.SpawnWithClientAuthority(o, gameObject);
 
-            while (!attach)
-            {
-                int value = Random.Range(0, anchors.Length - 1);
-                if (anchors[value].anchoredObjects.Count == 0)
-                {
-                    AnchorableBehaviour a = o.GetComponent<AnchorableBehaviour>();
-                    a.anchor = anchors[value];
-                    attach = a.TryAttach(true);
-
-                }
-
-            }
+        }
 
 
+        for (int i = ServerComponentPrefab.Length / 2; i < ServerComponentPrefab.Length; i++)
+        {
+
+            pos = new Vector3(0.175f , 0.105f, -0.4f + (i-ServerComponentPrefab.Length / 2) * 0.0625f);
+
+            o = (GameObject)Instantiate(ServerComponentPrefab[i % ServerComponentPrefab.Length], pos, spawnRotation);
+
+            o.transform.RotateAround(new Vector3(0.0f, 0.0f, -0.2f), Vector3.up, 30.0f);
 
             NetworkServer.SpawnWithClientAuthority(o, gameObject);
 
