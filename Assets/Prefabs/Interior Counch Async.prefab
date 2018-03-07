@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114046442425748478}
   - component: {fileID: 114600694626485098}
   - component: {fileID: 114894160190173460}
+  - component: {fileID: 114007300253156704}
   - component: {fileID: 114160315648806092}
   - component: {fileID: 114647630632832176}
   - component: {fileID: 114702732899967338}
@@ -88,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1390488688458006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.0125, y: 0.0125, z: 0.0125}
   m_Children:
   - {fileID: 4594712398319298}
@@ -204,7 +205,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 1
 --- !u!65 &65220848336875070
 BoxCollider:
@@ -218,6 +219,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 5}
   m_Center: {x: 0, y: 2, z: 0}
+--- !u!114 &114007300253156704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1390488688458006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoverColor: {r: 0.9269777, g: 1, b: 0.4705882, a: 0}
+  GraspColor: {r: 0, g: 1, b: 0.13103461, a: 0}
+  LerpFactor: 10
 --- !u!114 &114046442425748478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,7 +247,7 @@ MonoBehaviour:
   _manager: {fileID: 0}
   _ignoreHoverMode: 0
   _isIgnoringAllHoverState: 0
-  _ignorePrimaryHover: 1
+  _ignorePrimaryHover: 0
   _ignoreContact: 1
   _ignoreGrasping: 0
   _contactForceMode: 0

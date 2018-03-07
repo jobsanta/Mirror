@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 114340311102027328}
   - component: {fileID: 114992524010919650}
   - component: {fileID: 114315563344626520}
+  - component: {fileID: 114081777735107454}
   - component: {fileID: 114989213756266956}
   - component: {fileID: 114212152655185174}
   - component: {fileID: 114662003936225150}
@@ -245,7 +246,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1475074121875882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.0125, y: 0.0125, z: 0.0125}
   m_Children:
   - {fileID: 4578046772616696}
@@ -571,7 +572,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 1
 --- !u!65 &65620760031883316
 BoxCollider:
@@ -596,7 +597,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlowColor: {r: 1, g: 1, b: 1, a: 0}
+  HoverColor: {r: 0, g: 0, b: 0, a: 0}
+  GraspColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114010545467724644
 MonoBehaviour:
@@ -609,7 +611,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlowColor: {r: 1, g: 1, b: 1, a: 0}
+  HoverColor: {r: 0, g: 0, b: 0, a: 0}
+  GraspColor: {r: 0, g: 0, b: 0, a: 0}
+  LerpFactor: 10
+--- !u!114 &114081777735107454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1475074121875882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoverColor: {r: 0.9269777, g: 1, b: 0.4705882, a: 0}
+  GraspColor: {r: 0, g: 1, b: 0.13103461, a: 0}
   LerpFactor: 10
 --- !u!114 &114212152655185174
 MonoBehaviour:
@@ -668,7 +685,7 @@ MonoBehaviour:
   _manager: {fileID: 0}
   _ignoreHoverMode: 0
   _isIgnoringAllHoverState: 0
-  _ignorePrimaryHover: 1
+  _ignorePrimaryHover: 0
   _ignoreContact: 1
   _ignoreGrasping: 0
   _contactForceMode: 0
@@ -695,7 +712,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlowColor: {r: 1, g: 1, b: 1, a: 0}
+  HoverColor: {r: 0, g: 0, b: 0, a: 0}
+  GraspColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114587233547534868
 MonoBehaviour:
@@ -708,7 +726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlowColor: {r: 1, g: 1, b: 1, a: 0}
+  HoverColor: {r: 0, g: 0, b: 0, a: 0}
+  GraspColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114662003936225150
 MonoBehaviour:
@@ -732,7 +751,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlowColor: {r: 1, g: 1, b: 1, a: 0}
+  HoverColor: {r: 0, g: 0, b: 0, a: 0}
+  GraspColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114764472195346150
 MonoBehaviour:
@@ -745,7 +765,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlowColor: {r: 1, g: 1, b: 1, a: 0}
+  HoverColor: {r: 0, g: 0, b: 0, a: 0}
+  GraspColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114803584061201438
 MonoBehaviour:
@@ -758,7 +779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlowColor: {r: 1, g: 1, b: 1, a: 0}
+  HoverColor: {r: 0, g: 0, b: 0, a: 0}
+  GraspColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114989213756266956
 MonoBehaviour:

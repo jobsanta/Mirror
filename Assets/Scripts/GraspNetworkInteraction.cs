@@ -19,6 +19,8 @@ public class GraspNetworkInteraction : NetworkBehaviour {
         _intObj.OnGraspedMovement += OnGraspedMovement;
         _intObj.OnPrimaryHoverBegin += OnHoverStart;
         _intObj.OnPrimaryHoverEnd += OnHoverEnd;
+        _intObj.OnGraspBegin += OnGraspStart;
+        _intObj.OnGraspEnd += OnGraspEnd;
 
         bc = GetComponent < BoxCollider>();
 
@@ -34,6 +36,16 @@ public class GraspNetworkInteraction : NetworkBehaviour {
     private void OnHoverEnd()
     {
         _glowObj.OnHoverEnd();
+    }
+
+    private void OnGraspStart()
+    {
+        _glowObj.OnGraspBegin();
+    }
+
+    private void OnGraspEnd()
+    {
+        _glowObj.OnGraspEnd();
     }
 
 
@@ -52,6 +64,8 @@ public class GraspNetworkInteraction : NetworkBehaviour {
 
         _intObj.rigidbody.position = presolvedPos;
         _intObj.rigidbody.position += Vector3.right * xAxisMovement + Vector3.forward * zAxisMovement;
+        _intObj.rigidbody.rotation = solvedRot;
+
         CmdGraspedMovement(_intObj.rigidbody.position, solvedRot);
 
 

@@ -132,7 +132,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 3f32f08a64daf40b09ed864d96fe3840 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
-4e1c63de97d8346077e579a2ec9a6c45 Assembly-CSharp.dll:.GlowObject
+c920746e9b31e9687cbc1dc899d9c5c2 Assembly-CSharp.dll:.GlowObject
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Leap.Unity.Examples.SimpleTransformUtil
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DisableOnStart
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
@@ -326,6 +326,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 be68a326f522e456f6b5554c6b068fd4 Assembly-CSharp.dll:Leap.Unity.Comment
 054bb8ae88efc623abf2ca2a7ee3a388 Assembly-CSharp.dll:Leap.Unity.SkeletalHand
 64c758d4b69504a7d580c33ca63474b5 Assembly-CSharp.dll:Leap.Unity.RigidFinger
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Billboard
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.InfraredSourceManager
 8f843b90d2630e406fbec07e3595d6dd Assembly-CSharp.dll:Leap.Unity.Attachments.AttachmentHand
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LayoutBodyController

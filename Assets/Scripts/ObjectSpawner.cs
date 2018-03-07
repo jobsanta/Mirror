@@ -217,7 +217,7 @@ public class ObjectSpawner : NetworkBehaviour {
                 0.0f, 
                 0.0f);
 
-            Vector3 pos = new Vector3(((int)i / row) * 0.4f / col - 0.2f, 0.105f, 0.3f - (i % row) / 20.0f);
+            Vector3 pos = new Vector3(((int)i / row) * 0.4f / col - 0.2f, 0.115f, 0.3f - (i % row) / 20.0f);
             GameObject o = (GameObject)Instantiate(ClientComponentPrefab[i%ClientComponentPrefab.Length], pos, spawnRotation);
 
             NetworkServer.SpawnWithClientAuthority(o, gameObject);

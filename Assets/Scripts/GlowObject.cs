@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 public class GlowObject : MonoBehaviour
 {
-	public Color GlowColor;
+	public Color HoverColor;
+    public Color GraspColor;
 	public float LerpFactor = 10;
 
 	public Renderer[] Renderers
@@ -34,7 +35,7 @@ public class GlowObject : MonoBehaviour
 
     public void OnHoverStart()
 	{
-		_targetColor = GlowColor;
+		_targetColor = HoverColor;
 		enabled = true;
 	}
 
@@ -44,10 +45,22 @@ public class GlowObject : MonoBehaviour
 		enabled = true;
 	}
 
-	/// <summary>
-	/// Loop over all cached materials and update their color, disable self if we reach our target color.
-	/// </summary>
-	private void Update()
+    public void OnGraspBegin()
+    {
+        _targetColor = GraspColor;
+        enabled = true;
+    }
+
+    public void OnGraspEnd()
+    {
+        _targetColor = Color.black;
+        enabled = true;
+    }
+
+    /// <summary>
+    /// Loop over all cached materials and update their color, disable self if we reach our target color.
+    /// </summary>
+    private void Update()
 	{
 		_currentColor = Color.Lerp(_currentColor, _targetColor, Time.deltaTime * LerpFactor);
 
