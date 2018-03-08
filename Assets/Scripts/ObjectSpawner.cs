@@ -210,22 +210,53 @@ public class ObjectSpawner : NetworkBehaviour {
 
         if (row == 0) row = 1;
         int col = ClientComponentPrefab.Length / row;
-        for (int i=0; i < ClientComponentPrefab.Length; i++)
+        Vector3 pos;
+        GameObject o;
+        var spawnRotation = Quaternion.Euler(
+         0.0f,
+         0.0f,
+         0.0f);
+        for (int i = 0; i < ClientComponentPrefab.Length / 2; i++)
         {
-            var spawnRotation = Quaternion.Euler( 
-                0.0f, 
-                0.0f, 
-                0.0f);
+            pos = new Vector3(0.1975f - i * 0.0625f, 0.105f, 0.4f);
 
-            Vector3 pos = new Vector3(((int)i / row) * 0.4f / col - 0.2f, 0.115f, 0.3f - (i % row) / 20.0f);
-            GameObject o = (GameObject)Instantiate(ClientComponentPrefab[i%ClientComponentPrefab.Length], pos, spawnRotation);
+            o = (GameObject)Instantiate(ClientComponentPrefab[i % ClientComponentPrefab.Length], pos, spawnRotation);
+
+            o.transform.RotateAround(new Vector3(0.0f, 0.0f, 0.2f), Vector3.up, 30.0f);
 
             NetworkServer.SpawnWithClientAuthority(o, gameObject);
 
         }
+
+        for (int i = ClientComponentPrefab.Length / 2; i < ClientComponentPrefab.Length; i++)
+        {
+
+            pos = new Vector3(-0.175f, 0.105f, 0.4f - (i - ClientComponentPrefab.Length / 2) * 0.0625f);
+
+            o = (GameObject)Instantiate(ClientComponentPrefab[i % ClientComponentPrefab.Length], pos, spawnRotation);
+
+            o.transform.RotateAround(new Vector3(0.0f, 0.0f, 0.2f), Vector3.up, 30.0f);
+
+            NetworkServer.SpawnWithClientAuthority(o, gameObject);
+
+        }
+
     }
         
+    public void GraspObjectSpawner(GameObject obj, Vector3 spawnPosition, Quaternion spawnRotation)
+    {
+        CmdCreateClientComponentOnGrasp(obj, spawnPosition, spawnRotation);
+    }
 
+    [Command]
+    void CmdCreateClientComponentOnGrasp(GameObject obj, Vector3 spawnPosition, Quaternion spawnRotation)
+    {
+        GameObject  o = (GameObject)Instantiate(obj, spawnPosition, spawnRotation);
+
+           
+        NetworkServer.SpawnWithClientAuthority(o, gameObject);
+
+    }
 
 
 

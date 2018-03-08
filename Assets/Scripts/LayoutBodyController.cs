@@ -19,8 +19,7 @@ public class LayoutBodyController : NetworkBehaviour {
                 gameObject.tag = "Untagged";
                 gameObject.name = "Mockup(client)";
 
-                LayoutController l = GameObject.FindGameObjectWithTag("Player").GetComponent<LayoutController>();
-                StartCoroutine(l.setStartPoint());
+                StartCoroutine(DelayStart());
             }
             else
             {
@@ -34,14 +33,20 @@ public class LayoutBodyController : NetworkBehaviour {
                // gameObject.GetComponent<BoxCollider>().enabled = false;
                 gameObject.tag = "Untagged";
                 gameObject.name = "Mockup(server)";
-                LayoutController l = GameObject.FindGameObjectWithTag("Player").GetComponent<LayoutController>();
-                StartCoroutine(l.setStartPoint());
+                StartCoroutine(DelayStart());
             }
             else
             {
                 gameObject.name = "Mockup(client)";
             }
         }
+    }
+
+    IEnumerator DelayStart()
+    {
+        yield return new WaitForSeconds(1.0f);
+        LayoutController l = GameObject.FindGameObjectWithTag("Player").GetComponent<LayoutController>();
+        l.setStartPoint();
     }
             
     

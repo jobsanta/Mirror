@@ -5,100 +5,32 @@ using UnityEngine;
 public class ConflictDictionarySync : MonoBehaviour {
 
     //Dictionary <nameofobject, Dictionary<position_in, List<conflictPair>>>
-    Dictionary <string, List<ConflictPair>> conflictList;
-	// Use this for initialization
-	void Start () {
-        conflictList = new Dictionary<string,  List<ConflictPair>>();
+    Dictionary<string, string> conflictList = new Dictionary<string, string>();
 
-        List<ConflictPair> conflicts = new List<ConflictPair>();
+    // Use this for initialization
+    void Start () {
 
-        conflicts.Add(new ConflictPair("Anchor Point 1", "Exterior Anchor Point 1", "Exter Component Capsule"));
-        conflicts.Add(new ConflictPair("Anchor Point 2", "Exterior Anchor Point 2", "Exter Component Capsule"));
-        conflicts.Add(new ConflictPair("Anchor Point 3", "Exterior Anchor Point 3", "Exter Component Capsule"));
-        conflicts.Add(new ConflictPair("Anchor Point 4", "Exterior Anchor Point 4", "Exter Component Capsule"));
+        conflictList.Add("Exterior Bathtub", "Interior Bathtub");
+        conflictList.Add("Exterior Dryer", "Interior dryer");
+        conflictList.Add("Exterior Kitchen", "Interior kitchen");
+        conflictList.Add("Exterior Lamp", "Interior lamp");
+        conflictList.Add("Exterior Sink", "Interior sink");
+        conflictList.Add("Exterior Toilet", "Interior toilet");
+        conflictList.Add("Exterior TV", "Interior tv");
+        conflictList.Add("Exterior Workdesk", "Interior workdesk");
 
-        conflictList.Add("Inner Component Capsule", conflicts);
-
-        // ----------------------------------------------------------------------------------------------------
-
-        conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Anchor Point 1", "Exterior Anchor Point 1", "Exter Component Cube"));
-        conflicts.Add(new ConflictPair("Anchor Point 2", "Exterior Anchor Point 2", "Exter Component Cube"));
-        conflicts.Add(new ConflictPair("Anchor Point 3", "Exterior Anchor Point 3", "Exter Component Cube"));
-        conflicts.Add(new ConflictPair("Anchor Point 4", "Exterior Anchor Point 4", "Exter Component Cube"));
-
-        conflictList.Add("Inner Component Cube", conflicts);
-
-        // ----------------------------------------------------------------------------------------------------
-
-        conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Anchor Point 1", "Exterior Anchor Point 1", "Exter Component Cylinder"));
-        conflicts.Add(new ConflictPair("Anchor Point 2", "Exterior Anchor Point 2", "Exter Component Cylinder"));
-        conflicts.Add(new ConflictPair("Anchor Point 3", "Exterior Anchor Point 3", "Exter Component Cylinder"));
-        conflicts.Add(new ConflictPair("Anchor Point 4", "Exterior Anchor Point 4", "Exter Component Cylinder"));
-
-        conflictList.Add("Inner Component Cylinder", conflicts);
-
-        // ----------------------------------------------------------------------------------------------------
-
-        conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Anchor Point 1", "Exterior Anchor Point 1", "Exter Component Sphere"));
-        conflicts.Add(new ConflictPair("Anchor Point 2", "Exterior Anchor Point 2", "Exter Component Sphere"));
-        conflicts.Add(new ConflictPair("Anchor Point 3", "Exterior Anchor Point 3", "Exter Component Sphere"));
-        conflicts.Add(new ConflictPair("Anchor Point 4", "Exterior Anchor Point 4", "Exter Component Sphere"));
-
-        conflictList.Add("Inner Component Sphere", conflicts);
-
-        // ----------------------------------------------------------------------------------------------------
-
-        conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 1", "Anchor Point 1", "Inner Component Sphere"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 2", "Anchor Point 2", "Inner Component Sphere"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 3", "Anchor Point 3", "Inner Component Sphere"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 4", "Anchor Point 4", "Inner Component Sphere"));
-
-        conflictList.Add("Exter Component Sphere", conflicts);
-
-        // ----------------------------------------------------------------------------------------------------
-
-        conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 1", "Anchor Point 1", "Inner Component Cube"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 2", "Anchor Point 2", "Inner Component Cube"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 3", "Anchor Point 3", "Inner Component Cube"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 4", "Anchor Point 4", "Inner Component Cube"));
-
-        conflictList.Add("Exter Component Cube", conflicts);
-
-        // ----------------------------------------------------------------------------------------------------
-
-        conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 1", "Anchor Point 1", "Inner Component Cylinder"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 2", "Anchor Point 2", "Inner Component Cylinder"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 3", "Anchor Point 3", "Inner Component Cylinder"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 4", "Anchor Point 4", "Inner Component Cylinder"));
-
-        conflictList.Add("Exter Component Cylinder", conflicts);
-
-        // ----------------------------------------------------------------------------------------------------
-
-        conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 1", "Anchor Point 1", "Inner Component Capsule"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 2", "Anchor Point 2", "Inner Component Capsule"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 3", "Anchor Point 3", "Inner Component Capsule"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 4", "Anchor Point 4", "Inner Component Capsule"));
-
-        conflictList.Add("Exter Component Capsule", conflicts);
+        conflictList.Add( "Interior Bathtub", "Exterior Bathtub");
+        conflictList.Add("Interior dryer","Exterior Dryer");
+        conflictList.Add("Interior kitchen","Exterior Kitchen");
+        conflictList.Add("Interior lamp","Exterior Lamp");
+        conflictList.Add( "Interior sink", "Exterior Sink");
+        conflictList.Add("Interior toilet", "Exterior Toilet");
+        conflictList.Add( "Interior tv", "Exterior TV");
+        conflictList.Add( "Interior workdesk", "Exterior Workdesk");
 
     }
 
-    public Dictionary<string, List<ConflictPair>> getConflictDictionary()
+    public Dictionary<string, string> GetConflictDictionary()
     {
         return conflictList;
     }

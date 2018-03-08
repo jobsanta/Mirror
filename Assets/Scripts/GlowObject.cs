@@ -5,8 +5,11 @@ public class GlowObject : MonoBehaviour
 {
 	public Color HoverColor;
     public Color GraspColor;
+    public Color ConflictColor;
 	public float LerpFactor = 10;
 
+
+    public bool isConflict { get; set; }
 	public Renderer[] Renderers
 	{
 		get;
@@ -21,6 +24,7 @@ public class GlowObject : MonoBehaviour
 	private List<Material> _materials = new List<Material>();
 	private Color _currentColor;
 	private Color _targetColor;
+
 
 	void Start()
 	{
@@ -41,9 +45,17 @@ public class GlowObject : MonoBehaviour
 
     public void OnHoverEnd()
 	{
-		_targetColor = Color.black;
+        if (isConflict) _targetColor = ConflictColor;
+        else _targetColor = Color.black;
+
 		enabled = true;
 	}
+
+    public void OnConflict()
+    {
+        _targetColor = ConflictColor;
+        enabled = true;
+    }
 
     public void OnGraspBegin()
     {
@@ -53,7 +65,9 @@ public class GlowObject : MonoBehaviour
 
     public void OnGraspEnd()
     {
-        _targetColor = Color.black;
+        if (isConflict) _targetColor = ConflictColor;
+        else _targetColor = Color.black;
+
         enabled = true;
     }
 
@@ -69,9 +83,9 @@ public class GlowObject : MonoBehaviour
 			_materials[i].SetColor("_GlowColor", _currentColor);
 		}
 
-		if (_currentColor.Equals(_targetColor))
-		{
-			enabled = false;
-		}
+		//if (_currentColor.Equals(_targetColor))
+		//{
+		//	enabled = false;
+		//}
 	}
 }

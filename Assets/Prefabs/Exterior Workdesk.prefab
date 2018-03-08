@@ -169,7 +169,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 84
   m_CollisionDetection: 1
@@ -320,6 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverColor: {r: 1, g: 0.98255575, b: 0.36764705, a: 0}
   GraspColor: {r: 0, g: 1, b: 0.08965516, a: 0}
+  ConflictColor: {r: 1, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114377191270723044
 MonoBehaviour:

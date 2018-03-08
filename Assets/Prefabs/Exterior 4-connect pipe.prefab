@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 114477942409850280}
   - component: {fileID: 114418249856427928}
   - component: {fileID: 114603263892905718}
+  - component: {fileID: 114454816084321094}
   m_Layer: 10
   m_Name: Exterior 4-connect pipe
   m_TagString: Exterior
@@ -565,7 +566,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 84
   m_CollisionDetection: 1
@@ -594,6 +595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverColor: {r: 1, g: 0.98255575, b: 0.36764705, a: 0}
   GraspColor: {r: 0, g: 1, b: 0.08965516, a: 0}
+  ConflictColor: {r: 1, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114412991193996420
 MonoBehaviour:
@@ -615,6 +617,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a9b9bb54f377846bd324264bf71af3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114454816084321094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1192141007893058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c503eff96550b4dba9d2468e9acf3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114477942409850280

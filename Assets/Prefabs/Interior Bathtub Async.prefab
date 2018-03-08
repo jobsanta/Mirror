@@ -568,9 +568,9 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.5
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 84
   m_CollisionDetection: 1
@@ -599,6 +599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverColor: {r: 0, g: 0, b: 0, a: 0}
   GraspColor: {r: 0, g: 0, b: 0, a: 0}
+  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114010545467724644
 MonoBehaviour:
@@ -613,6 +614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverColor: {r: 0, g: 0, b: 0, a: 0}
   GraspColor: {r: 0, g: 0, b: 0, a: 0}
+  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114081777735107454
 MonoBehaviour:
@@ -627,6 +629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverColor: {r: 0.9269777, g: 1, b: 0.4705882, a: 0}
   GraspColor: {r: 0, g: 1, b: 0.13103461, a: 0}
+  ConflictColor: {r: 1, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114212152655185174
 MonoBehaviour:
@@ -714,6 +717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverColor: {r: 0, g: 0, b: 0, a: 0}
   GraspColor: {r: 0, g: 0, b: 0, a: 0}
+  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114587233547534868
 MonoBehaviour:
@@ -728,6 +732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverColor: {r: 0, g: 0, b: 0, a: 0}
   GraspColor: {r: 0, g: 0, b: 0, a: 0}
+  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114662003936225150
 MonoBehaviour:
@@ -753,6 +758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverColor: {r: 0, g: 0, b: 0, a: 0}
   GraspColor: {r: 0, g: 0, b: 0, a: 0}
+  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114764472195346150
 MonoBehaviour:
@@ -767,6 +773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverColor: {r: 0, g: 0, b: 0, a: 0}
   GraspColor: {r: 0, g: 0, b: 0, a: 0}
+  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114803584061201438
 MonoBehaviour:
@@ -781,6 +788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverColor: {r: 0, g: 0, b: 0, a: 0}
   GraspColor: {r: 0, g: 0, b: 0, a: 0}
+  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114989213756266956
 MonoBehaviour:

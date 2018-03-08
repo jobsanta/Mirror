@@ -204,9 +204,9 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.5
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 84
   m_CollisionDetection: 1
@@ -267,6 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverColor: {r: 0, g: 0, b: 0, a: 0}
   GraspColor: {r: 0, g: 0, b: 0, a: 0}
+  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114394531425964540
 MonoBehaviour:
@@ -303,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverColor: {r: 0.9269777, g: 1, b: 0.4705882, a: 0}
   GraspColor: {r: 0, g: 1, b: 0.13103461, a: 0}
+  ConflictColor: {r: 1, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114772591820339986
 MonoBehaviour:
@@ -317,6 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverColor: {r: 0, g: 0, b: 0, a: 0}
   GraspColor: {r: 0, g: 0, b: 0, a: 0}
+  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
 --- !u!114 &114776099113119140
 MonoBehaviour:

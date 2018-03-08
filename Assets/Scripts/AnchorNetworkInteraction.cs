@@ -13,7 +13,6 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
     private BoxCollider bc;
     AnchorGroup _extgroup;
     AnchorGroup _intgroup;
-    Dictionary<string, List<ConflictPair>> conflictDict;
 
     void Start() {
 
@@ -24,9 +23,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
         _extgroup = exterior_group.GetComponent<AnchorGroup>();
         _intgroup = interior_group.GetComponent<AnchorGroup>();
 
-        GameObject conflict = GameObject.Find("Conflict Dictionary");
 
-        conflictDict = conflict.GetComponent<ConflictDictionarySync>().getConflictDictionary();
        
         _anchObj = GetComponent<AnchorableBehaviour>();
 
@@ -250,15 +247,13 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
             {
                 attachObjectList.addExteriorObject(gameObject);
 
-                if (isServer) checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, false, "Mockup(server)");
-                else checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, false, "Mockup(client)");
+                CmdAttachObject(gameObject.GetComponent<NetworkIdentity>().netId, anchor.name, "Mockup(client)");
+
             }
             else if (gameObject.tag == "Interior" || gameObject.tag == "BillboardInterior")
             {
                 attachObjectList.addInteriorObject(gameObject);
-
-                if (isServer) checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, true, "Mockup(server)");
-                else checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, true, "Mockup(client)");
+                RpcAttachObject(gameObject.GetComponent<NetworkIdentity>().netId, anchor.name, "Mockup(server)");
             }
 
         }
@@ -379,47 +374,6 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
         }
     }
 
-    void checkConflict(GameObject obj, string anchorname, bool isInterior, string Layoutname)
-    {
-        GameObject layout = GameObject.Find(Layoutname);
-        Debug.Log(Layoutname);
-        if (layout != null)
-        {
-            List<GameObject> attachList;
-
-            if (isInterior) attachList = layout.GetComponent<AttachObjectManager>().getExteriorList();
-            else attachList = layout.GetComponent<AttachObjectManager>().getInteriorList();
-
-
-            //"Inner Component Capsule Async"
-            string[] split = obj.name.Split('(');
-
-            Debug.Log(split[0]);
-            List<ConflictPair> conflicted;
-            if (conflictDict.TryGetValue(split[0], out conflicted))
-            {
-
-                List<ConflictPair> possible_conflict = conflicted.FindAll(x => x.Conflict_in == anchorname);
-                //("Anchor Point 1", "Exterior Anchor Point 1", "Exter Component Capsule Async"));
-                //("Anchor Point 2", "Exterior Anchor Point 2", "Exter Component Capsule Async"));
-                //("Anchor Point 3", "Exterior Anchor Point 3", "Exter Component Capsule Async"));
-                //("Anchor Point 4", "Exterior Anchor Point 4", "Exter Component Capsule Async"));
-                foreach (ConflictPair cp in possible_conflict)
-                {
-                    foreach (GameObject l in attachList)
-                    {
-                        string[] l_split = l.name.Split('(');
-                        Debug.Log(l_split[0]);
-                        if (cp.Conflict_name == l_split[0] && l.GetComponent<AnchorableBehaviour>().anchor.name == cp.Conflict_out)
-                        {
-                            Debug.Log("Conflict found at" + split[0] + "-" + cp.Conflict_in + "-" + cp.Conflict_name + "-" + cp.Conflict_out);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     void CreateCopyComponent(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, string name)
     {
 
@@ -473,6 +427,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
         if (layout != null)
         {
             spawnPosition.z = -spawnPosition.z;
+            spawnRotation.eulerAngles = new Vector3(spawnRotation.eulerAngles.x, spawnRotation.eulerAngles.y + 180, spawnRotation.eulerAngles.z);
             GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
             o.GetComponent<Rigidbody>().isKinematic = true;
             Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
@@ -490,6 +445,34 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
             }
             NetworkServer.Spawn(o);
             RpcAttachObject(o.GetComponent<NetworkIdentity>().netId, name, "Mockup(server)");
+        }
+    }
+
+    [Command] 
+    void CmdAttachObject(NetworkInstanceId identity, string name, string layoutname)
+    {
+        GameObject o = ClientScene.FindLocalObject(identity);
+        if (o != null)
+        {
+            GameObject layout = GameObject.Find(layoutname);
+            if (layout != null)
+            {
+
+                Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
+                foreach (Anchor a in anchors)
+                {
+                    if (a.name == name)
+                    {
+                        o.GetComponent<AnchorableBehaviour>().anchor = a;
+                        o.GetComponent<AnchorableBehaviour>().TryAttach(a);
+
+                        if (o.tag == "Exterior" || o.tag == "BillboardEx")
+                            layout.GetComponent<AttachObjectManager>().addExteriorObject(o);
+                        else if (o.tag == "Interior" || o.tag == "BillboardInterior")
+                            layout.GetComponent<AttachObjectManager>().addInteriorObject(o);
+                    }
+                }
+            }
         }
     }
 
@@ -529,7 +512,6 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
          Anchor anchor = gameObject.GetComponent<AnchorableBehaviour>().anchor;
         Vector3 angles = transform.rotation.eulerAngles;
 
-        Debug.Log(angles.y + " " + anchor.transform.eulerAngles.y);
         // Debug.Log("Transform object");
         //Transform t = anchor.transform;
 
