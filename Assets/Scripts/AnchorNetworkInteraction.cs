@@ -211,9 +211,8 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
         if (_anchObj != null)
         {
 
-            if (_anchObj.anchor == null)
-            {
-
+            if((gameObject.tag == "Exterior" && !isServer) || (gameObject.tag == "Interior" && isServer))
+            { 
 
                 _anchObj.OnAttachedToAnchor += onAttachedToAnchor;
                 _anchObj.OnDetachedFromAnchor += onDetachedFromAnchor;
@@ -236,6 +235,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
     void onAttachedToAnchor()
     {
         Anchor anchor = gameObject.GetComponent<AnchorableBehaviour>().anchor;
+        anchor.gameObject.GetComponentInChildren<Renderer>().enabled = false;
         AttachObjectManager attachObjectList =  anchor.GetComponentInParent<AttachObjectManager>();
         if (attachObjectList == null)
         {
@@ -246,13 +246,14 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
             if (gameObject.tag == "Exterior" || gameObject.tag == "BillboardEx")
             {
                 attachObjectList.addExteriorObject(gameObject);
-
                 CmdAttachObject(gameObject.GetComponent<NetworkIdentity>().netId, anchor.name, "Mockup(client)");
+
 
             }
             else if (gameObject.tag == "Interior" || gameObject.tag == "BillboardInterior")
             {
                 attachObjectList.addInteriorObject(gameObject);
+                
                 RpcAttachObject(gameObject.GetComponent<NetworkIdentity>().netId, anchor.name, "Mockup(server)");
             }
 
@@ -266,6 +267,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
     void onDetachedFromAnchor()
     {
         Anchor anchor = gameObject.GetComponent<AnchorableBehaviour>().anchor;
+        anchor.gameObject.GetComponentInChildren<Renderer>().enabled = true;
         AttachObjectManager attachObjectList = anchor.GetComponentInParent<AttachObjectManager>();
         if (attachObjectList == null)
         {
@@ -274,9 +276,17 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
         else
         {
             if (gameObject.tag == "Exterior" || gameObject.tag == "BillboardEx")
+            {
                 attachObjectList.removeExteriorObject(gameObject);
+                CmdDetachObject(gameObject, "Mockup(client)");
+            }
+
             else if (gameObject.tag == "Interior" || gameObject.tag == "BillboardInterior")
+            {
                 attachObjectList.removeInteriorObject(gameObject);
+                RpcDetachObject(gameObject, "Mockup(server)");
+            }
+                
         }
 
 
@@ -302,7 +312,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                                 else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
                                     layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
 
-                                RpcDeleteObject(objs[0].gameObject, "Mockup(client)");
+                                RpcDetachObject(objs[0].gameObject, "Mockup(client)");
 
                                 NetworkServer.Destroy(objs[0].gameObject);
                             }
@@ -344,7 +354,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                             else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
                                 layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
 
-                            RpcDeleteObject(objs[0].gameObject, "Mockup(server)");
+                            RpcDetachObject(objs[0].gameObject, "Mockup(server)");
                             NetworkServer.Destroy(objs[0].gameObject);
                         }
                     }
@@ -357,7 +367,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
     }
 
     [ClientRpc]
-    void RpcDeleteObject(GameObject o, string layoutname)
+    void RpcDetachObject(GameObject o, string layoutname)
     {
         GameObject layout = GameObject.Find(layoutname);
         if (layout != null)
@@ -374,6 +384,24 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
         }
     }
 
+    [Command]
+    void CmdDetachObject(GameObject o, string layoutname)
+    {
+        GameObject layout = GameObject.Find(layoutname);
+        if (layout != null)
+        {
+
+            if (o.tag == "Exterior" || o.tag == "BillboardEx")
+                layout.GetComponent<AttachObjectManager>().removeExteriorObject(o);
+            else if (o.tag == "Interior" || o.tag == "BillboardInterior")
+                layout.GetComponent<AttachObjectManager>().removeInteriorObject(o);
+
+
+
+
+        }
+    }
+
     void CreateCopyComponent(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, string name)
     {
 
@@ -383,7 +411,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
             if (layout != null)
             {
                 spawnPosition.z = -spawnPosition.z;
-                spawnRotation.eulerAngles = new Vector3(spawnRotation.eulerAngles.x, spawnRotation.eulerAngles.y+180, spawnRotation.eulerAngles.z) ;
+                spawnRotation.eulerAngles = new Vector3(spawnRotation.eulerAngles.x, spawnRotation.eulerAngles.y+layout.transform.rotation.eulerAngles.y, spawnRotation.eulerAngles.z) ;
                 GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
 
                 o.GetComponent<Rigidbody>().isKinematic = true;
@@ -413,7 +441,6 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
         else
         {
            CmdSpawnObject(prefab, spawnPosition, spawnRotation, name);
-
         }
 
 
@@ -427,7 +454,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
         if (layout != null)
         {
             spawnPosition.z = -spawnPosition.z;
-            spawnRotation.eulerAngles = new Vector3(spawnRotation.eulerAngles.x, spawnRotation.eulerAngles.y + 180, spawnRotation.eulerAngles.z);
+            spawnRotation.eulerAngles = new Vector3(spawnRotation.eulerAngles.x, spawnRotation.eulerAngles.y + layout.transform.rotation.eulerAngles.y, spawnRotation.eulerAngles.z);
             GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
             o.GetComponent<Rigidbody>().isKinematic = true;
             Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
@@ -464,7 +491,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                     if (a.name == name)
                     {
                         o.GetComponent<AnchorableBehaviour>().anchor = a;
-                        o.GetComponent<AnchorableBehaviour>().TryAttach(a);
+                       // o.GetComponent<AnchorableBehaviour>().TryAttach(a);
 
                         if (o.tag == "Exterior" || o.tag == "BillboardEx")
                             layout.GetComponent<AttachObjectManager>().addExteriorObject(o);
@@ -495,7 +522,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                     if (a.name == name)
                     {
                         o.GetComponent<AnchorableBehaviour>().anchor = a;
-                        o.GetComponent<AnchorableBehaviour>().TryAttach(a);
+                       // o.GetComponent<AnchorableBehaviour>().TryAttach(a);
 
                         if (o.tag == "Exterior" || o.tag == "BillboardEx")
                             layout.GetComponent<AttachObjectManager>().addExteriorObject(o);

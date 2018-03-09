@@ -44,9 +44,8 @@ public class LayoutBodyController : NetworkBehaviour {
 
     IEnumerator DelayStart()
     {
-        yield return new WaitForSeconds(1.0f);
         LayoutController l = GameObject.FindGameObjectWithTag("Player").GetComponent<LayoutController>();
-        l.setStartPoint();
+        return l.setStartPoint();
     }
             
     
