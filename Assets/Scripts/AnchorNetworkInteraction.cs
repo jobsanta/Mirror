@@ -246,6 +246,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
             if (gameObject.tag == "Exterior" || gameObject.tag == "BillboardEx")
             {
                 attachObjectList.addExteriorObject(gameObject);
+                Debug.Log("cmd1");
                 CmdAttachObject(gameObject.GetComponent<NetworkIdentity>().netId, anchor.name, "Mockup(client)");
 
 
@@ -253,7 +254,7 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
             else if (gameObject.tag == "Interior" || gameObject.tag == "BillboardInterior")
             {
                 attachObjectList.addInteriorObject(gameObject);
-                
+                Debug.Log("rpc1");
                 RpcAttachObject(gameObject.GetComponent<NetworkIdentity>().netId, anchor.name, "Mockup(server)");
             }
 
@@ -278,13 +279,16 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
             if (gameObject.tag == "Exterior" || gameObject.tag == "BillboardEx")
             {
                 attachObjectList.removeExteriorObject(gameObject);
-                CmdDetachObject(gameObject, "Mockup(client)");
+
+                Debug.Log("cmd2");
+                CmdDetachObject(gameObject.GetComponent<NetworkIdentity>().netId, "Mockup(client)");
             }
 
             else if (gameObject.tag == "Interior" || gameObject.tag == "BillboardInterior")
             {
                 attachObjectList.removeInteriorObject(gameObject);
-                RpcDetachObject(gameObject, "Mockup(server)");
+                Debug.Log("rpc2");
+                RpcDetachObject(gameObject.GetComponent<NetworkIdentity>().netId, "Mockup(server)");
             }
                 
         }
@@ -306,13 +310,15 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                             a.anchoredObjects.CopyTo(objs);
                             if (objs[0] != null)
                             {
+                                RpcDetachObject(objs[0].gameObject.GetComponent<NetworkIdentity>().netId, "Mockup(client)");
                                 objs[0].Detach();
+
                                 if (objs[0].gameObject.tag == "Exterior" || objs[0].gameObject.tag == "BillboardEx")
                                     layout.GetComponent<AttachObjectManager>().removeExteriorObject(objs[0].gameObject);
                                 else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
                                     layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
-
-                                RpcDetachObject(objs[0].gameObject, "Mockup(client)");
+                                Debug.Log("rpc3");
+                               
 
                                 NetworkServer.Destroy(objs[0].gameObject);
                             }
@@ -326,6 +332,20 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
         }
         else
         {
+            GameObject layout = GameObject.Find("Mockup(server)");
+            if (layout != null)
+            {
+
+                if (gameObject.tag == "Exterior" || gameObject.tag == "BillboardEx")
+                    layout.GetComponent<AttachObjectManager>().removeExteriorObject(gameObject);
+                else if (gameObject.tag == "Interior" || gameObject.tag == "BillboardInterior")
+                    layout.GetComponent<AttachObjectManager>().removeInteriorObject(gameObject);
+
+            
+
+
+            }
+            Debug.Log("cmd3");
             CmdDeleteObject(anchor.name);
         }
 
@@ -354,7 +374,6 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                             else if (objs[0].gameObject.tag == "Interior" || objs[0].gameObject.tag == "BillboardInterior")
                                 layout.GetComponent<AttachObjectManager>().removeInteriorObject(objs[0].gameObject);
 
-                            RpcDetachObject(objs[0].gameObject, "Mockup(server)");
                             NetworkServer.Destroy(objs[0].gameObject);
                         }
                     }
@@ -367,10 +386,12 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
     }
 
     [ClientRpc]
-    void RpcDetachObject(GameObject o, string layoutname)
+    void RpcDetachObject(NetworkInstanceId netid, string layoutname)
     {
+
+        GameObject o = ClientScene.FindLocalObject(netid);
         GameObject layout = GameObject.Find(layoutname);
-        if (layout != null)
+        if (layout != null && o!=null)
         {
 
             if (o.tag == "Exterior" || o.tag == "BillboardEx")
@@ -385,10 +406,12 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
     }
 
     [Command]
-    void CmdDetachObject(GameObject o, string layoutname)
+    void CmdDetachObject(NetworkInstanceId netid, string layoutname)
     {
+
+        GameObject o = ClientScene.FindLocalObject(netid);
         GameObject layout = GameObject.Find(layoutname);
-        if (layout != null)
+        if (layout != null && o!=null)
         {
 
             if (o.tag == "Exterior" || o.tag == "BillboardEx")
@@ -407,11 +430,12 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
 
         if (isServer)
         {
+            GameObject ourLayout = GameObject.Find("Mockup(server)");
             GameObject layout = GameObject.Find("Mockup(client)");
-            if (layout != null)
+            if (layout != null && ourLayout !=null)
             {
                 spawnPosition.z = -spawnPosition.z;
-                spawnRotation.eulerAngles = new Vector3(spawnRotation.eulerAngles.x, spawnRotation.eulerAngles.y+layout.transform.rotation.eulerAngles.y, spawnRotation.eulerAngles.z) ;
+                spawnRotation.eulerAngles = new Vector3(spawnRotation.eulerAngles.x, spawnRotation.eulerAngles.y+ layout.transform.rotation.eulerAngles.y - ourLayout.transform.rotation.eulerAngles.y, spawnRotation.eulerAngles.z) ;
                 GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
 
                 o.GetComponent<Rigidbody>().isKinematic = true;
@@ -434,13 +458,15 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                     }
                 }
                 NetworkServer.Spawn(o);
+                Debug.Log("rpc4");
                 RpcAttachObject(o.GetComponent<NetworkIdentity>().netId, anchorName, "Mockup(client)");
             }
 
         }
         else
         {
-           CmdSpawnObject(prefab, spawnPosition, spawnRotation, name);
+            Debug.Log("cmd4");
+            CmdSpawnObject(prefab, spawnPosition, spawnRotation, name);
         }
 
 
@@ -450,11 +476,14 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
     [Command]
     void CmdSpawnObject(GameObject prefab, Vector3 spawnPosition, Quaternion spawnRotation, string name)
     {
+        GameObject ourLayout = GameObject.Find("Mockup(client)");
         GameObject layout = GameObject.Find("Mockup(server)");
-        if (layout != null)
+
+        GameObject player = GameObject.Find("Player (Remote)");
+        if (layout != null && ourLayout != null)
         {
             spawnPosition.z = -spawnPosition.z;
-            spawnRotation.eulerAngles = new Vector3(spawnRotation.eulerAngles.x, spawnRotation.eulerAngles.y + layout.transform.rotation.eulerAngles.y, spawnRotation.eulerAngles.z);
+            spawnRotation.eulerAngles = new Vector3(spawnRotation.eulerAngles.x, spawnRotation.eulerAngles.y + layout.transform.rotation.eulerAngles.y - ourLayout.transform.rotation.eulerAngles.y, spawnRotation.eulerAngles.z);
             GameObject o = (GameObject)Instantiate(prefab, spawnPosition, spawnRotation);
             o.GetComponent<Rigidbody>().isKinematic = true;
             Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
@@ -470,7 +499,8 @@ public class AnchorNetworkInteraction : NetworkBehaviour {
                         layout.GetComponent<AttachObjectManager>().addInteriorObject(o);
                 }
             }
-            NetworkServer.Spawn(o);
+            NetworkServer.SpawnWithClientAuthority(o,player);
+            Debug.Log("rpc5");
             RpcAttachObject(o.GetComponent<NetworkIdentity>().netId, name, "Mockup(server)");
         }
     }

@@ -207,7 +207,7 @@ MonoBehaviour:
   _motionlessRangeFraction: 0.4
   _maxMotionlessRange: 0.040000003
   _maxAttachmentAngle: 60
-  _alwaysAttachDistance: 0
+  _alwaysAttachDistance: 0.0625
   lockToAnchor: 1
   lockWhenAttached: 1
   matchAnchorMotionWhileAttaching: 1

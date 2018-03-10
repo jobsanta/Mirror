@@ -9,7 +9,7 @@ public class GlowObject : MonoBehaviour
 	public float LerpFactor = 10;
 
 
-    public bool isConflict { get; set; }
+    public bool isConflict;
 	public Renderer[] Renderers
 	{
 		get;

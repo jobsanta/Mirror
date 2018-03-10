@@ -93,20 +93,20 @@ public class AttachObjectManager : MonoBehaviour {
         //"Inner Component Capsule Async"
         string[] split = obj.name.Split('(');
 
-            Debug.Log(split[0]);
+ 
             string conflicted;
             if (conflictDict.TryGetValue(split[0], out conflicted))
             {
+
                 List<GameObject> attachList;
                 if (isInterior) attachList = exteriorList;
                 else attachList = interiorList;
-
+                
                 bool foundMatch = false;
                 
                 foreach (GameObject l in attachList)
                 {
                     string[] l_split = l.name.Split('(');
-                    Debug.Log(l_split[0]);
                     if (conflicted == l_split[0])
                         {
                             
@@ -116,8 +116,8 @@ public class AttachObjectManager : MonoBehaviour {
                         if(anchorNp == anchorNumber)
                         {
                             foundMatch = true;
-                        //Match found resolve 
-                        ResolveConflict(l, obj);
+                             //Match found resolve 
+                             ResolveConflict(l, obj);
                         }
                       
                     }
@@ -126,7 +126,7 @@ public class AttachObjectManager : MonoBehaviour {
 
                 if(!foundMatch)
                 {
-                   
+
                     GlowObject globj = obj.GetComponent<GlowObject>();
                     globj.isConflict = true;
                     globj.OnConflict();
@@ -139,15 +139,12 @@ public class AttachObjectManager : MonoBehaviour {
     void checkpairConflict(GameObject obj, bool isInterior)
     {
 
-        GlowObject go = obj.GetComponent<GlowObject>();
-        go.isConflict = false;
 
         string[] anchorsplit = obj.GetComponent<AnchorableBehaviour>().anchor.name.Split(' ');
         string anchorNumber = anchorsplit[anchorsplit.Length - 1];
         //"Inner Component Capsule Async"
         string[] split = obj.name.Split('(');
 
-        Debug.Log(split[0]);
         string conflicted;
         if (conflictDict.TryGetValue(split[0], out conflicted))
         {
@@ -159,7 +156,6 @@ public class AttachObjectManager : MonoBehaviour {
             foreach (GameObject l in attachList)
             {
                 string[] l_split = l.name.Split('(');
-                Debug.Log(l_split[0]);
                 if (conflicted == l_split[0])
                 {
                     GlowObject globj = l.GetComponent<GlowObject>();
@@ -176,8 +172,9 @@ public class AttachObjectManager : MonoBehaviour {
         GlowObject globj = one.GetComponent<GlowObject>();
         globj.isConflict = false;
         globj.OnGraspEnd();
+     
+        globj = two.GetComponent<GlowObject>();
         globj.isConflict = false;
-        globj = one.GetComponent<GlowObject>();
         globj.OnGraspEnd();
 
     }
