@@ -58,12 +58,14 @@ public class ObjectSpawner : NetworkBehaviour {
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             Vector3 spawnPosition;
 
-                spawnPosition = new Vector3(0.0f, 0.105f, -0.2f);
+            spawnPosition = new Vector3(0.0f, 0.105f, -0.2f);
 
             CmdCreateBox(spawnPosition, Color.red);
 
             if(billboardPrefab != null)
             CreateBillboard(billboardPrefab, spawnPosition);
+
+
             spawnPosition = new Vector3(0.0f, 0.15f, -0.15f);
 
             coroutine = CreateServerComponent();

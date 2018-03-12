@@ -2,117 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConflictPair
-{
-    public string Conflict_in { get; set; }
-    public string Conflict_out { get; set; }
-    public string Conflict_name { get; set; }
-
-    public ConflictPair(string conflictin, string conflictout, string name)
-    {
-        Conflict_in = conflictin;
-        Conflict_out = conflictout;
-        Conflict_name = name;
-    }
-}
 
 public class ConflictDictionary : MonoBehaviour {
 
     //Dictionary <nameofobject, Dictionary<position_in, List<conflictPair>>>
-    Dictionary <string, List<ConflictPair>> conflictList;
+    Dictionary <string, string> conflictList;
 	// Use this for initialization
 	void Start () {
-        conflictList = new Dictionary<string,  List<ConflictPair>>();
+        conflictList = new Dictionary<string, string>();
+        conflictList.Add("Exterior Bathtub Async", "Interior Bathtub Async");
+        conflictList.Add("Exterior Dryer Async", "Interior dryer Async");
+        conflictList.Add("Exterior Kitchen Async", "Interior kitchen Async");
+        conflictList.Add("Exterior Lamp Async", "Interior lamp Async");
+        conflictList.Add("Exterior Sink Async", "Interior sink Async");
+        conflictList.Add("Exterior Toilet Async", "Interior toilet Async");
+        conflictList.Add("Exterior TV Async", "Interior tv Async");
+        conflictList.Add("Exterior Workdesk Async", "Interior workdesk Async");
 
-        List<ConflictPair> conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Anchor Point 1", "Exterior Anchor Point 1", "Exter Component Capsule Async"));
-        conflicts.Add(new ConflictPair("Anchor Point 2", "Exterior Anchor Point 2", "Exter Component Capsule Async"));
-        conflicts.Add(new ConflictPair("Anchor Point 3", "Exterior Anchor Point 3", "Exter Component Capsule Async"));
-        conflicts.Add(new ConflictPair("Anchor Point 4", "Exterior Anchor Point 4", "Exter Component Capsule Async"));
-
-        conflictList.Add("Inner Component Capsule Async", conflicts);
-
-        // ----------------------------------------------------------------------------------------------------
-
-        conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Anchor Point 1", "Exterior Anchor Point 1", "Exter Component Cube Async"));
-        conflicts.Add(new ConflictPair("Anchor Point 2", "Exterior Anchor Point 2", "Exter Component Cube Async"));
-        conflicts.Add(new ConflictPair("Anchor Point 3", "Exterior Anchor Point 3", "Exter Component Cube Async"));
-        conflicts.Add(new ConflictPair("Anchor Point 4", "Exterior Anchor Point 4", "Exter Component Cube Async"));
-
-        conflictList.Add("Inner Component Cube Async", conflicts);
-
-        // ----------------------------------------------------------------------------------------------------
-
-        conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Anchor Point 1", "Exterior Anchor Point 1", "Exter Component Cylinder Async"));
-        conflicts.Add(new ConflictPair("Anchor Point 2", "Exterior Anchor Point 2", "Exter Component Cylinder Async"));
-        conflicts.Add(new ConflictPair("Anchor Point 3", "Exterior Anchor Point 3", "Exter Component Cylinder Async"));
-        conflicts.Add(new ConflictPair("Anchor Point 4", "Exterior Anchor Point 4", "Exter Component Cylinder Async"));
-
-        conflictList.Add("Inner Component Cylinder Async", conflicts);
-
-        // ----------------------------------------------------------------------------------------------------
-
-        conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Anchor Point 1", "Exterior Anchor Point 1", "Exter Component Sphere Async"));
-        conflicts.Add(new ConflictPair("Anchor Point 2", "Exterior Anchor Point 2", "Exter Component Sphere Async"));
-        conflicts.Add(new ConflictPair("Anchor Point 3", "Exterior Anchor Point 3", "Exter Component Sphere Async"));
-        conflicts.Add(new ConflictPair("Anchor Point 4", "Exterior Anchor Point 4", "Exter Component Sphere Async"));
-
-        conflictList.Add("Inner Component Sphere Async", conflicts);
-
-        // ----------------------------------------------------------------------------------------------------
-
-        conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 1", "Anchor Point 1", "Inner Component Sphere Async"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 2", "Anchor Point 2", "Inner Component Sphere Async"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 3", "Anchor Point 3", "Inner Component Sphere Async"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 4", "Anchor Point 4", "Inner Component Sphere Async"));
-
-        conflictList.Add("Exter Component Sphere Async", conflicts);
-
-        // ----------------------------------------------------------------------------------------------------
-
-        conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 1", "Anchor Point 1", "Inner Component Cube Async"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 2", "Anchor Point 2", "Inner Component Cube Async"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 3", "Anchor Point 3", "Inner Component Cube Async"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 4", "Anchor Point 4", "Inner Component Cube Async"));
-
-        conflictList.Add("Exter Component Cube Async", conflicts);
-
-        // ----------------------------------------------------------------------------------------------------
-
-        conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 1", "Anchor Point 1", "Inner Component Cylinder Async"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 2", "Anchor Point 2", "Inner Component Cylinder Async"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 3", "Anchor Point 3", "Inner Component Cylinder Async"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 4", "Anchor Point 4", "Inner Component Cylinder Async"));
-
-        conflictList.Add("Exter Component Cylinder Async", conflicts);
-
-        // ----------------------------------------------------------------------------------------------------
-
-        conflicts = new List<ConflictPair>();
-
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 1", "Anchor Point 1", "Inner Component Capsule Async"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 2", "Anchor Point 2", "Inner Component Capsule Async"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 3", "Anchor Point 3", "Inner Component Capsule Async"));
-        conflicts.Add(new ConflictPair("Exterior Anchor Point 4", "Anchor Point 4", "Inner Component Capsule Async"));
-
-        conflictList.Add("Exter Component Capsule Async", conflicts);
+        conflictList.Add("Interior Bathtub Async", "Exterior Bathtub Async");
+        conflictList.Add("Interior dryer Async", "Exterior Dryer Async");
+        conflictList.Add("Interior kitchen Async", "Exterior Kitchen Async");
+        conflictList.Add("Interior lamp Async", "Exterior Lamp Async");
+        conflictList.Add("Interior sink Async", "Exterior Sink Async");
+        conflictList.Add("Interior toilet Async", "Exterior Toilet Async");
+        conflictList.Add("Interior tv Async", "Exterior TV Async");
+        conflictList.Add("Interior workdesk Async", "Exterior Workdesk Async");
 
     }
 
-    public Dictionary<string, List<ConflictPair>> getConflictDictionary()
+    public Dictionary<string, string> getConflictDictionary()
     {
         return conflictList;
     }

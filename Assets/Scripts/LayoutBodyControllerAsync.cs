@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-
+using UnityEngine.UI;
 
 public class LayoutBodyControllerAsync : NetworkBehaviour {
 
@@ -18,9 +18,17 @@ public class LayoutBodyControllerAsync : NetworkBehaviour {
                 Renderer[] rends =  gameObject.GetComponentsInChildren<Renderer>();
                 for (int i = 0; i < rends.Length; i++)
                     rends[i].enabled = false;
-                gameObject.GetComponent<BoxCollider>().enabled = false;
+
+                RawImage[] ris= gameObject.GetComponentsInChildren<RawImage>();
+                for (int i = 0; i < ris.Length; i++)
+                    ris[i].enabled = false;
+
+
+               // gameObject.GetComponent<BoxCollider>().enabled = false;
                 gameObject.tag = "Untagged";
                 gameObject.name = "Mockup(client)";
+
+                StartCoroutine(DelayStart());
             }
             else
             {
@@ -34,9 +42,18 @@ public class LayoutBodyControllerAsync : NetworkBehaviour {
                 Renderer[] rends = gameObject.GetComponentsInChildren<Renderer>();
                 for (int i = 0; i < rends.Length; i++)
                     rends[i].enabled = false;
-                gameObject.GetComponent<BoxCollider>().enabled = false;
+
+                RawImage[] ris = gameObject.GetComponentsInChildren<RawImage>();
+                for (int i = 0; i < ris.Length; i++)
+                    ris[i].enabled = false;
+
+                //gameObject.GetComponent<BoxCollider>().enabled = false;
+
+                
                 gameObject.tag = "Untagged";
                 gameObject.name = "Mockup(server)";
+
+                StartCoroutine(DelayStart());
             }
             else
             {
@@ -44,6 +61,12 @@ public class LayoutBodyControllerAsync : NetworkBehaviour {
             }
         }
     }
-            
-    
+
+    IEnumerator DelayStart()
+    {
+        LayoutController l = GameObject.FindGameObjectWithTag("Player").GetComponent<LayoutController>();
+        return l.setBillboardStartPoint();
+    }
+
+
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Leap.Unity.Interaction;
 using UnityEngine.Networking;
+using UnityEngine.UI;
+
 
 [RequireComponent(typeof(AnchorableBehaviour))]
 public class AnchorNetworkInteractionAsync : NetworkBehaviour
@@ -20,7 +22,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
     public static bool isHyBrid;
 
     Dictionary<string, string> relationDict;
-    Dictionary<string, List<ConflictPair>> conflictDict;
+ 
 
     void Start()
     {
@@ -29,9 +31,6 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
         relationDict = relation.GetComponent<RelationDictionary>().GetRelationship();
 
-        GameObject conflict = GameObject.Find("Conflict Dictionary");
-
-        conflictDict = conflict.GetComponent<ConflictDictionary>().getConflictDictionary();
 
         isPR = LayoutController.globalPR;
         isHyBrid = LayoutController.globalHybrid;
@@ -45,113 +44,183 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
         _anchObj = GetComponent<AnchorableBehaviour>();
 
         //Debug.Log("Name : " + gameObject.name + " tag: " + gameObject.tag + " isOIN " + LayoutController.isOwnInteriorView + " isbin " + LayoutController.isBillBoardInteriorView);
-        if (tag == "Interior")
+        if (!LayoutController.isOwnInteriorView)
         {
-            _anchObj.anchorGroup = _intgroup;
-            if (!LayoutController.isOwnInteriorView)
+            if (tag == "Interior")
             {
-                if (LayoutController.thisisServer && _anchObj.transform.position.z < 0)
+                _anchObj.anchorGroup = _intgroup;
+                if (isServer && _anchObj.transform.position.z < 0)
                 {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
-                }
-                else if (!LayoutController.thisisServer && _anchObj.transform.position.z > 0)
-                {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
-                }
-            }
-            else if (LayoutController.isOwnInteriorView)
-            {
-                if (LayoutController.thisisServer && _anchObj.transform.position.z < 0)
-                {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
-                }
-                else if (!LayoutController.thisisServer && _anchObj.transform.position.z > 0)
-                {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
-                }
-            }
-        }
-        else if (tag == "BillboardInterior")
-        {
-            checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, true, "Mockup(billboard)");
-            if (LayoutController.isBillBoardInteriorView)
-            {
-                if (LayoutController.thisisServer && _anchObj.transform.position.z > 0)
-                {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
-                }
-                else if (!LayoutController.thisisServer && _anchObj.transform.position.z < 0)
-                {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
-                }
-            }
-            else if (!LayoutController.isBillBoardInteriorView)
-            {
-                if (LayoutController.thisisServer && _anchObj.transform.position.z > 0)
-                {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
-                }
-                else if (!LayoutController.thisisServer && _anchObj.transform.position.z < 0)
-                {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
-                }
-            }
-        }
-        else if (tag == "Exterior")
-        {
-            _anchObj.anchorGroup = _extgroup;
-            if (LayoutController.isOwnInteriorView)
-            {
-                if (LayoutController.thisisServer && _anchObj.transform.position.z < 0)
-                {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
-                }
-                else if (!LayoutController.thisisServer && _anchObj.transform.position.z > 0)
-                {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
-                }
-            }
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = false; ;
 
-            else if (!LayoutController.isOwnInteriorView)
-            {
-                if (LayoutController.thisisServer && _anchObj.transform.position.z < 0)
-                {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = false; ;
+
                 }
-                else if (!LayoutController.thisisServer && _anchObj.transform.position.z > 0)
+                else if (!isServer && _anchObj.transform.position.z > 0)
                 {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = false;
+
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = false; ;
+                }
+            }
+            else if (tag == "Exterior")
+            {
+                _anchObj.anchorGroup = _extgroup;
+                // checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, false, "Mockup(server)");
+                if (isServer && _anchObj.transform.position.z < 0)
+                {
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = true;
+
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = true; ;
+                }
+                else if (!isServer && _anchObj.transform.position.z > 0)
+                {
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = true;
+
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = true;
                 }
             }
         }
-        else if (tag == "BillboardEx")
+        else
         {
-            checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, false, "Mockup(billboard)");
-            if (LayoutController.isBillBoardInteriorView)
+            if (tag == "Interior")
             {
-                if (LayoutController.thisisServer && _anchObj.transform.position.z > 0)
+                _anchObj.anchorGroup = _intgroup;
+                if (isServer && _anchObj.transform.position.z < 0)
                 {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = true;
+
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = true;
                 }
-                else if (!LayoutController.thisisServer && _anchObj.transform.position.z < 0)
+                else if (!isServer && _anchObj.transform.position.z > 0)
                 {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = false;
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = true;
+
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = true;
                 }
             }
-            else if (!LayoutController.isBillBoardInteriorView)
+            else if (tag == "Exterior")
             {
-                if (LayoutController.thisisServer && _anchObj.transform.position.z > 0)
+                _anchObj.anchorGroup = _extgroup;
+                // checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, false, "Mockup(server)");
+                if (isServer && _anchObj.transform.position.z < 0)
                 {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = false;
+
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = false;
                 }
-                else if (!LayoutController.thisisServer && _anchObj.transform.position.z < 0)
+                else if (!isServer && _anchObj.transform.position.z > 0)
                 {
-                    _anchObj.gameObject.GetComponentInChildren<Renderer>().enabled = true;
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = false;
+
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = false; ;
                 }
             }
         }
-        
-      
+
+
+        if (!LayoutController.isBillBoardInteriorView)
+        {
+            if (tag == "BillboardInterior")
+            {
+                _anchObj.anchorGroup = _intgroup;
+                if (isServer && _anchObj.transform.position.z > 0)
+                {
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = false;
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = false;
+
+                }
+                else if (!isServer && _anchObj.transform.position.z < 0)
+                {
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = false;
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = false;
+                }
+            }
+            else if (tag == "BillboardEx")
+            {
+                _anchObj.anchorGroup = _extgroup;
+                // checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, false, "Mockup(server)");
+                if (isServer && _anchObj.transform.position.z > 0)
+                {
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = true;
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = true;
+                }
+                else if (!isServer && _anchObj.transform.position.z < 0)
+                {
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = true;
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = true;
+                }
+            }
+        }
+        else
+        {
+            if (tag == "BillboardInterior")
+            {
+                _anchObj.anchorGroup = _intgroup;
+                if (isServer && _anchObj.transform.position.z > 0)
+                {
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = true;
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = true;
+
+                }
+                else if (!isServer && _anchObj.transform.position.z < 0)
+                {
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = true;
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = true;
+                }
+            }
+            else if (tag == "BillboardEx")
+            {
+                _anchObj.anchorGroup = _extgroup;
+                // checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, false, "Mockup(server)");
+                if (isServer && _anchObj.transform.position.z > 0)
+                {
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = false;
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = false;
+                }
+                else if (!isServer && _anchObj.transform.position.z < 0)
+                {
+                    Renderer[] rs = _anchObj.gameObject.GetComponentsInChildren<Renderer>();
+                    for (int i = 0; i < rs.Length; i++) rs[i].enabled = false;
+                    Text[] ts = _anchObj.gameObject.GetComponentsInChildren<Text>();
+                    for (int i = 0; i < ts.Length; i++) ts[i].enabled = false;
+                }
+            }
+        }
+
+
+
+
 
 
         if (_anchObj != null)
@@ -179,45 +248,45 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
     }
 
-    void checkConflict(GameObject obj, string anchorname, bool isInterior, string Layoutname)
-    {
-        GameObject layout = GameObject.Find(Layoutname);
-        if (layout != null)
-        {
-            List<GameObject> attachList;
+    //void checkConflict(GameObject obj, string anchorname, bool isInterior, string Layoutname)
+    //{
+    //    GameObject layout = GameObject.Find(Layoutname);
+    //    if (layout != null)
+    //    {
+    //        List<GameObject> attachList;
 
-            if(isInterior) attachList = layout.GetComponent<AttachObjectManager>().getExteriorList();
-            else attachList = layout.GetComponent<AttachObjectManager>().getInteriorList();
+    //        if(isInterior) attachList = layout.GetComponent<AttachObjectManager>().getExteriorList();
+    //        else attachList = layout.GetComponent<AttachObjectManager>().getInteriorList();
 
 
-            //"Inner Component Capsule Async"
-            string[] split=obj.name.Split('(');
+    //        //"Inner Component Capsule Async"
+    //        string[] split=obj.name.Split('(');
 
-            Debug.Log(split[0]);
-            List<ConflictPair> conflicted;
-            if (conflictDict.TryGetValue(split[0], out conflicted))
-            {
+    //        Debug.Log(split[0]);
+    //        List<ConflictPair> conflicted;
+    //        if (conflictDict.TryGetValue(split[0], out conflicted))
+    //        {
 
-                List<ConflictPair> possible_conflict = conflicted.FindAll(x => x.Conflict_in == anchorname);
-                //("Anchor Point 1", "Exterior Anchor Point 1", "Exter Component Capsule Async"));
-                //("Anchor Point 2", "Exterior Anchor Point 2", "Exter Component Capsule Async"));
-                //("Anchor Point 3", "Exterior Anchor Point 3", "Exter Component Capsule Async"));
-                //("Anchor Point 4", "Exterior Anchor Point 4", "Exter Component Capsule Async"));
-                foreach (ConflictPair cp in possible_conflict)
-                {
-                    foreach (GameObject l in attachList)
-                    {
-                        string[] l_split = l.name.Split('(');
-                        Debug.Log(l_split[0]);
-                        if (cp.Conflict_name == l_split[0] && l.GetComponent<AnchorableBehaviour>().anchor.name == cp.Conflict_out)
-                        {
-                            Debug.Log("Conflict found at" + split[0]+"-"+cp.Conflict_in + "-" + cp.Conflict_name + "-" + cp.Conflict_out);
-                        }
-                    }
-                }
-            }
-        }
-    }
+    //            List<ConflictPair> possible_conflict = conflicted.FindAll(x => x.Conflict_in == anchorname);
+    //            //("Anchor Point 1", "Exterior Anchor Point 1", "Exter Component Capsule Async"));
+    //            //("Anchor Point 2", "Exterior Anchor Point 2", "Exter Component Capsule Async"));
+    //            //("Anchor Point 3", "Exterior Anchor Point 3", "Exter Component Capsule Async"));
+    //            //("Anchor Point 4", "Exterior Anchor Point 4", "Exter Component Capsule Async"));
+    //            foreach (ConflictPair cp in possible_conflict)
+    //            {
+    //                foreach (GameObject l in attachList)
+    //                {
+    //                    string[] l_split = l.name.Split('(');
+    //                    Debug.Log(l_split[0]);
+    //                    if (cp.Conflict_name == l_split[0] && l.GetComponent<AnchorableBehaviour>().anchor.name == cp.Conflict_out)
+    //                    {
+    //                        Debug.Log("Conflict found at" + split[0]+"-"+cp.Conflict_in + "-" + cp.Conflict_name + "-" + cp.Conflict_out);
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 
     void OnAttachedToAnchor()
     {
@@ -233,16 +302,16 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
             {
                 attachObjectList.addExteriorObject(gameObject);
 
-                if(isServer) checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, false, "Mockup(server)");
-                else checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, false, "Mockup(client)");
+                //if(isServer) checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, false, "Mockup(server)");
+                //else checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, false, "Mockup(client)");
             }
 
             else if (gameObject.tag == "Interior" || gameObject.tag == "BillboardInterior")
             {
                 attachObjectList.addInteriorObject(gameObject);
 
-                if (isServer) checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, true, "Mockup(server)");
-                else checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, true, "Mockup(client)");
+                //if (isServer) checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, true, "Mockup(server)");
+                //else checkConflict(gameObject, gameObject.GetComponent<AnchorableBehaviour>().anchor.name, true, "Mockup(client)");
             }
                 
             
@@ -1158,10 +1227,11 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
     private void whileAttachedToAnchor()
     {
         Anchor anchor = gameObject.GetComponent<AnchorableBehaviour>().anchor;
+        Vector3 angles = transform.rotation.eulerAngles;
         // Debug.Log("Transform object");
-        Transform t = anchor.transform;
-
-      //  CmdAnchorMovement(t.position, t.rotation);
+        //Transform t = anchor.transform;
+        transform.rotation = Quaternion.Euler(new Vector3(0, Mathf.Round((angles.y - anchor.transform.eulerAngles.y) / 90.0f) * 90 + anchor.transform.eulerAngles.y, 0));
+        //  CmdAnchorMovement(t.position, t.rotation);
     }
 
     [Command]

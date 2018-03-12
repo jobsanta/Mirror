@@ -15,11 +15,21 @@ public class AttachObjectManager : MonoBehaviour {
     AnchorGroup _extgroup;
     AnchorGroup _intgroup;
 
+    ConflictDictionarySync conflictdictSync;
+    ConflictDictionary conflictdictAsync;
+
     void Start () {
 
         GameObject conflict = GameObject.Find("Conflict Dictionary");
 
-        conflictDict = conflict.GetComponent<ConflictDictionarySync>().GetConflictDictionary();
+        conflictdictAsync = conflict.GetComponent<ConflictDictionary>();
+        conflictdictSync = conflict.GetComponent<ConflictDictionarySync>();
+
+        if (conflictdictAsync != null)
+            conflictDict = conflictdictAsync.getConflictDictionary();
+        else if (conflictdictSync!= null)
+            conflictDict = conflictdictSync.GetConflictDictionary();
+
 
         exteriorList = new List<GameObject>();
         interiorList = new List<GameObject>();

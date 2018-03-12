@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4491511, g: 0.49922794, b: 0.575714, a: 1}
+  m_IndirectSpecularColor: {r: 0.44824535, g: 0.49827206, b: 0.5755818, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -242,37 +242,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!84 &185375386
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 1149
-  m_Height: 484
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &214501318
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,12 +596,12 @@ MonoBehaviour:
   bodyManager: {fileID: 616008076}
   MultiSourceManager: {fileID: 840781267}
   camera: {fileID: 643613543}
-  ff: 0
-  hh: 0
+  ff: 1
+  hh: 1
   qq: 0.05
   rr: 0.01
   init_state: 0.001
-  headSmooth: 10
+  headSmooth: 100
 --- !u!4 &409223249
 Transform:
   m_ObjectHideFlags: 0
@@ -1475,14 +1444,32 @@ MonoBehaviour:
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 1074629180401056, guid: e435a82ba9694b346a2246fb6453b0ce, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1369122640442158, guid: 4921542157caf254bbeab6fcf87e2263, type: 2}
-  - {fileID: 0}
-  - {fileID: 1515384863940076, guid: 869a7fbbb9e6a1348bf67010affffe2d, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1221437265741574, guid: 02cfa147f40fa344984caf617fad3b0d, type: 2}
+  - {fileID: 1097992076783212, guid: 9e34a9861b47a124185e5025ab13bb3a, type: 2}
+  - {fileID: 1191436006359836, guid: 3e49fc1531b2aae4ea6420ed51e6319a, type: 2}
+  - {fileID: 1066414774638830, guid: fe4518a63e598b74cbfceb945bb25e95, type: 2}
+  - {fileID: 1305828693651870, guid: 76e8e3376c0f6354c80bccea0a4eed11, type: 2}
+  - {fileID: 1382015897524844, guid: 7c41d64ccf211ac449e56396949e2fb8, type: 2}
+  - {fileID: 1315650976414540, guid: 8752aa32b6782e54aa9e12cbf93ab19f, type: 2}
+  - {fileID: 1439273821114718, guid: 0b9f112caa5fc6040b65f3d89ed08fc5, type: 2}
+  - {fileID: 1061307646888060, guid: 9d5d5c5e5decaee4d8cb834d15fbffdf, type: 2}
+  - {fileID: 1222378896025070, guid: 6ab5fb0f8c7cb5d4b8280ae3fdd03876, type: 2}
+  - {fileID: 1147524307275676, guid: 1aeedcf69bb213844ae02d3e409a5344, type: 2}
+  - {fileID: 1764026963505894, guid: 9889ff05b081c864dbc124d43cadfafe, type: 2}
+  - {fileID: 1191657672996310, guid: 0f15ed15ac57c3641ad1b6721e50e494, type: 2}
+  - {fileID: 1778683859705552, guid: bca92f79e5efbff4cb675cb00766db09, type: 2}
+  - {fileID: 1475074121875882, guid: d891da4fc96b323478dedaadb9c3c84b, type: 2}
+  - {fileID: 1499125934528390, guid: e10efc1c68034ad4c9ab2cf69db22915, type: 2}
+  - {fileID: 1390488688458006, guid: bd95eaa63204c1346893c8609f8d66ae, type: 2}
+  - {fileID: 1628509115088142, guid: a8926dc921b3ef24ab63ad2243c33423, type: 2}
+  - {fileID: 1663765374380810, guid: 7e5d4f443ae69f44f9f3b682f5ada680, type: 2}
+  - {fileID: 1265383107051932, guid: 83886ab540b26a84f91792125e698e13, type: 2}
+  - {fileID: 1023450131210742, guid: 355b89fb24f0b3947b2185c6e90a52b2, type: 2}
+  - {fileID: 1863575328259754, guid: 46c99b2b0ab7dcb43834a7dceb1d63cc, type: 2}
+  - {fileID: 1160173516161878, guid: 4eea4c2765b82d2459969f569c4f9587, type: 2}
+  - {fileID: 1301578892983938, guid: 11fbda79a299420459d4d70bb8b0f9c9, type: 2}
+  - {fileID: 1012237044784688, guid: 98d91b72725377040a3c5b8201b4e16a, type: 2}
+  - {fileID: 1585555369700604, guid: 4a6b2c8ba28fa8b4ea21937984fcd7d7, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -1754,6 +1741,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &1003256043
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 791
+  m_Height: 445
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1004847389
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,8 +2743,8 @@ Camera:
   m_GameObject: {fileID: 1909337609}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -2742,11 +2760,11 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 185375386}
+  m_RenderingPath: 1
+  m_TargetTexture: {fileID: 1003256043}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
