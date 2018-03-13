@@ -3773,7 +3773,7 @@ MonoBehaviour:
   removeGameObjectsIfNonLocal:
   - {fileID: 1000012708398010}
   - {fileID: 1431704871547442}
-  - {fileID: 1851270718450528, guid: 7f058cb550cee174091e52fc14aeefbe, type: 2}
+  - {fileID: 0}
   enableGameObjectsIfLocal:
   - {fileID: 1000012708398010}
 --- !u!114 &114000013511113252
@@ -4331,6 +4331,7 @@ MonoBehaviour:
     type: 2}
   TransformTool: {fileID: 1103588776523428, guid: 12e473c506bd6bf47af39263573ee3fb,
     type: 2}
+  isAsync: 1
 --- !u!136 &136094420565486906
 CapsuleCollider:
   m_ObjectHideFlags: 1

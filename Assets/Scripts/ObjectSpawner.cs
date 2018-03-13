@@ -18,6 +18,8 @@ public class ObjectSpawner : NetworkBehaviour {
     IEnumerator coroutine;
     private NetworkStartPosition[] spawnPoints;
 
+    public bool isAsync;
+
 
     public override void OnStartLocalPlayer()
     {
@@ -44,6 +46,8 @@ public class ObjectSpawner : NetworkBehaviour {
             if (billboardPrefab != null)
                 CreateBillboard(billboardPrefab, spawnPosition);
 
+            if (isAsync) DisableComponent();
+
 
             spawnPosition = new Vector3(0.0f, 0.15f, 0.15f);
             CmdCreateClientComponent(spawnPosition, Color.red);
@@ -64,6 +68,8 @@ public class ObjectSpawner : NetworkBehaviour {
 
             if(billboardPrefab != null)
             CreateBillboard(billboardPrefab, spawnPosition);
+
+          
 
 
             spawnPosition = new Vector3(0.0f, 0.15f, -0.15f);
@@ -163,13 +169,21 @@ public class ObjectSpawner : NetworkBehaviour {
     {
         yield return new WaitForSeconds(0.5f);
 
-        CmdCreateServerComponent();
+        CrServerComponent();
       
     }
 
+    void DisableComponent()
+    {
+        for(int i =0;i< ServerComponentPrefab.Length;i++)
+        {
+           GameObject o =  GameObject.Find(ServerComponentPrefab[i].name + "(Clone)");
+            if(o!=null)   o.SetActive(false);
+        }
+        
+    }
 
-    [Command]
-    void CmdCreateServerComponent()
+    void CrServerComponent()
     {
         var spawnRotation = Quaternion.Euler(
         0.0f,
@@ -186,6 +200,7 @@ public class ObjectSpawner : NetworkBehaviour {
             o.transform.RotateAround(new Vector3(0.0f, 0.0f, -0.2f), Vector3.up, 30.0f);
 
             NetworkServer.SpawnWithClientAuthority(o, gameObject);
+
 
         }
 
@@ -228,6 +243,8 @@ public class ObjectSpawner : NetworkBehaviour {
 
             NetworkServer.SpawnWithClientAuthority(o, gameObject);
 
+            if (isAsync) o.SetActive(false);
+
         }
 
         for (int i = ClientComponentPrefab.Length / 2; i < ClientComponentPrefab.Length; i++)
@@ -241,10 +258,13 @@ public class ObjectSpawner : NetworkBehaviour {
 
             NetworkServer.SpawnWithClientAuthority(o, gameObject);
 
+            if (isAsync) o.SetActive(false);
+
         }
 
     }
         
+
     public void GraspObjectSpawner(GameObject obj, Vector3 spawnPosition, Quaternion spawnRotation)
     {
         CmdCreateClientComponentOnGrasp(obj, spawnPosition, spawnRotation);

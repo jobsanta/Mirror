@@ -10,25 +10,32 @@ public class RigidBodyControllerAsync : NetworkBehaviour {
     //private AnchorableBehaviour _anchObj;
     void Start () 
     {
-        Debug.Log(gameObject.name + ": isLocalPlayer " + isLocalPlayer +
-    " isServer " + isServer + " isClient " + isClient + " hasAuthority " + hasAuthority + " layer " + gameObject.layer);
         if (isServer)
         {
             if (gameObject.transform.position.z > 0)
             {
                 // _anchObj = GetComponent<AnchorableBehaviour>();
 
-                if(gameObject.tag != "BillboardEx" && gameObject.tag != "BillboardInterior")
-                {
-                    Renderer[] rends = gameObject.GetComponentsInChildren<Renderer>();
-                    for (int i = 0; i < rends.Length; i++)
-                        rends[i].enabled = false;
-                }
+                //if(gameObject.tag == "Exterior")
+                //{
+                //    Renderer[] rends = gameObject.GetComponentsInChildren<Renderer>();
+                //    for (int i = 0; i < rends.Length; i++)
+                //        rends[i].enabled = false;
 
-                
+                //    gameObject.tag = "Untagged";
+                //    //gameObject.SetActive(false);
+                //}
+
+                //if (!hasAuthority)
+                //{
+                //    Renderer[] rends = gameObject.GetComponentsInChildren<Renderer>();
+                //    for (int i = 0; i < rends.Length; i++)
+                //        rends[i].enabled = false;
+                //    gameObject.tag = "Untagged";
+                //}
 
 
-                
+
                 gameObject.GetComponent<BoxCollider>().enabled = false;
                 gameObject.GetComponent<Rigidbody>().isKinematic = true;
                 //gameObject.tag = "Untagged";
@@ -39,15 +46,16 @@ public class RigidBodyControllerAsync : NetworkBehaviour {
             if (gameObject.transform.position.z < 0)
             {
                 // _anchObj = GetComponent<AnchorableBehaviour>();
-                if (gameObject.tag != "BillboardEx" && gameObject.tag != "BillboardInterior")
-                {
-                    Renderer[] rends = gameObject.GetComponentsInChildren<Renderer>();
-                    for (int i = 0; i < rends.Length; i++)
-                        rends[i].enabled = false;
-                }
-                
+                //if (!hasAuthority)
+                //{
+                //    Renderer[] rends = gameObject.GetComponentsInChildren<Renderer>();
+                //    for (int i = 0; i < rends.Length; i++)
+                //        rends[i].enabled = false;
+                //    gameObject.tag = "Untagged";
+                //}
 
-                
+
+
                 gameObject.GetComponent<BoxCollider>().enabled = false;
                 gameObject.GetComponent<Rigidbody>().isKinematic = true;
                 //gameObject.tag = "Untagged";

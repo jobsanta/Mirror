@@ -371,7 +371,7 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
 6daf822fbfefbf0e5841375a5f907196 Assembly-CSharp.dll:Leap.Unity.KeyEnableBehaviors
 c401d950aa023aec5daa2becef6db068 Assembly-CSharp.dll:Leap.Unity.Interaction.AnchorableBehaviour
-fbc853ba0058ca97a7d079fa0e29e207 Assembly-CSharp.dll:.ObjectSpawner
+0da0dbf9b43f5624fc8d13172b50ea47 Assembly-CSharp.dll:.ObjectSpawner
 d8b86f4fb9fa4c153334062c4f5a4a1d Assembly-CSharp.dll:Leap.Unity.StationaryTestLeapProvider
 4e1c63de97d8346077e579a2ec9a6c45 Assembly-CSharp.dll:.GlowObjectCmd
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AnchorNetworkInteraction
