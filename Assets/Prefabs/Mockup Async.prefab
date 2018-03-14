@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 114144615004185462}
   - component: {fileID: 114851175069531648}
   - component: {fileID: 114706986027412146}
+  - component: {fileID: 114226914698071646}
   m_Layer: 0
   m_Name: Mockup Async
   m_TagString: Layout
@@ -10484,6 +10485,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114226914698071646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074629180401056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c822b851d79c944c8c83e62870371fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114253389361825828
 MonoBehaviour:
   m_ObjectHideFlags: 1

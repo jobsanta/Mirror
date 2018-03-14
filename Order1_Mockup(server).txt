@@ -1,0 +1,9 @@
+Interior dryer Async(Clone) Anchor Point 11
+Interior dryer Async(Clone) Anchor Point 11
+Interior Counch Async(Clone) Anchor Point 8
+Interior dryer Async(Clone) Anchor Point 5
+Interior kitchen Async(Clone) Anchor Point 18
+Interior lamp Async(Clone) Anchor Point 15
+Interior tv Async(Clone) Anchor Point 17
+Interior table Async(Clone) Anchor Point 10
+Interior Bed Async(Clone) Anchor Point 12

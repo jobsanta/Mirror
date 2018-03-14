@@ -1,0 +1,7 @@
+Interior dryer Async(Clone)(Clone) Anchor Point 11
+Exterior Hub Async(Clone)1 Exterior Anchor Point 12
+Exterior Bathtub Async(Clone) Exterior Anchor Point 10
+Exterior Hub Async(Clone)2 Exterior Anchor Point 11
+Exterior Dryer Async(Clone) Exterior Anchor Point 5
+Exterior Toilet Async(Clone) Exterior Anchor Point 17
+Exterior TV Async(Clone) Exterior Anchor Point 28

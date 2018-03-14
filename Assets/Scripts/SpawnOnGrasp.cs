@@ -8,14 +8,15 @@ using UnityEngine.Networking;
 public class SpawnOnGrasp : MonoBehaviour {
 
     private InteractionBehaviour _intObj;
+    private AnchorableBehaviour _AncObj;
     Vector3 lockedPosition;
     Quaternion lockedRotation;
+    static int globalCount = 0;
     void Start () {
         _intObj = GetComponent<InteractionBehaviour>();
-
+        _AncObj = GetComponent<AnchorableBehaviour>();
         _intObj.OnGraspBegin += SetStartPosition;
-        _intObj.OnGraspEnd += GraspSpawn;
-
+        _AncObj.OnAttachedToAnchor += OnAnchor;
 
     }
 
@@ -24,19 +25,22 @@ public class SpawnOnGrasp : MonoBehaviour {
         lockedPosition = gameObject.GetComponent<Rigidbody>().position ;
         lockedRotation = gameObject.GetComponent<Rigidbody>().rotation;
 
-        Debug.Log(lockedPosition + " " + lockedRotation);
+        globalCount++;
+        gameObject.name = gameObject.name + globalCount.ToString();
+        _intObj.OnGraspBegin -= SetStartPosition;
+
     }
 
-    void GraspSpawn()
+    
+    void OnAnchor()
     {
+   
 
-            GameObject Player = GameObject.FindGameObjectWithTag("Player");
-            ObjectSpawner spawner = Player.GetComponent<ObjectSpawner>();
-            spawner.GraspObjectSpawner(gameObject, lockedPosition, lockedRotation);
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
+        ObjectSpawner spawner = Player.GetComponent<ObjectSpawner>();
+        spawner.GraspObjectSpawner(gameObject, lockedPosition, lockedRotation);
 
-        _intObj.OnGraspBegin -= SetStartPosition;
-        _intObj.OnGraspEnd -= GraspSpawn;
-
+        _AncObj.OnAttachedToAnchor -= OnAnchor;
     }
 
 }

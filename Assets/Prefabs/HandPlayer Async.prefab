@@ -4067,7 +4067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPR: 0
-  isHybrid: 0
+  isHybrid: 1
 --- !u!114 &114412223268443922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4312,19 +4312,17 @@ MonoBehaviour:
   - {fileID: 1585555369700604, guid: 4a6b2c8ba28fa8b4ea21937984fcd7d7, type: 2}
   ClientComponentPrefab:
   - {fileID: 1191436006359836, guid: 3e49fc1531b2aae4ea6420ed51e6319a, type: 2}
-  - {fileID: 1305828693651870, guid: 76e8e3376c0f6354c80bccea0a4eed11, type: 2}
-  - {fileID: 1221437265741574, guid: 02cfa147f40fa344984caf617fad3b0d, type: 2}
   - {fileID: 1097992076783212, guid: 9e34a9861b47a124185e5025ab13bb3a, type: 2}
   - {fileID: 1191657672996310, guid: 0f15ed15ac57c3641ad1b6721e50e494, type: 2}
   - {fileID: 1315650976414540, guid: 8752aa32b6782e54aa9e12cbf93ab19f, type: 2}
   - {fileID: 1066414774638830, guid: fe4518a63e598b74cbfceb945bb25e95, type: 2}
   - {fileID: 1382015897524844, guid: 7c41d64ccf211ac449e56396949e2fb8, type: 2}
   - {fileID: 1439273821114718, guid: 0b9f112caa5fc6040b65f3d89ed08fc5, type: 2}
-  - {fileID: 1061307646888060, guid: 9d5d5c5e5decaee4d8cb834d15fbffdf, type: 2}
-  - {fileID: 1222378896025070, guid: 6ab5fb0f8c7cb5d4b8280ae3fdd03876, type: 2}
   - {fileID: 1147524307275676, guid: 1aeedcf69bb213844ae02d3e409a5344, type: 2}
+  - {fileID: 1222378896025070, guid: 6ab5fb0f8c7cb5d4b8280ae3fdd03876, type: 2}
   - {fileID: 1764026963505894, guid: 9889ff05b081c864dbc124d43cadfafe, type: 2}
   - {fileID: 1778683859705552, guid: bca92f79e5efbff4cb675cb00766db09, type: 2}
+  - {fileID: 1061307646888060, guid: 9d5d5c5e5decaee4d8cb834d15fbffdf, type: 2}
   panelPrefabL: {fileID: 1851270718450528, guid: df19c1b2aedf56248b2dedcb2ee6eb95,
     type: 2}
   panelPrefabR: {fileID: 1851270718450528, guid: 6b0319cb2a7b5c04a922ae1204faa185,

@@ -11,8 +11,8 @@ public class GraspNetworkInteractionAsync : NetworkBehaviour {
     private Rigidbody rb;
     private BoxCollider bc;
     private GlowObject _glowObj;
-
-
+    private bool isHovering;
+    Quaternion lockrotation;
     void Start() {
         _intObj = GetComponent<InteractionBehaviour>();
         _glowObj = GetComponent<GlowObject>();
@@ -32,11 +32,22 @@ public class GraspNetworkInteractionAsync : NetworkBehaviour {
     private void OnHoverStart()
     {
         _glowObj.OnHoverStart();
+        //StartCoroutine(RotateObjects());
     }
 
     private void OnHoverEnd()
     {
         _glowObj.OnHoverEnd();
+    }
+
+
+    IEnumerator RotateObjects()
+    {
+        while(isHovering)
+        {
+            yield return new WaitForSeconds(1.0f);
+            gameObject.transform.Rotate(new Vector3(0, 90, 0));
+        }
     }
 
     private void onGraspedEnd()
@@ -47,6 +58,7 @@ public class GraspNetworkInteractionAsync : NetworkBehaviour {
 
     private void OnGraspedStart()
     {
+        lockrotation = transform.rotation;
         _glowObj.OnGraspBegin();
         gameObject.GetComponent<AnchorNetworkInteractionAsync>().OnGraspBeginCheck(gameObject);
     }
@@ -56,9 +68,16 @@ public class GraspNetworkInteractionAsync : NetworkBehaviour {
         Vector3 solvedPos, Quaternion solvedRot,
         List<InteractionController> graspingController)
     {
-        Vector3 angle = solvedRot.eulerAngles;
 
-        solvedRot = Quaternion.Euler(0, angle.y, 0);
+        Quaternion relative = solvedRot * Quaternion.Inverse(lockrotation);
+
+        float angles = relative.eulerAngles.y;
+        if (angles > 180 && angles < 360)
+            angles = Mathf.Max(-180, -(360 - angles) * 3.0f);
+        if (angles > 0 && angles < 180)
+            angles = Mathf.Min(180, angles * 3.0f);
+
+        Debug.Log(lockrotation.eulerAngles.y + " " +angles);
 
         Vector3 movementDueToGrasp = solvedPos - presolvedPos;
         float xAxisMovement = movementDueToGrasp.x;
@@ -66,9 +85,9 @@ public class GraspNetworkInteractionAsync : NetworkBehaviour {
 
         _intObj.rigidbody.position = presolvedPos;
         _intObj.rigidbody.position += Vector3.right * xAxisMovement + Vector3.forward * zAxisMovement;
-        _intObj.rigidbody.rotation = solvedRot;
+        _intObj.rigidbody.rotation = Quaternion.Euler(0, lockrotation.eulerAngles.y + angles, 0);
 
-       // CmdGraspedMovement(_intObj.rigidbody.position, solvedRot);
+        // CmdGraspedMovement(_intObj.rigidbody.position, solvedRot);
 
 
 

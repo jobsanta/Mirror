@@ -36,7 +36,7 @@ public class ControlPanelController : MonoBehaviour {
         //    }
         //}
         
-        Vector3 offset = new Vector3(-0.1f,-0.025f,0.55f);
+        Vector3 offset = new Vector3(-0.1f,-0.01f,0.55f);
 
         if (Left)
         {

@@ -269,6 +269,7 @@ MonoBehaviour:
   GraspColor: {r: 0, g: 0, b: 0, a: 0}
   ConflictColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
+  isConflict: 0
 --- !u!114 &114394531425964540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -306,6 +307,7 @@ MonoBehaviour:
   GraspColor: {r: 0, g: 1, b: 0.13103461, a: 0}
   ConflictColor: {r: 1, g: 0, b: 0, a: 0}
   LerpFactor: 10
+  isConflict: 0
 --- !u!114 &114772591820339986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,6 +323,7 @@ MonoBehaviour:
   GraspColor: {r: 0, g: 0, b: 0, a: 0}
   ConflictColor: {r: 0, g: 0, b: 0, a: 0}
   LerpFactor: 10
+  isConflict: 0
 --- !u!114 &114776099113119140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -402,7 +405,7 @@ MonoBehaviour:
   _motionlessRangeFraction: 0.4
   _maxMotionlessRange: 0.040000003
   _maxAttachmentAngle: 60
-  _alwaysAttachDistance: 0.0625
+  _alwaysAttachDistance: 0.1
   lockToAnchor: 1
   lockWhenAttached: 1
   matchAnchorMotionWhileAttaching: 1

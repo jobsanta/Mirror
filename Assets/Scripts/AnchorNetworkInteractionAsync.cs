@@ -364,7 +364,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
         if (!isHyBrid)
             return;
 
-        string name = obj.name.Remove(obj.name.Length - 7);
+        string name = obj.name.Split('(')[0];
         string related;
         bool orignalfound = false;
         Anchor originalAnchor = null;
@@ -389,7 +389,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
                 foreach (GameObject o in attachlist)
                 {
-                    if (o.name == string.Format("{0}(Clone)(Clone)", related))
+                    if (o.name.Split('(')[0] ==  related)
                     {
                         orignalfound = true;
                         originalAnchor = o.GetComponent<AnchorableBehaviour>().anchor;
@@ -513,7 +513,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
 
     IEnumerator DelayCheckAnchor(GameObject obj)
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(3.0f);
         GameObject layout;
 
         bool orignalfound = false;
@@ -591,7 +591,7 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
         {
 
             GameObject layout = GameObject.Find("Mockup(billboard)");
-            if (layout != null)
+            if (layout != null && anchor !=null)
             {
                 Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
                 foreach (Anchor a in anchors)
@@ -617,15 +617,16 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                         }
                     }
                 }
+                RpcDeleteObject(anchor.name);
 
             }
-            RpcDeleteObject(anchor.name);
+           
         }
         else
         {
             //Destroy client bill board objects
             GameObject layout = GameObject.Find("Mockup(billboard)");
-            if (layout != null)
+            if (layout != null && anchor != null)
             {
                 Anchor[] anchors = layout.GetComponentsInChildren<Anchor>();
                 foreach (Anchor a in anchors)
@@ -652,10 +653,10 @@ public class AnchorNetworkInteractionAsync : NetworkBehaviour
                     }
                 }
 
-
+                //Destroy server and server billboard object
+                CmdDeleteObject(anchor.name);
             }
-            //Destroy server and server billboard object
-            CmdDeleteObject(anchor.name);
+
         }
 
 

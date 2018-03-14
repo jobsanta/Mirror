@@ -377,7 +377,7 @@ MonoBehaviour:
   _motionlessRangeFraction: 0.4
   _maxMotionlessRange: 0.040000003
   _maxAttachmentAngle: 60
-  _alwaysAttachDistance: 0.0625
+  _alwaysAttachDistance: 0.1
   lockToAnchor: 1
   lockWhenAttached: 1
   matchAnchorMotionWhileAttaching: 1
@@ -423,6 +423,7 @@ MonoBehaviour:
   GraspColor: {r: 0, g: 1, b: 0.08965516, a: 0}
   ConflictColor: {r: 1, g: 0, b: 0, a: 0}
   LerpFactor: 10
+  isConflict: 0
 --- !u!114 &114557510343945708
 MonoBehaviour:
   m_ObjectHideFlags: 1

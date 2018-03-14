@@ -10,6 +10,9 @@ public class AttachObjectManager : MonoBehaviour {
     public List<GameObject> exteriorList;
     public List<GameObject> interiorList;
 
+    List<string> attachOrder;
+    List<string> attachOrderAnchor;
+
 
     Dictionary<string, string> conflictDict;
     AnchorGroup _extgroup;
@@ -29,7 +32,8 @@ public class AttachObjectManager : MonoBehaviour {
             conflictDict = conflictdictAsync.getConflictDictionary();
         else if (conflictdictSync!= null)
             conflictDict = conflictdictSync.GetConflictDictionary();
-
+        attachOrder = new List<string>();
+        attachOrderAnchor = new List<string>();
 
         exteriorList = new List<GameObject>();
         interiorList = new List<GameObject>();
@@ -64,6 +68,13 @@ public class AttachObjectManager : MonoBehaviour {
     public void addInteriorObject(GameObject objects)
     {
         interiorList.Add(objects);
+        if(LayoutController.thisisServer && gameObject.name=="Mockup(server)")
+        {
+            attachOrder.Add(objects.name);
+            attachOrderAnchor.Add(objects.GetComponent<AnchorableBehaviour>().anchor.name);
+        }
+
+
         checkConflict(objects, true);
     }
 
@@ -81,6 +92,11 @@ public class AttachObjectManager : MonoBehaviour {
     public void addExteriorObject(GameObject objects)
     {
         exteriorList.Add(objects);
+        if (!LayoutController.thisisServer && gameObject.name == "Mockup(client)")
+        {
+            attachOrder.Add(objects.name);
+            attachOrderAnchor.Add(objects.GetComponent<AnchorableBehaviour>().anchor.name);
+        }
         checkConflict(objects, false);
     }
 
@@ -187,5 +203,15 @@ public class AttachObjectManager : MonoBehaviour {
         globj.isConflict = false;
         globj.OnGraspEnd();
 
+    }
+
+    public List<string> getOrderList()
+    {
+        return attachOrder;
+    }
+
+    public List<string> getOrderAnchorList()
+    {
+        return attachOrderAnchor;
     }
 }
