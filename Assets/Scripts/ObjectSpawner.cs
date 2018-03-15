@@ -267,14 +267,17 @@ public class ObjectSpawner : NetworkBehaviour {
 
     public void GraspObjectSpawner(GameObject obj, Vector3 spawnPosition, Quaternion spawnRotation)
     {
+        Debug.Log("spawn command");
+        if(!isServer)
         CmdCreateClientComponentOnGrasp(obj, spawnPosition, spawnRotation);
     }
 
     [Command]
     void CmdCreateClientComponentOnGrasp(GameObject obj, Vector3 spawnPosition, Quaternion spawnRotation)
     {
+        Debug.Log("spawn on server");
         GameObject  o = (GameObject)Instantiate(obj, spawnPosition, spawnRotation);
-
+        o.name = o.name + "spawn";
            
         NetworkServer.SpawnWithClientAuthority(o, gameObject);
 

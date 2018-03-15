@@ -34,7 +34,7 @@ public class SpawnOnGrasp : MonoBehaviour {
     
     void OnAnchor()
     {
-   
+
 
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         ObjectSpawner spawner = Player.GetComponent<ObjectSpawner>();

@@ -13,7 +13,8 @@ public class AttachObjectManager : MonoBehaviour {
     List<string> attachOrder;
     List<string> attachOrderAnchor;
 
-
+    Anchor[] extanchor;
+    Anchor[] intanchor;
     Dictionary<string, string> conflictDict;
     AnchorGroup _extgroup;
     AnchorGroup _intgroup;
@@ -45,8 +46,8 @@ public class AttachObjectManager : MonoBehaviour {
         _intgroup = interior_group.GetComponent<AnchorGroup>();
 
 
-        Anchor[] extanchor = gameObject.transform.GetChild(1).gameObject.GetComponentsInChildren<Anchor>();
-        Anchor[] intanchor = gameObject.transform.GetChild(0).gameObject.GetComponentsInChildren<Anchor>();
+        extanchor = gameObject.transform.GetChild(1).gameObject.GetComponentsInChildren<Anchor>();
+        intanchor = gameObject.transform.GetChild(0).gameObject.GetComponentsInChildren<Anchor>();
 
         for (int i = 0; i < extanchor.Length; i++)
             _extgroup.Add(extanchor[i]);
@@ -68,13 +69,14 @@ public class AttachObjectManager : MonoBehaviour {
     public void addInteriorObject(GameObject objects)
     {
         interiorList.Add(objects);
-        if(LayoutController.thisisServer && gameObject.name=="Mockup(server)")
+        Anchor anchor = objects.GetComponent<AnchorableBehaviour>().anchor;
+        if (LayoutController.thisisServer && gameObject.name=="Mockup(server)")
         {
             attachOrder.Add(objects.name);
-            attachOrderAnchor.Add(objects.GetComponent<AnchorableBehaviour>().anchor.name);
+            attachOrderAnchor.Add(anchor.name);
         }
 
-
+        SetOpposingAnchorColor(anchor, true, new Color(0, 0, 0, 1.0f));
         checkConflict(objects, true);
     }
 
@@ -92,17 +94,20 @@ public class AttachObjectManager : MonoBehaviour {
     public void addExteriorObject(GameObject objects)
     {
         exteriorList.Add(objects);
+        Anchor anchor = objects.GetComponent<AnchorableBehaviour>().anchor;
         if (!LayoutController.thisisServer && gameObject.name == "Mockup(client)")
         {
             attachOrder.Add(objects.name);
-            attachOrderAnchor.Add(objects.GetComponent<AnchorableBehaviour>().anchor.name);
+            attachOrderAnchor.Add(anchor.name);
         }
+        SetOpposingAnchorColor(anchor,false,new Color(0,0,0,1.0f));
         checkConflict(objects, false);
     }
 
     public void clearExteriorObject()
     {
         exteriorList.Clear();
+        
     }
 
     public void removeExteriorObject(GameObject objects)
@@ -213,5 +218,39 @@ public class AttachObjectManager : MonoBehaviour {
     public List<string> getOrderAnchorList()
     {
         return attachOrderAnchor;
+    }
+
+    void SetOpposingAnchorColor(Anchor anchor, bool isInterior, Color col)
+    {
+        string[] anchorsplit =  anchor.name.Split(' ');
+        string anchorNumber = anchorsplit[anchorsplit.Length - 1];
+        if(isInterior)
+        {
+            for(int i =0;i < extanchor.Length; i++)
+            {
+                string[] anchorSplitpair = extanchor[i].name.Split(' ');
+                string anchorNumberPair = anchorSplitpair[anchorSplitpair.Length - 1];
+                if(anchorNumber == anchorNumberPair)
+                {
+                    Renderer box =  extanchor[i].gameObject.GetComponentInChildren<Renderer>();
+                    box.material.color = col;
+                }
+
+            }
+        }
+        else
+        {
+            for (int i = 0; i < intanchor.Length; i++)
+            {
+                string[] anchorSplitpair = intanchor[i].name.Split(' ');
+                string anchorNumberPair = anchorSplitpair[anchorSplitpair.Length - 1];
+                if (anchorNumber == anchorNumberPair)
+                {
+                    Renderer box = intanchor[i].gameObject.GetComponentInChildren<Renderer>();
+                    box.material.color = col;
+                }
+            }
+        }
+        
     }
 }

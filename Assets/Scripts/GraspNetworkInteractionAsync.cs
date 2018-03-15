@@ -77,7 +77,6 @@ public class GraspNetworkInteractionAsync : NetworkBehaviour {
         if (angles > 0 && angles < 180)
             angles = Mathf.Min(180, angles * 3.0f);
 
-        Debug.Log(lockrotation.eulerAngles.y + " " +angles);
 
         Vector3 movementDueToGrasp = solvedPos - presolvedPos;
         float xAxisMovement = movementDueToGrasp.x;

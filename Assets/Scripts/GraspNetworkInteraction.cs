@@ -11,7 +11,7 @@ public class GraspNetworkInteraction : NetworkBehaviour {
     private Rigidbody rb;
     private BoxCollider bc;
     private GlowObject _glowObj;
-
+    Quaternion lockrotation;
 
     void Start() {
         _intObj = GetComponent<InteractionBehaviour>();
@@ -40,6 +40,7 @@ public class GraspNetworkInteraction : NetworkBehaviour {
 
     private void OnGraspStart()
     {
+        lockrotation = transform.rotation;
         _glowObj.OnGraspBegin();
     }
 
@@ -53,9 +54,15 @@ public class GraspNetworkInteraction : NetworkBehaviour {
         Vector3 solvedPos,    Quaternion solvedRot,
         List<InteractionController> graspingController) 
     {
-        Vector3 angle = solvedRot.eulerAngles;
-        
-        solvedRot = Quaternion.Euler(0, angle.y, 0);
+        Quaternion relative = solvedRot * Quaternion.Inverse(lockrotation);
+
+        float angles = relative.eulerAngles.y;
+        if (angles > 180 && angles < 360)
+            angles = Mathf.Max(-180, -(360 - angles) * 3.0f);
+        if (angles > 0 && angles < 180)
+            angles = Mathf.Min(180, angles * 3.0f);
+
+        Quaternion rot = Quaternion.Euler(0, lockrotation.eulerAngles.y + angles, 0);
 
 
         Vector3 movementDueToGrasp = solvedPos - presolvedPos;
@@ -64,9 +71,9 @@ public class GraspNetworkInteraction : NetworkBehaviour {
 
         _intObj.rigidbody.position = presolvedPos;
         _intObj.rigidbody.position += Vector3.right * xAxisMovement + Vector3.forward * zAxisMovement;
-        _intObj.rigidbody.rotation = solvedRot;
+        _intObj.rigidbody.rotation = rot;
 
-        CmdGraspedMovement(_intObj.rigidbody.position, solvedRot);
+        CmdGraspedMovement(_intObj.rigidbody.position, rot);
 
 
 
