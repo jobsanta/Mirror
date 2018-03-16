@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 114552118276584730}
   - component: {fileID: 114516402846872194}
   - component: {fileID: 114532484740335022}
+  - component: {fileID: 114060055993986350}
   m_Layer: 10
   m_Name: Exterior TV Async
   m_TagString: Exterior
@@ -182,7 +183,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
+  m_Size: {x: 5, y: 3, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114030638206547040
 MonoBehaviour:
@@ -232,6 +233,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114060055993986350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1764026963505894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dab4d5de1b92f049b24056ddaad201b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentColor: {r: 0, g: 0, b: 0.5019608, a: 1}
 --- !u!114 &114080495693613256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.5862067, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0.5019608, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

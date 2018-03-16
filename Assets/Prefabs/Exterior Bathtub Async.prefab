@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114191216776655904}
   - component: {fileID: 114914122261733202}
   - component: {fileID: 114892031932532164}
+  - component: {fileID: 114343859317709888}
   m_Layer: 10
   m_Name: Exterior Bathtub Async
   m_TagString: Exterior
@@ -312,7 +313,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
+  m_Size: {x: 5, y: 3, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114191216776655904
 MonoBehaviour:
@@ -337,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4705882, g: 0.5837729, b: 1, a: 1}
+  m_Color: {r: 0.5019608, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -385,6 +386,18 @@ MonoBehaviour:
   ConflictColor: {r: 1, g: 0, b: 0, a: 0}
   LerpFactor: 10
   isConflict: 0
+--- !u!114 &114343859317709888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1066414774638830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dab4d5de1b92f049b24056ddaad201b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentColor: {r: 0.5019608, g: 0, b: 0, a: 1}
 --- !u!114 &114367398577507776
 MonoBehaviour:
   m_ObjectHideFlags: 1

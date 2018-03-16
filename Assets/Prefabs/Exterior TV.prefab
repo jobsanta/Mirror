@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114579507834787012}
   - component: {fileID: 114909245000259824}
   - component: {fileID: 114472978764198232}
+  - component: {fileID: 114116592058574392}
   m_Layer: 10
   m_Name: Exterior TV
   m_TagString: Exterior
@@ -183,7 +184,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
+  m_Size: {x: 5, y: 3, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114043812790517572
 MonoBehaviour:
@@ -196,6 +197,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc79aa9f9cdcff54b8ed072afc793f41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114116592058574392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314343557889222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dab4d5de1b92f049b24056ddaad201b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentColor: {r: 0, g: 0, b: 0.5019608, a: 1}
 --- !u!114 &114123315218645336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,7 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.5862067, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0.5019608, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

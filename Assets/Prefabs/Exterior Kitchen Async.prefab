@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 114163220535183786}
   - component: {fileID: 114443552764470542}
   - component: {fileID: 114505487699153646}
+  - component: {fileID: 114617355843028518}
   m_Layer: 10
   m_Name: Exterior Kitchen Async
   m_TagString: Exterior
@@ -312,7 +313,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
+  m_Size: {x: 5, y: 3, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114163220535183786
 MonoBehaviour:
@@ -413,6 +414,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f6190d030437b49ac90d293b299cc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114617355843028518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439273821114718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dab4d5de1b92f049b24056ddaad201b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentColor: {r: 0.27450982, g: 0.9411765, b: 0.9411765, a: 1}
 --- !u!114 &114771215574553306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -471,7 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.27450982, g: 0.9411765, b: 0.9411765, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

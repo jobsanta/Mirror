@@ -24,6 +24,7 @@ public class LayoutBodyController : NetworkBehaviour {
             else
             {
                 gameObject.name = "Mockup(server)";
+                StartCoroutine(DelayStart());
             }
         }
         else
@@ -38,14 +39,16 @@ public class LayoutBodyController : NetworkBehaviour {
             else
             {
                 gameObject.name = "Mockup(client)";
+                StartCoroutine(DelayStart());
             }
         }
     }
 
     IEnumerator DelayStart()
     {
+        yield return new WaitForSeconds(0.5f);
         LayoutController l = GameObject.FindGameObjectWithTag("Player").GetComponent<LayoutController>();
-        return l.setStartPoint();
+        if(l!=null) l.setStartPoint();
     }
             
     

@@ -1,6 +1,28 @@
-Exterior Hub Async(Clone)1 Exterior Anchor Point 8
-Exterior wire Async(Clone)3 Exterior Anchor Point 5
-Exterior Bathtub Async(Clone) Exterior Anchor Point 18
-Exterior Dryer Async(Clone) Exterior Anchor Point 15
-Exterior Toilet Async(Clone) Exterior Anchor Point 10
-Exterior 4-connect pipe Async(Clone)5 Exterior Anchor Point 12
+Exterior Toilet Async(Clone)-Exterior Anchor Point 17
+Exterior Toilet Async(Clone)-Exterior Anchor Point 4
+Exterior Hub Async(Clone)1-Exterior Anchor Point 20
+Exterior Sink Async(Clone)-Exterior Anchor Point 14
+Exterior Sink Async(Clone)-Exterior Anchor Point 14
+Exterior Sink Async(Clone)-Exterior Anchor Point 15
+Exterior Sink Async(Clone)-Exterior Anchor Point 15
+Exterior Toilet Async(Clone)-Exterior Anchor Point 16
+Exterior Toilet Async(Clone)-Exterior Anchor Point 14
+Exterior Toilet Async(Clone)-Exterior Anchor Point 16
+Exterior Toilet Async(Clone)-Exterior Anchor Point 16
+Exterior Toilet Async(Clone)-Exterior Anchor Point 16
+Exterior Toilet Async(Clone)-Exterior Anchor Point 16
+Exterior Workdesk Async(Clone)-Exterior Anchor Point 5
+Exterior Workdesk Async(Clone)-Exterior Anchor Point 5
+Exterior Workdesk Async(Clone)-Exterior Anchor Point 5
+Exterior Workdesk Async(Clone)-Exterior Anchor Point 5
+Exterior Workdesk Async(Clone)-Exterior Anchor Point 5
+Exterior Workdesk Async(Clone)-Exterior Anchor Point 5
+Exterior Workdesk Async(Clone)-Exterior Anchor Point 5
+Exterior Workdesk Async(Clone)-Exterior Anchor Point 5
+Exterior Workdesk Async(Clone)-Exterior Anchor Point 6
+Exterior Workdesk Async(Clone)-Exterior Anchor Point 6
+Exterior Kitchen Async(Clone)-Exterior Anchor Point 13
+Exterior Kitchen Async(Clone)-Exterior Anchor Point 13
+Exterior Kitchen Async(Clone)-Exterior Anchor Point 14
+Exterior TV Async(Clone)-Exterior Anchor Point 13
+Exterior TV Async(Clone)-Exterior Anchor Point 13

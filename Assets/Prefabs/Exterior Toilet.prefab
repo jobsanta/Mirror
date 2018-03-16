@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 114893446982046062}
   - component: {fileID: 114494552384476958}
   - component: {fileID: 114195003015068710}
+  - component: {fileID: 114759454614897636}
   m_Layer: 10
   m_Name: Exterior Toilet
   m_TagString: Exterior
@@ -313,7 +314,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
+  m_Size: {x: 5, y: 3, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114122412855300228
 MonoBehaviour:
@@ -385,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.4344826, a: 1}
+  m_Color: {r: 1, g: 0.50980395, b: 0.1882353, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -483,6 +484,18 @@ MonoBehaviour:
     m_RotationOrder: 4
   _eventTable:
     _entries: []
+--- !u!114 &114759454614897636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1718753903167136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dab4d5de1b92f049b24056ddaad201b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentColor: {r: 1, g: 0.50980395, b: 0.1882353, a: 1}
 --- !u!114 &114850798839323650
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -76,8 +76,14 @@ public class AttachObjectManager : MonoBehaviour {
             attachOrderAnchor.Add(anchor.name);
         }
 
-        SetOpposingAnchorColor(anchor, true, new Color(0, 0, 0, 1.0f));
-        checkConflict(objects, true);
+        ColorOnAttach ca = objects.GetComponent<ColorOnAttach>();
+        if(ca!=null)
+        {
+            SetOpposingAnchorColor(anchor, true, ca.getComponentColor());
+
+            checkConflict(objects, true);
+        }
+
     }
 
     public void clearInteriorObject()
@@ -87,8 +93,12 @@ public class AttachObjectManager : MonoBehaviour {
 
     public void removeInteriorObject(GameObject objects)
     {
+        Anchor anchor = objects.GetComponent<AnchorableBehaviour>().anchor;
         interiorList.Remove(objects);
         checkpairConflict(objects, true);
+
+        if (anchor != null)
+            SetOpposingAnchorColor(anchor, true, new Color(0, 0, 0, 1.0f));
     }
 
     public void addExteriorObject(GameObject objects)
@@ -100,8 +110,14 @@ public class AttachObjectManager : MonoBehaviour {
             attachOrder.Add(objects.name);
             attachOrderAnchor.Add(anchor.name);
         }
-        SetOpposingAnchorColor(anchor,false,new Color(0,0,0,1.0f));
-        checkConflict(objects, false);
+
+
+        ColorOnAttach ca = objects.GetComponent<ColorOnAttach>();
+        if (ca != null)
+        {
+            SetOpposingAnchorColor(anchor, false, ca.getComponentColor());
+            checkConflict(objects, false);
+        }
     }
 
     public void clearExteriorObject()
@@ -112,8 +128,12 @@ public class AttachObjectManager : MonoBehaviour {
 
     public void removeExteriorObject(GameObject objects)
     {
+        Anchor anchor = objects.GetComponent<AnchorableBehaviour>().anchor;
         exteriorList.Remove(objects);
         checkpairConflict(objects, false);
+
+        if (anchor != null) 
+        SetOpposingAnchorColor(anchor, false, new Color(0,0,0,1.0f));
     }
 
     void checkConflict(GameObject obj,  bool isInterior)
@@ -234,6 +254,8 @@ public class AttachObjectManager : MonoBehaviour {
                 {
                     Renderer box =  extanchor[i].gameObject.GetComponentInChildren<Renderer>();
                     box.material.color = col;
+                    GlowAnchor ga = extanchor[i].gameObject.GetComponentInChildren<GlowAnchor>();
+                    ga.OnColorChanged(col);
                 }
 
             }
@@ -248,6 +270,8 @@ public class AttachObjectManager : MonoBehaviour {
                 {
                     Renderer box = intanchor[i].gameObject.GetComponentInChildren<Renderer>();
                     box.material.color = col;
+                    GlowAnchor ga = intanchor[i].gameObject.GetComponentInChildren<GlowAnchor>();
+                    ga.OnColorChanged(col);
                 }
             }
         }

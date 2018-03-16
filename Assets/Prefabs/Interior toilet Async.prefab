@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114434584361778220}
   - component: {fileID: 114525930428410614}
   - component: {fileID: 114879433790678012}
+  - component: {fileID: 114646642813100350}
   m_Layer: 8
   m_Name: Interior toilet Async
   m_TagString: Interior
@@ -505,8 +506,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Size: {x: 5, y: 3, z: 5}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &114167424471847200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -607,6 +608,18 @@ MonoBehaviour:
     i15: 135
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &114646642813100350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1160173516161878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dab4d5de1b92f049b24056ddaad201b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentColor: {r: 1, g: 0.50980395, b: 0.1882353, a: 1}
 --- !u!114 &114879433790678012
 MonoBehaviour:
   m_ObjectHideFlags: 1

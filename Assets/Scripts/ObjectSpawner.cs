@@ -193,7 +193,7 @@ public class ObjectSpawner : NetworkBehaviour {
         GameObject o;
         for (int i = 0; i < ServerComponentPrefab.Length/2 ; i++)
         {
-            pos = new Vector3(-0.1975f+i*0.0625f,0.105f,-0.4f);
+            pos = new Vector3(-0.1350f+i*0.0625f,0.105f,-0.4f);
 
             o = (GameObject)Instantiate(ServerComponentPrefab[i % ServerComponentPrefab.Length], pos, spawnRotation);
 
@@ -235,7 +235,7 @@ public class ObjectSpawner : NetworkBehaviour {
          0.0f);
         for (int i = 0; i < ClientComponentPrefab.Length / 2; i++)
         {
-            pos = new Vector3(0.1975f - i * 0.0625f, 0.105f, 0.4f);
+            pos = new Vector3(0.1350f - i * 0.0625f, 0.105f, 0.4f);
 
             o = (GameObject)Instantiate(ClientComponentPrefab[i % ClientComponentPrefab.Length], pos, spawnRotation);
 

@@ -516,12 +516,14 @@
     <Compile Include="Assets\Scripts\BillboardController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CollisionController.cs" />
+    <Compile Include="Assets\Scripts\ColorOnAttach.cs" />
     <Compile Include="Assets\Scripts\ConflictDictionary.cs" />
     <Compile Include="Assets\Scripts\ConflictDictionarySync.cs" />
     <Compile Include="Assets\Scripts\ControlPanelController.cs" />
     <Compile Include="Assets\Scripts\CustomNetworkManager.cs" />
     <Compile Include="Assets\Scripts\EnableEventRelay.cs" />
     <Compile Include="Assets\Scripts\FaceToCam.cs" />
+    <Compile Include="Assets\Scripts\GlowAnchor.cs" />
     <Compile Include="Assets\Scripts\GlowComposite.cs" />
     <Compile Include="Assets\Scripts\GlowController.cs" />
     <Compile Include="Assets\Scripts\GlowObject.cs" />
@@ -560,6 +562,7 @@
     <Compile Include="Assets\Scripts\Spinner.cs" />
     <Compile Include="Assets\Scripts\TextController.cs" />
     <Compile Include="Assets\Scripts\WriteResult.cs" />
+    <Compile Include="Assets\Scripts\WriteResultAsync.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LeapMotion\Core\Dependencies.txt" />

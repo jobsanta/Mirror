@@ -1,8 +1,17 @@
-Interior kitchen Async(Clone) Anchor Point 10
-Interior Counch Async(Clone) Anchor Point 12
-Interior kitchen Async(Clone) Anchor Point 10
-Interior dryer Async(Clone) Anchor Point 11
-Interior lamp Async(Clone) Anchor Point 5
-Interior table Async(Clone) Anchor Point 17
-Interior tv Async(Clone) Anchor Point 15
-Interior tv Async(Clone) Anchor Point 16
+Interior toilet Async(Clone)-Anchor Point 15
+Interior toilet Async(Clone)-Anchor Point 15
+Interior tv Async(Clone)-Anchor Point 14
+Interior table Async(Clone)-Anchor Point 18
+Interior Bathtub Async(Clone)-Anchor Point 7
+Interior kitchen Async(Clone)-Anchor Point 1
+Interior wardrobe Async(Clone)-Anchor Point 17
+Interior tv Async(Clone)-Anchor Point 2
+Interior kitchen Async(Clone)-Anchor Point 1
+Interior kitchen Async(Clone)-Anchor Point 1
+Interior kitchen Async(Clone)-Anchor Point 1
+Interior kitchen Async(Clone)-Anchor Point 1
+Interior kitchen Async(Clone)-Anchor Point 1
+Interior kitchen Async(Clone)-Anchor Point 1
+Interior wardrobe Async(Clone)-Anchor Point 18
+Interior toilet Async(Clone)-Anchor Point 15
+Interior sink Async(Clone)-Anchor Point 17

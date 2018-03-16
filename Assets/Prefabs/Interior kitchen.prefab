@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114822787768680000}
   - component: {fileID: 114850872359740352}
   - component: {fileID: 114528603978402644}
+  - component: {fileID: 114072318072315294}
   m_Layer: 8
   m_Name: Interior kitchen
   m_TagString: Interior
@@ -794,8 +795,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Size: {x: 5, y: 3, z: 5}
+  m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &114072318072315294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1047952485321828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dab4d5de1b92f049b24056ddaad201b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentColor: {r: 0.27450982, g: 0.9411765, b: 0.9411765, a: 1}
 --- !u!114 &114225206579290356
 MonoBehaviour:
   m_ObjectHideFlags: 1

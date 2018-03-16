@@ -1,6 +1,6 @@
 WindowsStandalone
 SceneListBegin?
-Assets/_Scenes/Sync.unity
+Assets/_Scenes/Async.unity
 SceneListEnd?
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BodySourceManager
 787a8e7a5101867e9cc7b11645408842 Assembly-CSharp.dll:Leap.Unity.Interaction.InteractionBehaviour
@@ -291,6 +291,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Leap.Unity.Examples.SimpleScaleUtil
 29a89a67c5890c9a4c631e33792b9382 Assembly-CSharp.dll:.FaceToCam
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.WriteResultAsync
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Leap.Unity.Interaction.DefaultXRNodeTrackingProvider
 a3c59ab0a4370ee52046603a838699bb Assembly-CSharp.dll:Leap.Unity.Interaction.InteractionButton
 39e87458d5150cecb9dbf5fce2560fc2 Assembly-CSharp.dll:Leap.Unity.TemporalWarpingStatus
@@ -319,12 +320,14 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
+fe4585d29978303825c4dd45f287f4b0 Assembly-CSharp.dll:.GlowAnchor
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BillboardController
 659646d85380ed042c2bf77c6957d002 Assembly-CSharp.dll:Leap.Unity.Examples.WorkstationPoseTest
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AnchorNetworkInteractionAsync
 55489840a640f6e66789ec8df187e3e3 Assembly-CSharp.dll:Leap.Unity.ExtendedFingerDetector
 be68a326f522e456f6b5554c6b068fd4 Assembly-CSharp.dll:Leap.Unity.Comment
+8ea2f11e35b47a5129dbdf5a59d346e8 Assembly-CSharp.dll:.ColorOnAttach
 054bb8ae88efc623abf2ca2a7ee3a388 Assembly-CSharp.dll:Leap.Unity.SkeletalHand
 64c758d4b69504a7d580c33ca63474b5 Assembly-CSharp.dll:Leap.Unity.RigidFinger
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Billboard

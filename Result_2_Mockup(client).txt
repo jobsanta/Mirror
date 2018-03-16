@@ -1,0 +1,15 @@
+Interior tv Async(Clone)(Clone)-Anchor Point 2
+Interior table Async(Clone)(Clone)-Anchor Point 17
+Interior kitchen Async(Clone)(Clone)-Anchor Point 14
+Interior toilet Async(Clone)(Clone)-Anchor Point 18
+Interior sink Async(Clone)(Clone)-Anchor Point 16
+=========================================
+Exterior TV Async(Clone) Exterior Anchor Point 2
+Exterior Kitchen Async(Clone) Exterior Anchor Point 14
+Exterior Bathtub Async(Clone) Exterior Anchor Point 17
+Exterior Toilet Async(Clone) Exterior Anchor Point 15
+=========================================
+0
+0
+2
+200.159

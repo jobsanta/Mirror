@@ -19,6 +19,8 @@ namespace Leap.Unity.Examples {
   [AddComponentMenu("")]
   public class TransformTool : MonoBehaviour {
 
+    public static float culmalativeRotation = 0.0f;
+
     [Tooltip("The scene's InteractionManager, used to get InteractionControllers and "
            + "manage handle state.")]
     public InteractionManager interactionManager;
@@ -74,6 +76,14 @@ namespace Leap.Unity.Examples {
     /// </summary>
     public void NotifyHandleRotation(Quaternion deltaRotation) {
       _rotateBuffer = deltaRotation * _rotateBuffer;
+
+            float rotate = deltaRotation.eulerAngles.y;
+            if (rotate > 0 && rotate <= 180)
+            {
+                culmalativeRotation += rotate;
+            }
+            else if (rotate > 180 && rotate < 360)
+                culmalativeRotation += (360 - rotate);
     }
 
     private void onPostPhysics() {

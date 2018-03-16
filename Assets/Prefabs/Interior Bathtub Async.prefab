@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4271900383645268}
   - component: {fileID: 33377248894580910}
   - component: {fileID: 23653222827993482}
-  - component: {fileID: 114010545467724644}
   m_Layer: 8
   m_Name: Prop_TowelBig_Green
   m_TagString: Untagged
@@ -39,7 +38,6 @@ GameObject:
   - component: {fileID: 4578046772616696}
   - component: {fileID: 33507652544436052}
   - component: {fileID: 23143770426199372}
-  - component: {fileID: 114376241089837012}
   m_Layer: 8
   m_Name: Prop_BathMat_Blue
   m_TagString: Untagged
@@ -57,7 +55,6 @@ GameObject:
   - component: {fileID: 4566168057811504}
   - component: {fileID: 33336895658560708}
   - component: {fileID: 23403694819473844}
-  - component: {fileID: 114002852320558462}
   m_Layer: 8
   m_Name: Prop_TowelRail
   m_TagString: Untagged
@@ -82,6 +79,7 @@ GameObject:
   - component: {fileID: 114989213756266956}
   - component: {fileID: 114212152655185174}
   - component: {fileID: 114662003936225150}
+  - component: {fileID: 114471211264019640}
   m_Layer: 8
   m_Name: Interior Bathtub Async
   m_TagString: Interior
@@ -99,7 +97,6 @@ GameObject:
   - component: {fileID: 4382053638790056}
   - component: {fileID: 33494701362568538}
   - component: {fileID: 23412917656778130}
-  - component: {fileID: 114748199667336872}
   m_Layer: 8
   m_Name: Prop_BathFull
   m_TagString: Untagged
@@ -117,7 +114,6 @@ GameObject:
   - component: {fileID: 4818413407131586}
   - component: {fileID: 33230404091372120}
   - component: {fileID: 23422567737967440}
-  - component: {fileID: 114587233547534868}
   m_Layer: 8
   m_Name: Floor_Carpet_Tiles
   m_TagString: Untagged
@@ -135,7 +131,6 @@ GameObject:
   - component: {fileID: 4515192584969204}
   - component: {fileID: 33298302314052192}
   - component: {fileID: 23945788026515288}
-  - component: {fileID: 114803584061201438}
   m_Layer: 8
   m_Name: Prop_SoapDispencer
   m_TagString: Untagged
@@ -153,7 +148,6 @@ GameObject:
   - component: {fileID: 4443042387082844}
   - component: {fileID: 33461369503451814}
   - component: {fileID: 23104886054869376}
-  - component: {fileID: 114764472195346150}
   m_Layer: 8
   m_Name: Prop_SoapDish
   m_TagString: Untagged
@@ -584,40 +578,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &114002852320558462
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1373087494116022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HoverColor: {r: 0, g: 0, b: 0, a: 0}
-  GraspColor: {r: 0, g: 0, b: 0, a: 0}
-  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
-  LerpFactor: 10
-  isConflict: 0
---- !u!114 &114010545467724644
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1080615762254934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HoverColor: {r: 0, g: 0, b: 0, a: 0}
-  GraspColor: {r: 0, g: 0, b: 0, a: 0}
-  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
-  LerpFactor: 10
-  isConflict: 0
+  m_Size: {x: 5, y: 3, z: 5}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &114081777735107454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -707,38 +669,18 @@ MonoBehaviour:
     layerIndex: 8
   _eventTable:
     _entries: []
---- !u!114 &114376241089837012
+--- !u!114 &114471211264019640
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1140731379339182}
+  m_GameObject: {fileID: 1475074121875882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7dab4d5de1b92f049b24056ddaad201b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HoverColor: {r: 0, g: 0, b: 0, a: 0}
-  GraspColor: {r: 0, g: 0, b: 0, a: 0}
-  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
-  LerpFactor: 10
-  isConflict: 0
---- !u!114 &114587233547534868
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1743743814815426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HoverColor: {r: 0, g: 0, b: 0, a: 0}
-  GraspColor: {r: 0, g: 0, b: 0, a: 0}
-  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
-  LerpFactor: 10
-  isConflict: 0
+  componentColor: {r: 0.5019608, g: 0, b: 0, a: 1}
 --- !u!114 &114662003936225150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -750,54 +692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f6190d030437b49ac90d293b299cc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114748199667336872
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1696820896351008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HoverColor: {r: 0, g: 0, b: 0, a: 0}
-  GraspColor: {r: 0, g: 0, b: 0, a: 0}
-  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
-  LerpFactor: 10
-  isConflict: 0
---- !u!114 &114764472195346150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1832496283760482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HoverColor: {r: 0, g: 0, b: 0, a: 0}
-  GraspColor: {r: 0, g: 0, b: 0, a: 0}
-  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
-  LerpFactor: 10
-  isConflict: 0
---- !u!114 &114803584061201438
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1800739696165680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HoverColor: {r: 0, g: 0, b: 0, a: 0}
-  GraspColor: {r: 0, g: 0, b: 0, a: 0}
-  ConflictColor: {r: 0, g: 0, b: 0, a: 0}
-  LerpFactor: 10
-  isConflict: 0
 --- !u!114 &114989213756266956
 MonoBehaviour:
   m_ObjectHideFlags: 1

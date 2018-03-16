@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114242097962925472}
   - component: {fileID: 114873623302156904}
   - component: {fileID: 114358840893701956}
+  - component: {fileID: 114384216917775084}
   m_Layer: 8
   m_Name: Interior tv
   m_TagString: Interior
@@ -650,8 +651,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Size: {x: 5, y: 3, z: 5}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &114104448152842428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -695,6 +696,18 @@ MonoBehaviour:
   m_SnapThreshold: 0.01
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114384216917775084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1036727997470082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dab4d5de1b92f049b24056ddaad201b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentColor: {r: 0, g: 0, b: 0.5019608, a: 1}
 --- !u!114 &114604013147564684
 MonoBehaviour:
   m_ObjectHideFlags: 1

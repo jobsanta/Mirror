@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114802541097151462}
   - component: {fileID: 114624030936030044}
   - component: {fileID: 114637842319611154}
+  - component: {fileID: 114859996717741398}
   m_Layer: 8
   m_Name: Interior workdesk
   m_TagString: Interior
@@ -650,8 +651,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Size: {x: 5, y: 3, z: 5}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &114022316077100630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -812,6 +813,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4253328aa0066674694b414b93baf917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114859996717741398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1093656944413132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dab4d5de1b92f049b24056ddaad201b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentColor: {r: 1, g: 1, b: 0.09803922, a: 0}
 --- !u!114 &114946898432728740
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 114073435178475612}
   - component: {fileID: 114395330233359698}
   - component: {fileID: 114045145978157986}
+  - component: {fileID: 114809602169473170}
   m_Layer: 8
   m_Name: Interior sink
   m_TagString: Interior
@@ -506,8 +507,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Size: {x: 5, y: 3, z: 5}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &114045145978157986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -613,6 +614,18 @@ MonoBehaviour:
     layerIndex: 8
   _eventTable:
     _entries: []
+--- !u!114 &114809602169473170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1175186123139898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dab4d5de1b92f049b24056ddaad201b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentColor: {r: 0.54901963, g: 0.11764706, b: 0.7058824, a: 1}
 --- !u!114 &114821412041454202
 MonoBehaviour:
   m_ObjectHideFlags: 1
