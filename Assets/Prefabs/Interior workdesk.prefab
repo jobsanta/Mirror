@@ -696,8 +696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HoverColor: {r: 0.9269777, g: 1, b: 0.4705882, a: 0}
-  GraspColor: {r: 0, g: 1, b: 0.13103461, a: 0}
+  HoverColor: {r: 0.78431374, g: 0.78431374, b: 0, a: 1}
+  GraspColor: {r: 1, g: 1, b: 1, a: 0}
   ConflictColor: {r: 1, g: 0, b: 0, a: 0}
   LerpFactor: 10
   isConflict: 0

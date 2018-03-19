@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Leap.Unity.Interaction;
-
+using UnityEngine.UI;
 
 public class AttachObjectManager : MonoBehaviour {
 
@@ -19,12 +19,19 @@ public class AttachObjectManager : MonoBehaviour {
     AnchorGroup _extgroup;
     AnchorGroup _intgroup;
 
+    public int totalCost = 0;
+
     ConflictDictionarySync conflictdictSync;
     ConflictDictionary conflictdictAsync;
+    Text costText;
 
     void Start () {
 
         GameObject conflict = GameObject.Find("Conflict Dictionary");
+        GameObject costCanvas = GameObject.Find("CostCanvas");
+
+        costText = costCanvas.GetComponentInChildren<Text>();
+
 
         conflictdictAsync = conflict.GetComponent<ConflictDictionary>();
         conflictdictSync = conflict.GetComponent<ConflictDictionarySync>();
@@ -84,10 +91,14 @@ public class AttachObjectManager : MonoBehaviour {
             checkConflict(objects, true);
         }
 
+
+
+
     }
 
     public void clearInteriorObject()
     {
+        for(int i=0;i<extanchor.Length;i++) SetAnchorColor(extanchor[i], new Color(0, 0, 0, 1.0f));
         interiorList.Clear();
     }
 
@@ -118,12 +129,25 @@ public class AttachObjectManager : MonoBehaviour {
             SetOpposingAnchorColor(anchor, false, ca.getComponentColor());
             checkConflict(objects, false);
         }
+
+        CostControll ccl = objects.GetComponent<CostControll>();
+        if (ccl != null &&  gameObject.name != "Mockup(billboard)")
+        {
+            totalCost += ccl.getCost();
+            costText.text = "Cost : " + totalCost + "$";
+        }
     }
 
     public void clearExteriorObject()
     {
+        for (int i = 0; i < intanchor.Length; i++) SetAnchorColor(intanchor[i], new Color(0, 0, 0, 1.0f));
         exteriorList.Clear();
-        
+        if (gameObject.name != "Mockup(billboard)")
+        {
+            totalCost = 0;
+            costText.text = "Cost : " + totalCost + "$";
+        }
+
     }
 
     public void removeExteriorObject(GameObject objects)
@@ -134,6 +158,13 @@ public class AttachObjectManager : MonoBehaviour {
 
         if (anchor != null) 
         SetOpposingAnchorColor(anchor, false, new Color(0,0,0,1.0f));
+
+        CostControll ccl = objects.GetComponent<CostControll>();
+        if (ccl != null && gameObject.name != "Mockup(billboard)")
+        {
+            totalCost += ccl.getCost();
+            costText.text = "Cost : " + totalCost + "$";
+        }
     }
 
     void checkConflict(GameObject obj,  bool isInterior)
@@ -239,7 +270,15 @@ public class AttachObjectManager : MonoBehaviour {
     {
         return attachOrderAnchor;
     }
+    void SetAnchorColor(Anchor anchor,  Color col)
+    {
 
+        Renderer box = anchor.gameObject.GetComponentInChildren<Renderer>();
+        box.material.color = col;
+        GlowAnchor ga = anchor.gameObject.GetComponentInChildren<GlowAnchor>();
+        ga.OnColorChanged(col);
+
+    }
     void SetOpposingAnchorColor(Anchor anchor, bool isInterior, Color col)
     {
         string[] anchorsplit =  anchor.name.Split(' ');

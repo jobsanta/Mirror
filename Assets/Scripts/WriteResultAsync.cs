@@ -62,7 +62,8 @@ public class WriteResultAsync : MonoBehaviour {
                     }
                     sw.WriteLine("=========================================");
                 }
-
+                int cost = gameObject.GetComponent<AttachObjectManager>().totalCost;
+                sw.WriteLine("cost: " + cost.ToString());
                 sw.WriteLine(LayoutController.changeOwnViewCount);
                 sw.WriteLine(LayoutController.changeTheirViewCount);
                 sw.WriteLine(LayoutController.refreshButtonCount);
@@ -95,7 +96,8 @@ public class WriteResultAsync : MonoBehaviour {
                     }
                     sw.WriteLine("=========================================");
                 }
-
+                int cost = gameObject.GetComponent<AttachObjectManager>().totalCost;
+                sw.WriteLine("cost: " + cost.ToString());
                 sw.WriteLine(LayoutController.changeOwnViewCount);
                 sw.WriteLine(LayoutController.changeTheirViewCount);
                 sw.WriteLine(LayoutController.refreshButtonCount);
@@ -147,6 +149,7 @@ public class WriteResultAsync : MonoBehaviour {
             executionCount++;
             sw.WriteLine(executionCount.ToString());
         }
+
     }
 	
 }

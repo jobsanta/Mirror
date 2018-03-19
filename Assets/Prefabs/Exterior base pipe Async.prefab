@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114916396770798412}
   - component: {fileID: 114220465188225932}
   - component: {fileID: 114543702646295532}
+  - component: {fileID: 114045165404747212}
   m_Layer: 10
   m_Name: Exterior base pipe Async
   m_TagString: Exterior
@@ -177,6 +178,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 3, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114045165404747212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1191436006359836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de4106c9dc1495f4ab0ec33fd1d1c241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 5
 --- !u!114 &114220465188225932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -311,8 +324,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HoverColor: {r: 1, g: 0.98255575, b: 0.36764705, a: 0}
-  GraspColor: {r: 0, g: 1, b: 0.08965516, a: 0}
+  HoverColor: {r: 0.78431374, g: 0.78431374, b: 0, a: 1}
+  GraspColor: {r: 1, g: 1, b: 1, a: 1}
   ConflictColor: {r: 1, g: 0, b: 0, a: 0}
   LerpFactor: 10
   isConflict: 0

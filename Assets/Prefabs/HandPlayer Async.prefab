@@ -4067,7 +4067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPR: 0
-  isHybrid: 1
+  isHybrid: 0
 --- !u!114 &114412223268443922
 MonoBehaviour:
   m_ObjectHideFlags: 1

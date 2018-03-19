@@ -6,7 +6,7 @@ public class GlowAnchor : MonoBehaviour {
 
 
     public float LerpFactor = 10;
-    public float delay = 5.0f;
+    public float delay = 7.0f;
     public Renderer[] Renderers
     {
         get;
@@ -21,7 +21,6 @@ public class GlowAnchor : MonoBehaviour {
     private List<Material> _materials = new List<Material>();
     private Color _currentColor;
     private Color _targetColor;
-    private IEnumerator stopGlow;
 
 
     void Start()
@@ -39,14 +38,13 @@ public class GlowAnchor : MonoBehaviour {
     {
         _targetColor = col;
         enabled = true;
-
-        stopGlow = OnColorStay();
-        StartCoroutine(stopGlow);
+         
+        StartCoroutine(OnColorStay());
     }
 
     IEnumerator OnColorStay()
     {
-        yield return new WaitForSecondsRealtime(delay);
+        yield return new WaitForSeconds(delay);
         _targetColor = Color.black;
 
         enabled = true;

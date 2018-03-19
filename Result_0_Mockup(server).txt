@@ -1,16 +1,7 @@
-Interior Bathtub Async(Clone)-Anchor Point 7
-Interior tv Async(Clone)-Anchor Point 2
-Interior kitchen Async(Clone)-Anchor Point 1
-Interior wardrobe Async(Clone)-Anchor Point 18
-Interior toilet Async(Clone)-Anchor Point 15
-Interior sink Async(Clone)-Anchor Point 17
 =========================================
-Exterior Bathtub Async(Clone)(Clone) Exterior Anchor Point 7
-Exterior TV Async(Clone)(Clone) Exterior Anchor Point 16
-Exterior Kitchen Async(Clone)(Clone) Exterior Anchor Point 1
-Exterior Toilet Async(Clone)(Clone) Exterior Anchor Point 15
 =========================================
+cost: 0
 0
 0
-4
-2.341867
+0
+0

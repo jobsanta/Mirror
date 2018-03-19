@@ -68,6 +68,9 @@ public class WriteResult : MonoBehaviour {
                         sw.WriteLine("=========================================");
                     }
 
+                    int cost = layout.GetComponent<AttachObjectManager>().totalCost;
+                    sw.WriteLine("cost: " + cost.ToString());
+
                     sw.WriteLine(LayoutController.changeOwnViewCount);
                     sw.WriteLine(LayoutController.changeTheirViewCount);
                     sw.WriteLine(LayoutController.refreshButtonCount);
@@ -132,7 +135,8 @@ public class WriteResult : MonoBehaviour {
                     }
                     sw.WriteLine("=========================================");
                 }
-
+                int cost = gameObject.GetComponent<AttachObjectManager>().totalCost;
+                sw.WriteLine("cost: " + cost.ToString());
                 sw.WriteLine(LayoutController.changeOwnViewCount);
                 sw.WriteLine(LayoutController.changeTheirViewCount);
                 sw.WriteLine(LayoutController.refreshButtonCount);

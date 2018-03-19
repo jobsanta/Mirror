@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 114511144190133636}
   - component: {fileID: 114503223201589516}
   - component: {fileID: 114150396017081442}
+  - component: {fileID: 114083882706114676}
   m_Layer: 10
   m_Name: Exterior Hub Async
   m_TagString: Exterior
@@ -337,6 +338,18 @@ MonoBehaviour:
     i15: 159
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &114083882706114676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1315650976414540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de4106c9dc1495f4ab0ec33fd1d1c241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 20
 --- !u!114 &114150396017081442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,8 +411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HoverColor: {r: 1, g: 0.98255575, b: 0.36764705, a: 0}
-  GraspColor: {r: 0, g: 1, b: 0.08965516, a: 0}
+  HoverColor: {r: 0.78431374, g: 0.78431374, b: 0, a: 1}
+  GraspColor: {r: 1, g: 1, b: 1, a: 1}
   ConflictColor: {r: 1, g: 0, b: 0, a: 0}
   LerpFactor: 10
   isConflict: 0

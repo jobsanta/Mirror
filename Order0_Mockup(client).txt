@@ -1,3 +1,2 @@
-Exterior Toilet(Clone) Exterior Anchor Point 17
-Exterior Bathtub(Clone) Exterior Anchor Point 15
-Exterior Workdesk(Clone) Exterior Anchor Point 18
+Exterior Hub(Clone)1-Exterior Anchor Point 10
+Exterior TV(Clone)-Exterior Anchor Point 19
